@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "Suisse Int'l";
+  src: url("Suisse-Intl-Regular.otf");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Suisse Int'l";
+  src: url("Suisse-Intl-SemiBold.otf");
+  font-style: medium;
+  font-weight: 500;
+  font-display: swap;
+}

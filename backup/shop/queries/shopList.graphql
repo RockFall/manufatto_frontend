@@ -1,0 +1,15 @@
+"""query shopsList ($filter: ShopsFilterParameter, $pagination: PaginationParameter) {
+  shopsList (filter: $filter, pagination: $pagination){
+    metadata {
+      limit
+      totalCount
+      totalCountCapExceeded
+      after
+      before
+    }
+    shops {
+      name
+      slug
+    }
+  }
+}"""

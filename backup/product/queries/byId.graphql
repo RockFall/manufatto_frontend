@@ -1,0 +1,38 @@
+"""query productById($id: Int!) {
+  product(id: $id) {
+    shop {
+      slug
+      name
+      address {
+        postal
+      }
+    }
+    id
+    name
+    description
+    promotionalUnitPrice
+    unitPrice
+    dimension {
+      weight
+      length
+      height
+      width
+    }
+    variants {
+      id
+      size
+      color{
+        name
+        rgb
+      }
+      stock
+    }
+    images {
+      id
+      path{
+        original
+      }
+    }    
+  }
+}
+"""

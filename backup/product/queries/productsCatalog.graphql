@@ -1,0 +1,13 @@
+"""query productsCatalog($filter: ProductsFilterParameter, $pagination: PaginationParameter!) {
+  productsCatalog(filter: $filter, pagination: $pagination) {
+    products {
+      ...ProductCardFields
+    }
+    metadata {
+      ...PaginationFields
+    }
+    facetedFilters {
+      ...FacetedFiltersFields
+    }
+  }
+}"""

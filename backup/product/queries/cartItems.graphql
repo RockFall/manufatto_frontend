@@ -1,0 +1,12 @@
+"""query cartItems($amount: Int!) {
+  products: productsRandomSuggestions(amount: $amount) {
+    ...ProductCardFields
+    variants {
+      size
+      material
+      color {
+        name
+      }
+    }
+  }
+}"""

@@ -1,0 +1,9 @@
+query randomProducts($amount: Int!, $blacklist: [Int!]) {
+  productsRandomSuggestions(first: $amount, where:{exclude:$blacklist}) {
+    edges {
+      node {
+        ...ProductCardFields
+      }
+    }
+  }
+}

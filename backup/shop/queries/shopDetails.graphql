@@ -1,0 +1,18 @@
+"""query shopDetails($slug: String!, $filter: ProductsFilterParameter, $pagination: PaginationParameter!) {
+  shop(slug: $slug) {
+    id
+    name
+    description
+  }
+  productsCatalog(filter: $filter, pagination: $pagination) {
+    products {
+      ...ProductCardFields
+    }
+    metadata {
+      ...PaginationFields
+    }
+    facetedFilters {
+      ...FacetedFiltersFields
+    }
+  }
+}"""
