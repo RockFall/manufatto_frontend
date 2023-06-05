@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 // Data fetching
 import { GetServerSideProps } from 'next'
 import { ssrHomeDetails, PageHomeDetailsComp } from '../generated/page'
-import { Product, SimpleProduct, VariableProduct } from '../generated/graphql'
+import { Product } from '../generated/graphql'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
   },
   shopNowTitle: {
     fontWeight: 500,
-    fontSize: theme.spacing(2),
+    fontSize: theme.spacing(1.6),
     textAlign: 'center',
     letterSpacing: '0.08em',
     textTransform: 'uppercase',
@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
   shopNowSubtitle: {
     color: '#1D1D1F',
     fontWeight: 600,
-    fontSize: theme.spacing(3),
+    fontSize: theme.spacing(2.6),
     textAlign: 'center',
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(7.5),
@@ -192,24 +192,45 @@ const Index: PageHomeDetailsComp = (props) => {
   const router = useRouter()
   const { data } = props
 
+  // Getting vendor list
+  const vendors = data?.shop.productVendors.edges.map(({node}) => node) as String[]
+
+  // Getting random products from each vendor
+  const randomVendors = Array.from(vendors).sort(() => 0.5 - Math.random()).slice(0, 8)
+  console.log("randomVendors", randomVendors)
+
+  const randomProducts : Product[] = []
+
+  data?.collections.edges.forEach(({ node }) => {
+    const vendorName = node.title;
+    if (randomVendors.includes(vendorName)) {
+      const vendorProducts = node.products.edges.map(({ node }) => node) as Product[];
+      const randomProduct = vendorProducts.slice(0,5).sort(() => 0.5 - Math.random())[0];
+      randomProducts.push(randomProduct);
+      console.log("Product selected: ", randomProduct.title, "from vendor: ", vendorName)
+    }
+  })
+
+  console.log("Metaobjects: ", data.metaobjects.edges)
+
   return (
     <div className={classes.root}>
       <div className={classes.mainBackground}>
-        
-        
+      <BannerCarousel
+          items={data.metaobjects.edges > 0 ? data.highlightBannersList.highlightBanners : (defaultBannerList as unknown as HighlightBanner[])}
+        />
+
         <div className={classes.productSession}>
-          
-          
+          <ProductsButtonGrid className={classes.buttonsRoot} />
 
           <Typography className={classes.shopNowTitle}> Shop Now </Typography>
           <Typography className={classes.shopNowSubtitle}> O que vira tendência, está aqui. </Typography>
-
+          
           {
             data && 
-            data.productsRandomSuggestions.edges.length != 0 && 
-            <ProductGrid productList={data?.productsRandomSuggestions.edges.map(({node}) => node) as (SimpleProduct | VariableProduct)[]} />
+            data.collections.edges.length != 0 &&
+            <ProductGrid productList={randomProducts} />
           }
-          
 
           <Button style={{ margin: '3.4% 0 5%' }} className={classes.button} color='inherit' onClick={()=> router.push(`/produtos`)}>
             VEJA MAIS PRODUTOS
@@ -228,9 +249,6 @@ const Index: PageHomeDetailsComp = (props) => {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   return (await ssrHomeDetails.getServerPage({
-    variables: { 
-      amount: 8
-    }
   }, ctx))
 }
 

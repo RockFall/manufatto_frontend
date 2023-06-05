@@ -2,7 +2,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Link } from '@material-ui/core'
 //import { Product as ProductType, ProductImagePath } from '../../generated/graphql'
-import { Product as ProductType, SimpleProduct, VariableProduct, MediaItem } from '../../generated/graphql'
+import { Product as ProductType } from '../../generated/graphql'
 
 import { formatMoney } from '../../mixins/formatter'
 import clsx from 'clsx'
@@ -17,14 +17,31 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
   },
   productCard: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    width: 'auto',
-    height: 'auto',
+    display: 'block',
+    //flexDirection: 'column',
+    //alignItems: 'center',
   },
+  mediaCard: {
+    display: 'block',
+    position: 'relative',
+    overflow: 'hidden',
+    paddingBottom: '125%',
+    '& img': {
+      maxWidth: '100%',
+      position: 'absolute',
+      top: '0',
+      left: '0',
+      display: 'block',
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+      objectPosition: 'center center',
+    },
+  },
+
+
   brand: {
-    margin: '0px',
+    margin: '6px 0px 0px 0px',
     padding: '2px',
     textTransform: 'uppercase',
     color: '#6F6C6B',
@@ -80,7 +97,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 interface ProductProp {
-  product: SimpleProduct | VariableProduct
+  product: ProductType
   className?: string
 }
 
@@ -88,23 +105,22 @@ const Product = (props: ProductProp) => {
   const { className, product, ...rest } = props
   const classes = useStyles()
 
-  //console.log({ product })
+  // Links
+  const productLink = `/produtos/${encodeURIComponent(Util.handleFromVendor(product?.vendor))}/${encodeURIComponent(product?.handle)}`
+  const shopLink = `/marcas/${encodeURIComponent(Util.handleFromVendor(product?.vendor))}`
 
-  // WORDPRESS_TODO: Fix this
-  //const productLink = `/produtos/${encodeURIComponent(product.shop?.slug)}/${encodeURIComponent(product.slug)}`
-  const productLink = `/not_yet_implemented`
-  //const shopLink = `/marcas/${encodeURIComponent(product.shop?.slug)}`
-  const shopLink = `/not_yet_implemented`
-
-  const price = product.price? Util.sanitizePrice(product.price)*100 : 0
-
+  // Prices
+  const price = parseFloat(product?.contextualPricing?.maxVariantPricing.price.amount)
+  const compareAtPrice = parseFloat(product?.contextualPricing?.maxVariantPricing.compareAtPrice?.amount)
   const priceInstallments = price && parseFloat((price / 4).toFixed(2))
-
-  const discount = product.salePrice && Math.round(((Util.sanitizePrice(product.regularPrice) - Util.sanitizePrice(product.salePrice)) / Util.sanitizePrice(product.regularPrice)) * 100)
+  const discount = compareAtPrice? Math.round(((compareAtPrice - price) / compareAtPrice) * 100) : undefined
 
   //const imagePath: ProductImagePath = product.images && product.images.length ? (
-  const imagePath = product.image ? (
-    {original: product.image.mediaItemUrl}
+  const imagePath = product?.images.edges[0].node ? (
+    {
+      original: product.images.edges[0].node.original,
+      originalWbp: product.images.edges[0].node.originalWbp
+    }
   ) : (
     {
       zoomedWbp: `https://loremflickr.com/1024/1280/pants?random=${product.id}`,
@@ -138,24 +154,31 @@ const Product = (props: ProductProp) => {
               <div className={classes.discountBadge}> {discount}% </div>
             </div>
           )}
-          <picture>
-            <source srcSet={imagePath.originalWbp} type="image/webp" />
-            <img width={256} height={333} src={imagePath.original} alt={`Imagem do produto ${product.name}`} />
-          </picture>
+
+          <div className={classes.mediaCard}>
+            <picture>
+              <source srcSet={imagePath.originalWbp} type="image/webp" />
+              <img 
+              width={product?.images.edges[0].node?.width}
+              height={product?.images.edges[0].node?.height}
+              src={imagePath.original} 
+              alt={`Imagem do produto ${product.title}`} />
+            </picture>
+          </div>
         </Link>
 
         <Link href={shopLink}>
-          <h5 className={classes.brand}> {product.shop?.name} </h5>
+          <h5 className={classes.brand}> {product.vendor} </h5>
         </Link>
 
         <Link href={productLink}>
-          <p className={classes.name}> {product.name} </p>
+          <p className={classes.name}> {product.title} </p>
         </Link>
 
         <div className={classes.price}>
-          <p className={classes.value}> {formatMoney(price)} </p>
+          <p className={classes.value}> {formatMoney(price*100)} </p>
           <p className={classes.creditCardPayment}>
-            ou 4x de R$ {formatMoney(priceInstallments)} no cartão
+            ou 4x de R$ {formatMoney(priceInstallments*100)} no cartão
           </p>
         </div>
       </div>

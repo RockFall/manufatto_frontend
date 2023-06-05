@@ -1,34 +1,59 @@
-query HomePageDetails($amount: Int!, $blacklist: [Int!]) {
-  productsRandomSuggestions(first: $amount, where:{exclude:$blacklist}) {
+query HomePageDetails {
+  metaobjects(type:"highlight_banner", first:5) {
     edges {
       node {
-        id
-        name
-        slug
-        ... on SimpleProduct {
-          price(format: RAW)
-          salePrice(format: RAW)
-          regularPrice(format: RAW)
+        field(key:"highlight_banner.highlight_banner") {
+          value
         }
-        ... on VariableProduct {
-          price(format: RAW)
-          salePrice(format: RAW)
-          regularPrice(format: RAW)
-        }
-        image  {
-          id
-          mediaItemUrl
-          sourceUrl(size: THUMBNAIL)
-        }
-        galleryImages(first: 10) {
-          nodes {
-            id
-            mediaItemUrl
-            sourceUrl(size: THUMBNAIL)
+      }
+    }
+  }
+
+  shop {
+    productVendors(first: 15) {
+      edges {
+        node
+      }
+    }
+  }
+  collections(first: 20) {
+    edges {
+      node {
+        title
+        products(first: 2, sortKey: CREATED, reverse: true) {
+          edges {
+            node {
+              id
+              title
+              vendor
+              handle
+              onlineStoreUrl
+              contextualPricing(context: {}) {
+                maxVariantPricing {
+                  price {
+                    amount
+                  }
+                  compareAtPrice {
+                    amount
+                  }
+                }
+              }
+              images(first: 2) {
+                edges {
+                  node {
+                    id
+                    width
+                    height
+                    original: url
+                    originalWbp: url(transform: {preferredContentType: WEBP})
+                    zoomed: url(transform: {scale: 2})
+                  }
+                }
+              }
+            }
           }
         }
       }
     }
   }
 }
-

@@ -16,11 +16,16 @@ const useStyles = makeStyles(theme => ({
   },
   grid: {
     justifyContent: 'center'
-  }
+  },
+  gridItem: {
+    width: '356px',
+    //height: '441px',
+    //maxWidth: '25%',
+  } 
 }))
 
 interface ProductGridProp {
-  productList: any//Product[]
+  productList: Product[]
 }
 
 const ProductGrid = (props: ProductGridProp) => {
@@ -33,7 +38,7 @@ const ProductGrid = (props: ProductGridProp) => {
       <Grid container spacing={2} alignItems='center' className={classes.grid}>
         {productList.map((product, i) => {
           return (
-            <div key={i}>
+            <div key={i} className={classes.gridItem}>
               <ProductCard product={product} className={classes.cardItem}/>
             </div>
           )

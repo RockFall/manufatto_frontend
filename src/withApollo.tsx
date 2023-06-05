@@ -17,7 +17,13 @@ export const withApollo = (Comp: NextPage) => (props: any) => {
 
 export const getApolloClient = (_ctx?: any, initialState?: NormalizedCacheObject) => {
   const httpLink = createHttpLink({
-    uri: 'https://rockfall.com.br/graphql',
+    uri: 'https://manufatto-test.myshopify.com/admin/api/2023-04/graphql.json',
+    headers: {
+      'X-Shopify-Access-Token':
+        process.env.SHOPIFY_API_ACCESS_TOKEN,
+      'Accept' : 'application/graphql'
+    },
+    fetch,
   })
   const cache = new InMemoryCache().restore(initialState || {})
   return new ApolloClient({
