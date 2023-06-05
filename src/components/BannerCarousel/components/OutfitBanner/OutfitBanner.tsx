@@ -93,12 +93,14 @@ const OutfiBanner = (props: OutfiBannerProps) => {
   const { item, className, ...rest } = props
   const classes = useStyles()
 
+  console.
+
   return (
     <div className={classes.root}>
       <Hidden xsDown>
-        <Image src={`/light1.png`} width='1920px' height='934px' layout='responsive' />
+        <Image src={`/BackgroundGreen.png`} width='1920px' height='934px' layout='responsive' />
         <div className={classes.croqui}>
-          <Image src={item.images[0].image.originalWbp} layout='fill' />
+          <Image src={item.images[0].image.original} layout='fill' />
         </div>
         <div className={classes.slide}>
           {item.links.map((link, i) => (
@@ -112,7 +114,7 @@ const OutfiBanner = (props: OutfiBannerProps) => {
         <div className={classes.mobileCentering}>
           <div className={classes.mobileImages}>
             <div className={classes.mobileBackgroundPosition}>
-              <Image src={`/light1.png`} layout='fill' />
+              <Image src={`/BackgroundGreen.png`} layout='fill' />
             </div>
             <div className={classes.mobileCroqui}>
               <Image src={item.images[0].image.originalWbp} layout='fill' />
