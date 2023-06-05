@@ -93,7 +93,7 @@ const OutfiBanner = (props: OutfiBannerProps) => {
   const { item, className, ...rest } = props
   const classes = useStyles()
 
-
+// TODO: Change Croqui Image back to Webg
   return (
     <div className={classes.root}>
       <Hidden xsDown>
@@ -116,7 +116,7 @@ const OutfiBanner = (props: OutfiBannerProps) => {
               <Image src={`/BackgroundGreen.png`} layout='fill' />
             </div>
             <div className={classes.mobileCroqui}>
-              <Image src={item.images[0].image.originalWbp} layout='fill' />
+              <Image src={item.images[0].image.original} layout='fill' />
             </div>
           </div>
           <div className={classes.mobileSlide}>

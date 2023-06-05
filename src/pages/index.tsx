@@ -236,11 +236,9 @@ const Index: PageHomeDetailsComp = (props) => {
         </div>
       </div>
       <Box my={4} className={classes.highlights}>
-        
-        
+        <Highlights />
       </Box>
-      
-      
+      <CustomizationBanner />
     </div>
   )
 }
