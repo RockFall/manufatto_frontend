@@ -2,8 +2,8 @@ query HomePageDetails {
   metaobjects(type:"highlight_banner", first:5) {
     edges {
       node {
-        field(key:"highlight_banner.highlight_banner") {
-          value
+        fields {
+            value
         }
       }
     }

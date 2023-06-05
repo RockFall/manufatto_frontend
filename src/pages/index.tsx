@@ -211,13 +211,11 @@ const Index: PageHomeDetailsComp = (props) => {
     }
   })
 
-  console.log("Metaobjects: ", data.metaobjects.edges)
-
   return (
     <div className={classes.root}>
       <div className={classes.mainBackground}>
       <BannerCarousel
-          items={data.metaobjects.edges > 0 ? data.highlightBannersList.highlightBanners : (defaultBannerList as unknown as HighlightBanner[])}
+          items={data.metaobjects.edges[0] ? [JSON.parse(data.metaobjects.edges[0].node.fields[0].value)] : (defaultBannerList as unknown as HighlightBanner[])}
         />
 
         <div className={classes.productSession}>

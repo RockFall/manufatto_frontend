@@ -93,7 +93,6 @@ const OutfiBanner = (props: OutfiBannerProps) => {
   const { item, className, ...rest } = props
   const classes = useStyles()
 
-  console.
 
   return (
     <div className={classes.root}>

@@ -40129,7 +40129,7 @@ export type HomePageDetailsQuery = { __typename?: 'QueryRoot' } & {
   metaobjects: { __typename?: 'MetaobjectConnection' } & {
     edges: Array<
       { __typename?: 'MetaobjectEdge' } & {
-        node: { __typename?: 'Metaobject' } & { field?: Maybe<{ __typename?: 'MetaobjectField' } & Pick<MetaobjectField, 'value'>> }
+        node: { __typename?: 'Metaobject' } & { fields: Array<{ __typename?: 'MetaobjectField' } & Pick<MetaobjectField, 'value'>> }
       }
     >
   }
@@ -40178,7 +40178,7 @@ export const HomePageDetailsDocument = gql`
     metaobjects(type: "highlight_banner", first: 5) {
       edges {
         node {
-          field(key: "highlight_banner.highlight_banner") {
+          fields {
             value
           }
         }
