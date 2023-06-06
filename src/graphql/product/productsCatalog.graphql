@@ -1,0 +1,51 @@
+query productsCatalog($filter: String, $cursor: String) {
+  products(first: 10, after: $cursor, query: $filter) {
+    nodes {
+        id
+        title
+        vendor
+        handle
+        onlineStoreUrl
+        contextualPricing(context: {}) {
+            maxVariantPricing {
+            price {
+                amount
+            }
+            compareAtPrice {
+                amount
+            }
+            }
+        }
+        images(first: 2) {
+            edges {
+            node {
+                id
+                width
+                height
+                original: url
+                originalWbp: url(transform: {preferredContentType: WEBP})
+                zoomed: url(transform: {scale: 2})
+            }
+            }
+        }
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+  }
+  metaobjects(type:"filters", first:1) {
+    nodes {
+        fields {
+            value
+        }
+    }
+  }
+  shop {
+    productVendors(first: 15) {
+      edges {
+        node
+      }
+    }
+  }
+}

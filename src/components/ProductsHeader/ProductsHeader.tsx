@@ -62,7 +62,7 @@ const ProductsHeader = (props: ProductsHeaderProp) => {
         <InputLabel>Ordenar Por:</InputLabel>
         <Select value={order} onChange={handleChange}>
           <MenuItem value={'Crescente'}>Crescente</MenuItem>
-          <MenuItem value={'Decerescente'}>Decerescente</MenuItem>
+          <MenuItem value={'Decrescente'}>Decerescente</MenuItem>
           <MenuItem value={'Popular'}>Popular</MenuItem>
         </Select>
       </FormControl>

@@ -3,10 +3,11 @@ import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { Hidden, Typography, Link, Button, LinearProgress, useMediaQuery } from '@material-ui/core'
 import { ProductFilter, ProductFilterMobile, ProductGrid, ProductsHeader, Breadcrumbs } from '../../components'
 import NotFoundScreen from './components/NotFoundScreen'
-import { ssrProductsCatalog } from '../../generated/page'
+import { ssrProductsCatalog, PageProductsCatalogComp } from '../../generated/page'
 import { GetServerSideProps } from 'next'
 import { Product } from '../../generated/graphql'
 import { useRouter } from 'next/router'
+import Util from '../../util/custom_formatter'
 import axios from 'axios'
 
 const useStyles = makeStyles(theme => ({
@@ -14,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     background: '#fff',
     flexDirection: 'column',
-    margin: '18px 188px',
+    margin: '18px 8vw',
     [theme.breakpoints.down('md')]: {
       margin: '18px 28px',
     },
@@ -93,13 +94,12 @@ export default function Index(props)  {
   const { search } = router.query
   console.log(router.query);
   
-  
   const classes = useStyles()
   const [openFilter, setOpenFilter] = useState(false)
-  const [afterRequest, setAfterRequest] = useState<string>(data.productsCatalog.metadata.after)
-  const [products, setProducts] = useState<Product[]>(data.productsCatalog.products as Product[])
-  const [minPrice, setMinPrice] = useState<number>(Math.min(...products.map(p => (p.promotionalUnitPrice || p.unitPrice))))
-  const [maxPrice, setMaxPrice] = useState<number>(Math.max(...products.map(p => (p.promotionalUnitPrice || p.unitPrice))))
+  const [afterRequest, setAfterRequest] = useState<string>(data?.products.pageInfo.endCursor)
+  const [products, setProducts] = useState<Product[]>(data?.products.nodes as Product[])
+  const [minPrice, setMinPrice] = useState<number>(Math.min(...products.map(p => (p.contextualPricing.maxVariantPricing.price.amount))))
+  const [maxPrice, setMaxPrice] = useState<number>(Math.max(...products.map(p => (p.contextualPricing.maxVariantPricing.price.amount))))
   const initialFilter = {
     categoriesNames: [],
     produto: '',
@@ -114,17 +114,20 @@ export default function Index(props)  {
 
   const [filterItems, setFilterItems] = useState(initialFilter)
   const handleLoadMore = async () => {
-    if(!afterRequest) return;
-    
-    const {data: res} = await axios.get('../api/products', { params: {filters: filterItems, after: afterRequest} })
-    setProducts([...products, ...res.data.productsCatalog.products])
-    setAfterRequest(res.data.productsCatalog.metadata.after)
+    if(!data?.products.pageInfo.hasNextPage) return;
+
+    const {data: res} = await axios.get('../api/products', { params: {filters: filterItems, cursor: afterRequest} })
+    setProducts([...products, ...res.data?.products.nodes])
+    setAfterRequest(res.data.products.pageInfo.endCursor)
   }
 
   const applyFilter = async () => {
-    const {data: res} = await axios.get('../api/products', { params: {filters: filterItems} })
-    setProducts([...res.data.productsCatalog.products])
-    setAfterRequest(res.data.productsCatalog.metadata.after)
+    const { shop, colors, materials, categoriesNames, sizes } = filterItems
+    const queryString = Util.makeShopifyQueryFromFilters(shop, colors, materials, categoriesNames, sizes)
+
+    const {data: res} = await axios.get('../api/products', { params: {filters: queryString} })
+    setProducts([...res.data?.products.nodes])
+    setAfterRequest(res.data.products.pageInfo.endCursor)
   }
 
   useEffect(()=> {
@@ -150,28 +153,36 @@ export default function Index(props)  {
   const handleProductChange = event => {
     setFilterItems({ ...filterItems, produto: event.target.value })
   }
-    const {
-        colors: availableColors,
-        sizes: availableSizes,
-        materials: availableMaterials,
-        categories: availableCategories,
-    } = data.productsCatalog.facetedFilters
-    const { totalCount} = data.productsCatalog.metadata
-    const count = products.length
 
-    const filterProps = {
-        filterItems: filterItems,
-        handleFilterChange: handleFilterChange,
-        handlePriceChange: handlePriceChange,
-        handleProductChange: handleProductChange,
-        maxPrice,
-        minPrice,
-        shop: data.productsCatalog.products?.map((item) => item.shop?.name),
-        colorGroups: availableColors.map(c => c.value),
-        sizes: availableSizes.map(c => c.value),
-        materials: availableMaterials.map(c => c.value),
-        categoriesNames: availableCategories.map(c => c.value),
-    }
+  const {
+      colors: availableColors,
+      sizes: availableSizes,
+      materials: availableMaterials,
+      categories: availableCategories,
+  } = JSON.parse(data?.metaobjects.nodes[0].fields[0].value)
+
+  console.log(JSON.parse(data?.metaobjects.nodes[0].fields[0].value));
+  
+
+  //const { totalCount} = data.productsCatalog.metadata
+  const totalCount = 250
+  const count = products.length
+
+  console.log();
+
+  const filterProps = {
+      filterItems: filterItems,
+      handleFilterChange: handleFilterChange,
+      handlePriceChange: handlePriceChange,
+      handleProductChange: handleProductChange,
+      maxPrice,
+      minPrice,
+      shop: data?.shop.productVendors.edges.map(({ node }) => node),
+      colorGroups: availableColors.map(c => c.value),
+      sizes: availableSizes.map(c => c.value),
+      //materials: availableMaterials.map(c => c.value), TODO:
+      categoriesNames: availableCategories.map(c => c.value),
+  }
   const theme = useTheme()
   const screenMatches = useMediaQuery(theme.breakpoints.down('md'))
 
@@ -226,15 +237,11 @@ export default function Index(props)  {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
     return (await ssrProductsCatalog.getServerPage({
-        variables: {
-            filter: {
+        //variables: {
+            //filter: {
                 //search: ctx.query?.search as string,
                 //categoriesNames: ctx.query?.categoriesNames
-            },
-            pagination: {
-                limit: 5,
-                includeTotalCount: true,
-            }
-        }
+            //}
+        //}
     }, ctx))
 }

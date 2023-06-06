@@ -47,3 +47,43 @@ export const ssrHomeDetails = {
   withPage: withPageHomeDetails,
   usePage: useHomeDetails,
 }
+export async function getServerPageProductsCatalog(
+  options: Omit<Apollo.QueryOptions<Types.ProductsCatalogQueryVariables>, 'query'>,
+  ctx?: any,
+) {
+  const apolloClient = getApolloClient(ctx)
+
+  const data = await apolloClient.query<Types.ProductsCatalogQuery>({ ...options, query: Operations.ProductsCatalogDocument })
+
+  const apolloState = apolloClient.cache.extract()
+
+  return {
+    props: {
+      apolloState: apolloState,
+      data: data?.data,
+      error: data?.error ?? data?.errors ?? null,
+    },
+  }
+}
+export const useProductsCatalog = (
+  optionsFunc?: (router: NextRouter) => QueryHookOptions<Types.ProductsCatalogQuery, Types.ProductsCatalogQueryVariables>,
+) => {
+  const router = useRouter()
+  const options = optionsFunc ? optionsFunc(router) : {}
+  return useQuery(Operations.ProductsCatalogDocument, options)
+}
+export type PageProductsCatalogComp = React.FC<{ data?: Types.ProductsCatalogQuery; error?: Apollo.ApolloError }>
+export const withPageProductsCatalog =
+  (optionsFunc?: (router: NextRouter) => QueryHookOptions<Types.ProductsCatalogQuery, Types.ProductsCatalogQueryVariables>) =>
+  (WrappedComponent: PageProductsCatalogComp): NextPage =>
+  (props) => {
+    const router = useRouter()
+    const options = optionsFunc ? optionsFunc(router) : {}
+    const { data, error } = useQuery(Operations.ProductsCatalogDocument, options)
+    return <WrappedComponent {...props} data={data} error={error} />
+  }
+export const ssrProductsCatalog = {
+  getServerPage: getServerPageProductsCatalog,
+  withPage: withPageProductsCatalog,
+  usePage: useProductsCatalog,
+}

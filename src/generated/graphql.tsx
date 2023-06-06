@@ -40173,6 +40173,46 @@ export type HomePageDetailsQuery = { __typename?: 'QueryRoot' } & {
   }
 }
 
+export type ProductsCatalogQueryVariables = Exact<{
+  filter?: Maybe<Scalars['String']>
+  cursor?: Maybe<Scalars['String']>
+}>
+
+export type ProductsCatalogQuery = { __typename?: 'QueryRoot' } & {
+  products: { __typename?: 'ProductConnection' } & {
+    nodes: Array<
+      { __typename?: 'Product' } & Pick<Product, 'id' | 'title' | 'vendor' | 'handle' | 'onlineStoreUrl'> & {
+          contextualPricing: { __typename?: 'ProductContextualPricing' } & {
+            maxVariantPricing?: Maybe<
+              { __typename?: 'ProductVariantContextualPricing' } & {
+                price: { __typename?: 'MoneyV2' } & Pick<MoneyV2, 'amount'>
+                compareAtPrice?: Maybe<{ __typename?: 'MoneyV2' } & Pick<MoneyV2, 'amount'>>
+              }
+            >
+          }
+          images: { __typename?: 'ImageConnection' } & {
+            edges: Array<
+              { __typename?: 'ImageEdge' } & {
+                node: { __typename?: 'Image' } & Pick<Image, 'id' | 'width' | 'height'> & {
+                    original: Image['url']
+                    originalWbp: Image['url']
+                    zoomed: Image['url']
+                  }
+              }
+            >
+          }
+        }
+    >
+    pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage' | 'endCursor'>
+  }
+  metaobjects: { __typename?: 'MetaobjectConnection' } & {
+    nodes: Array<{ __typename?: 'Metaobject' } & { fields: Array<{ __typename?: 'MetaobjectField' } & Pick<MetaobjectField, 'value'>> }>
+  }
+  shop: { __typename?: 'Shop' } & {
+    productVendors: { __typename?: 'StringConnection' } & { edges: Array<{ __typename?: 'StringEdge' } & Pick<StringEdge, 'node'>> }
+  }
+}
+
 export const HomePageDetailsDocument = gql`
   query HomePageDetails {
     metaobjects(type: "highlight_banner", first: 5) {
@@ -40262,3 +40302,87 @@ export function useHomePageDetailsLazyQuery(
 export type HomePageDetailsQueryHookResult = ReturnType<typeof useHomePageDetailsQuery>
 export type HomePageDetailsLazyQueryHookResult = ReturnType<typeof useHomePageDetailsLazyQuery>
 export type HomePageDetailsQueryResult = Apollo.QueryResult<HomePageDetailsQuery, HomePageDetailsQueryVariables>
+export const ProductsCatalogDocument = gql`
+  query productsCatalog($filter: String, $cursor: String) {
+    products(first: 10, after: $cursor, query: $filter) {
+      nodes {
+        id
+        title
+        vendor
+        handle
+        onlineStoreUrl
+        contextualPricing(context: {}) {
+          maxVariantPricing {
+            price {
+              amount
+            }
+            compareAtPrice {
+              amount
+            }
+          }
+        }
+        images(first: 2) {
+          edges {
+            node {
+              id
+              width
+              height
+              original: url
+              originalWbp: url(transform: { preferredContentType: WEBP })
+              zoomed: url(transform: { scale: 2 })
+            }
+          }
+        }
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+    }
+    metaobjects(type: "filters", first: 1) {
+      nodes {
+        fields {
+          value
+        }
+      }
+    }
+    shop {
+      productVendors(first: 15) {
+        edges {
+          node
+        }
+      }
+    }
+  }
+`
+
+/**
+ * __useProductsCatalogQuery__
+ *
+ * To run a query within a React component, call `useProductsCatalogQuery` and pass it any options that fit your needs.
+ * When your component renders, `useProductsCatalogQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useProductsCatalogQuery({
+ *   variables: {
+ *      filter: // value for 'filter'
+ *      cursor: // value for 'cursor'
+ *   },
+ * });
+ */
+export function useProductsCatalogQuery(baseOptions?: Apollo.QueryHookOptions<ProductsCatalogQuery, ProductsCatalogQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<ProductsCatalogQuery, ProductsCatalogQueryVariables>(ProductsCatalogDocument, options)
+}
+export function useProductsCatalogLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<ProductsCatalogQuery, ProductsCatalogQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<ProductsCatalogQuery, ProductsCatalogQueryVariables>(ProductsCatalogDocument, options)
+}
+export type ProductsCatalogQueryHookResult = ReturnType<typeof useProductsCatalogQuery>
+export type ProductsCatalogLazyQueryHookResult = ReturnType<typeof useProductsCatalogLazyQuery>
+export type ProductsCatalogQueryResult = Apollo.QueryResult<ProductsCatalogQuery, ProductsCatalogQueryVariables>

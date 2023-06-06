@@ -18,7 +18,8 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center'
   },
   gridItem: {
-    width: '356px',
+    //width: '356px',
+    width: 'calc(18vw + 52px)',
     //height: '441px',
     //maxWidth: '25%',
   } 

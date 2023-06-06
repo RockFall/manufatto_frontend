@@ -196,12 +196,12 @@ const Index: PageHomeDetailsComp = (props) => {
   const vendors = data?.shop.productVendors.edges.map(({node}) => node) as String[]
 
   // Getting random products from each vendor
-  const randomVendors = Array.from(vendors).sort(() => 0.5 - Math.random()).slice(0, 8)
-  console.log("randomVendors", randomVendors)
+  const randomVendors = Array.from(vendors).sort(() => 0.5 - Math.random())
 
   const randomProducts : Product[] = []
 
   data?.collections.edges.forEach(({ node }) => {
+    if (randomProducts.length >= 8) return;
     const vendorName = node.title;
     if (randomVendors.includes(vendorName)) {
       const vendorProducts = node.products.edges.map(({ node }) => node) as Product[];
@@ -211,11 +211,16 @@ const Index: PageHomeDetailsComp = (props) => {
     }
   })
 
+  const carouselBanners = data.metaobjects.edges[0] ? data.metaobjects.edges.map(({node}) => JSON.parse(node.fields[0].value)) : (defaultBannerList as unknown as HighlightBanner[])
+  console.log('carouselBanners', carouselBanners)
+
+
+
   return (
     <div className={classes.root}>
       <div className={classes.mainBackground}>
       <BannerCarousel
-          items={data.metaobjects.edges[0] ? [JSON.parse(data.metaobjects.edges[0].node.fields[0].value)] : (defaultBannerList as unknown as HighlightBanner[])}
+          items={data.metaobjects.edges[0] ? carouselBanners : (defaultBannerList as unknown as HighlightBanner[])}
         />
 
         <div className={classes.productSession}>

@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     fontFamily: "Suisse Int\\'l",
     fontStyle: 'normal',
     fontWeight: 600,
-    fontSize: '24px',
+    fontSize: '1rem',
     lineHeight: '32px',
     textAlign: 'right',
     padding: '10px 0px',
@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
   },
   mobileSlide: {
     position: 'absolute',
-    bottom: '5px',
+    bottom: '50px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -59,7 +59,8 @@ const useStyles = makeStyles(theme => ({
   },
   arrowIcon: {
     color: '#6F6C6B',
-    fontSize: theme.spacing(2),
+    fontSize: theme.spacing(1.2),
+    marginLeft: '5px',
   },
   mobileImages: {
     paddingTop: '86.60%',
@@ -92,6 +93,8 @@ interface OutfiBannerProps {
 const OutfiBanner = (props: OutfiBannerProps) => {
   const { item, className, ...rest } = props
   const classes = useStyles()
+
+  
 
 // TODO: Change Croqui Image back to Webg
   return (

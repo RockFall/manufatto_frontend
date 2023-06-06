@@ -1,10 +1,17 @@
 import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client'
 import { ProductsCatalogDocument } from '../../generated/graphql'
 
+
 const { API_URL } = process.env
 
 const httpLink = createHttpLink({
   uri: API_URL,
+  headers: {
+    'X-Shopify-Access-Token':
+      process.env.SHOPIFY_API_ACCESS_TOKEN,
+    'Accept' : 'application/graphql'
+  },
+  fetch,
 })
 
 const cache = new InMemoryCache().restore({})
@@ -16,26 +23,15 @@ const client = new ApolloClient({
 })
 
 export default async (req, res) => {
-  const { before, after, filters } = req.query
-  const { shops, colors, materials, categories, size } = filters
-  
+  const { cursor, filters } = req.query
+
+  console.log('queryString', filters)
 
   const { data, error } = await client.query({
     query: ProductsCatalogDocument,
     variables: {
-       filter: {
-         materials,
-         shop: shops,
-         colorGroups: colors,
-         categoriesNames: categories,
-         sizes: size,
-      },
-      pagination: {
-        includeTotalCount: true,
-        limit: 10,
-        before,
-        after,
-      },
+       filter: filters,
+      cursor: cursor,
     },
   })
 

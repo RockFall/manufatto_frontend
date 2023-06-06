@@ -35,11 +35,11 @@ const useStyles = makeStyles(theme => ({
   },
   iconStyle: {
     color: '#6F6C6B',
-    fontSize: theme.spacing(3),
+    fontSize: theme.spacing(2.6),
   },
   buttonTypography: {
     color: '#6F6C6B',
-    fontSize: theme.spacing(1.8),
+    fontSize: theme.spacing(1.6),
     fontFamily: "Suisse Int\\'l",
     letterSpacing: '0.16em',
   },

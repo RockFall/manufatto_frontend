@@ -68,6 +68,8 @@ const BannerCarousel = (props: BannerCarouselProps) => {
           )
         }}>
           {items.map((item, i) => {
+            console.log('items', items) 
+            console.log('item', item, i) 
             if (item.type == 'MOSAIC') return <MosaicBanner item={item} key={i}/>
             else return <OutfitBanner item={item} key={i}/>
           })}
