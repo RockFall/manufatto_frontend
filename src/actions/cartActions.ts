@@ -1,11 +1,12 @@
-import { Product, ProductDetail, ProductMaterial, ProductSize } from '../generated/graphql'
+//import { Product, ProductDetail, ProductMaterial, ProductSize } from '../generated/graphql'
+import { Product } from '../generated/graphql'
 export const CART_ITEM_ADD = 'CART_ITEM_ADD'
 export const CART_ITEM_REMOVE = 'CART_ITEM_REMOVE'
 export const CART_ITEM_UPDATE = 'CART_ITEM_UPDATE'
 export const CART_CHECKOUT = 'CART_CHECKOUT'
 
 interface CartItem {
-  productDetail: ProductDetail
+  //productDetail: ProductDetail
   product: Product
   count: number
   customDetails?: any
