@@ -1,0 +1,7 @@
+"""fragment PaginationFields on Metadata {
+  after
+  before
+  limit
+  totalCount
+  totalCountCapExceeded
+}"""

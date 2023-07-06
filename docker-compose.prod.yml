@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  front:
+    build: .
+    image: manufatto-front:production
+    working_dir: /code
+    stdin_open: true
+    container_name: manufatto-front
+    command: bash -c 'yarn && yarn run build && yarn run start'
+    volumes:
+      - ./:/code
+      - ./node_modules:/code/node_modules:cached
+    ports:
+      - 3000:3000

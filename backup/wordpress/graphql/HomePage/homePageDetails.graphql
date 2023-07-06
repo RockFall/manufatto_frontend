@@ -1,0 +1,34 @@
+query HomePageDetails($amount: Int!, $blacklist: [Int!]) {
+  productsRandomSuggestions(first: $amount, where:{exclude:$blacklist}) {
+    edges {
+      node {
+        id
+        name
+        slug
+        ... on SimpleProduct {
+          price(format: RAW)
+          salePrice(format: RAW)
+          regularPrice(format: RAW)
+        }
+        ... on VariableProduct {
+          price(format: RAW)
+          salePrice(format: RAW)
+          regularPrice(format: RAW)
+        }
+        image  {
+          id
+          mediaItemUrl
+          sourceUrl(size: THUMBNAIL)
+        }
+        galleryImages(first: 10) {
+          nodes {
+            id
+            mediaItemUrl
+            sourceUrl(size: THUMBNAIL)
+          }
+        }
+      }
+    }
+  }
+}
+

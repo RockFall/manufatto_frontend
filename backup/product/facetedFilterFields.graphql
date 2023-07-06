@@ -1,0 +1,19 @@
+"""fragment FacetedFilterItemFields on FacetedFilterItem {
+  count
+  value
+}
+
+fragment FacetedFiltersFields on FacetedFilters {
+  categories {
+    ...FacetedFilterItemFields
+  }
+  colors {
+    ...FacetedFilterItemFields
+  }
+  materials {
+    ...FacetedFilterItemFields
+  }
+  sizes {
+    ...FacetedFilterItemFields
+  }
+}"""

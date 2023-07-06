@@ -1,0 +1,31 @@
+"""mutation signupCustomer($customer: CustomerCreateParams!) {
+  signupCustomer(customer: $customer) {
+    token
+    customer {
+      addresses {
+        address {
+          city
+          complement
+          id
+          insertedAt
+          neighborhood
+          number
+          postal
+          state
+          street
+          updatedAt
+        }
+        isPrimary
+        label
+      }
+      cpf
+      email
+      id
+      insertedAt
+      isActive
+      name
+      phone
+      updatedAt
+    }
+  }
+}"""
