@@ -13,7 +13,7 @@ import {
   FiberManualRecord
 } from '@material-ui/icons';
 import ArtDialog from '../ArtDialog' 
-import Carousel, { consts } from 'react-elastic-carousel'
+//import Carousel, { consts } from 'react-elastic-carousel'
 import { addCustomizedProduct, CustomizedProductType } from '../../actions'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'

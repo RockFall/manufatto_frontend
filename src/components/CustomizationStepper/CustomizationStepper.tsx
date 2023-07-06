@@ -12,7 +12,7 @@ import {
   TextareaAutosize
 } from '@material-ui/core';
 import { StepIconProps } from '@material-ui/core/StepIcon';
-import { ArtGrid } from '../../components'
+//import { ArtGrid } from '../../components'
 import AddIcon from '@material-ui/icons/Add'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
