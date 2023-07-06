@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { ProductData, DetailsTabs } from './components'
 import { CartItemType } from '../../../../actions'
-import { ProductDetail } from '../../../../generated/graphql'
+//import { ProductDetail } from '../../../../generated/graphql'
 
 const useStyles = makeStyles(theme => ({
   root: {

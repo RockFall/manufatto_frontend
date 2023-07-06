@@ -1,4 +1,5 @@
-import { Product, ProductDetail } from '../generated/graphql'
+//import { Product, ProductDetail } from '../generated/graphql'
+import { Product } from '../generated/graphql'
 export const CUSTOMIZED_PRODUCT_ADD = 'CUSTOMIZED_PRODUCT_ADD'
 
 interface Art {
@@ -17,7 +18,7 @@ interface ArtList {
 };
 
 interface CustomizedProduct {
-  productDetail: ProductDetail,
+  //productDetail: ProductDetail,
   product: Product,  
   count: number
   customDetails?: any

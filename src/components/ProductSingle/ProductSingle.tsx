@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux'
 import { Hidden } from '@material-ui/core'
 import { addCartItem, CartItemType} from '../../actions'
 import { ProductDetails, ProductDetailsMobile } from './components'
-import { Product, ProductDetail } from '../../generated/graphql'
+//import { Product, ProductDetail } from '../../generated/graphql'
+import { Product } from '../../generated/graphql'
 
 interface ProductSingleProps {
   product: any//Product

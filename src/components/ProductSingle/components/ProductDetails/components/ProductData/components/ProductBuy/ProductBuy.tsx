@@ -27,7 +27,7 @@ import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import { addCustomizedProduct, CustomizedProductType, CartItemType } from '../../../../../../../../actions'
 import { CepMask } from '../../../../../../../../components'
-import { ProductDetail, ProductSize } from '../../../../../../../../generated/graphql'
+//import { ProductDetail, ProductSize } from '../../../../../../../../generated/graphql'
 import Image from 'next/image';
 import validate from 'validate.js'
 
