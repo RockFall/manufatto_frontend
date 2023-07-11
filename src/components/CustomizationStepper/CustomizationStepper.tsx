@@ -296,10 +296,10 @@ export default function CustomizationStepper(props: CustomizationStepperProps) {
       <div className={classes.cardContainer}>
         <img src={item.customDetails.image} width={120} height={150} />
         <div className={classes.productInfo}>
-          <div className={classes.brand}>{item.product.shop.name}</div>
-          <div className={classes.name}>{item.product.name}</div>
+          <div className={classes.brand}>{item.product?.shop?.name}</div>
+          <div className={classes.name}>{item.product?.name}</div>
           <div className={classes.ref}>REF:1234567GH</div>
-          <div className={classes.colorNSize}>Tamanho: {item.productDetail.size} - Cor: {item.productDetail.color.name}</div>
+          <div className={classes.colorNSize}>Tamanho: {item.productDetail?.size} - Cor: {item.productDetail?.color.name}</div>
         </div>
       </div>
     )
@@ -330,7 +330,7 @@ export default function CustomizationStepper(props: CustomizationStepperProps) {
             <h1 className={classes.stepTwoText1}>Escolha uma arte como referência para customizar sua peça</h1>
             <p className={classes.stepTwoText2}>Você poderá solicitar alguma mudança ou personalização na arte</p>
             
-            
+
             <br style={{marginTop: '5%'}}/>
           </div>        
         )
