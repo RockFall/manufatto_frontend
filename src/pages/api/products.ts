@@ -2,10 +2,10 @@ import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client'
 import { ProductsCatalogDocument } from '../../generated/graphql'
 
 
-const { API_URL } = process.env
+const { ADMIN_API_URL } = process.env
 
 const httpLink = createHttpLink({
-  uri: API_URL,
+  uri: ADMIN_API_URL,
   headers: {
     'X-Shopify-Access-Token':
       process.env.SHOPIFY_API_ACCESS_TOKEN,

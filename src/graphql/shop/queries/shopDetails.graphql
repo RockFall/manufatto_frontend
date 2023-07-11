@@ -1,0 +1,49 @@
+query shopDetails($slug: String!, $cursor: String) {
+    metaobject(handle:{handle:$slug, type:"brand"}) {
+        id
+        name : field(key:"name") {
+      		text: value
+    	}
+        small_description : field(key:"small_description") {
+      		text: value
+    	}
+        big_description : field(key:"big_description") {
+      		text: value
+    	}  
+    }
+    productsCatalog : products(first:10,query:$slug, after: $cursor) {
+        products : nodes {
+            id
+        title
+        vendor
+        handle
+        onlineStoreUrl
+        contextualPricing(context: {}) {
+            maxVariantPricing {
+            price {
+                amount
+            }
+            compareAtPrice {
+                amount
+            }
+            }
+        }
+        images(first: 2) {
+            edges {
+            node {
+                id
+                width
+                height
+                original: url
+                originalWbp: url(transform: {preferredContentType: WEBP})
+                zoomed: url(transform: {scale: 2})
+            }
+            }
+        }
+        }
+        pageInfo {
+            hasNextPage
+            endCursor
+        }
+    }
+}

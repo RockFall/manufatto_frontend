@@ -1,0 +1,31 @@
+query productByHandle($handle: String!) {
+    productByHandle(handle:$handle) {
+        id
+        title
+        vendor
+        handle
+        onlineStoreUrl
+        contextualPricing(context: {}) {
+            maxVariantPricing {
+            price {
+                amount
+            }
+            compareAtPrice {
+                amount
+            }
+            }
+        }
+        images(first: 10) {
+            edges {
+            node {
+                id
+                width
+                height
+                original: url
+                originalWbp: url(transform: {preferredContentType: WEBP})
+                zoomed: url(transform: {scale: 2})
+            }
+            }
+        }
+    }
+}

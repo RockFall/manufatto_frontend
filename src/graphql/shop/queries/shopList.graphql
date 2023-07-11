@@ -1,0 +1,13 @@
+query shopsList {
+    shopsList : metaobjects(first:20, type:"brand") {
+        shops : nodes {
+            name : displayName
+            small_description : field(key:"small_description") {
+      		    text: value
+            }
+            big_description : field(key:"big_description") {
+                text: value
+            }
+        }
+  }
+}

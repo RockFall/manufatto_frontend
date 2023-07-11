@@ -9,13 +9,17 @@ query HomePageDetails {
     }
   }
 
-  shop {
-    productVendors(first: 15) {
-      edges {
-        node
-      }
-    }
+  shopsList : metaobjects(first:20, type:"brand") {
+        shops : nodes {
+            name : field(key:"name") {
+      		    text: value
+            }
+            small_description : field(key:"small_description") {
+      		    text: value
+            }
+        }
   }
+
   collections(first: 20) {
     edges {
       node {

@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const Index: PageCartItemsComp = (props) => {
+const Index = (props) => {
   const classes = useStyles()
   const router = useRouter()
   const dispatch = useDispatch()
@@ -121,8 +121,8 @@ const Index: PageCartItemsComp = (props) => {
         return p.cartItems.map((p => { 
           return {
             id: p.product.id,
-            title: p.product.name,
-            unit_price: p.product.promotionalUnitPrice,
+            title: p.product.title,
+            unit_price: p.product?.contextualPricing?.maxVariantPricing.price.amount,
             quantity: 1,
             tangible: false,
           }
@@ -135,7 +135,7 @@ const Index: PageCartItemsComp = (props) => {
   const totalPrice = (): number => {    
     return cartShopItems.reduce((acc, item) => {
       return acc + item.cartItems.reduce((acc, item) => {
-        return acc + item.product.promotionalUnitPrice
+        return acc + item.product?.contextualPricing?.maxVariantPricing.price.amount
       },0)
     }, 0) + 1000 * cartShopItems.length
   }
@@ -143,7 +143,7 @@ const Index: PageCartItemsComp = (props) => {
   const subtotal = (): number => {
     return cartShopItems.reduce((acc, item) => {
       return acc + item.cartItems.reduce((acc, item) => {
-        return acc + item.product.promotionalUnitPrice
+        return acc + item.product?.contextualPricing?.maxVariantPricing.price.amount
       }, 0)
     }, 0)
   }
@@ -170,10 +170,6 @@ const Index: PageCartItemsComp = (props) => {
       
     </div>
   )
-}
-
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  return await ssrCartItems.getServerPage({ variables: { amount: 4 } }, ctx)
 }
 
 export default Index
