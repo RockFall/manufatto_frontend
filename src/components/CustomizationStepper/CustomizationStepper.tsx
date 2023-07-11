@@ -315,7 +315,8 @@ export default function CustomizationStepper(props: CustomizationStepperProps) {
             {(artData) && artData.map((artList, _id) => {
               return (
                 <div key={_id}>
-                  <ArtGrid artList={artList} step={0}/>  
+                  
+
                   <br style={{marginTop: '5%'}}/>
                 </div>
               )})}
@@ -328,7 +329,8 @@ export default function CustomizationStepper(props: CustomizationStepperProps) {
             <ProductCard/>
             <h1 className={classes.stepTwoText1}>Escolha uma arte como referência para customizar sua peça</h1>
             <p className={classes.stepTwoText2}>Você poderá solicitar alguma mudança ou personalização na arte</p>
-            <ArtGrid artList={artData[0]} step={1}/>
+            
+            
             <br style={{marginTop: '5%'}}/>
           </div>        
         )
