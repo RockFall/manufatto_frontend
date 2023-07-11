@@ -4,6 +4,7 @@ import { Button, Box, Typography } from '@material-ui/core'
 
 import { ProductGrid, Highlights, BannerCarousel, CustomizationBanner, ProductsButtonGrid } from '../components'
 //import { HighlightBanner } from '../generated/graphql'
+import { HighlightBanner } from '../util/custom_types'
 import { useRouter } from 'next/router'
 
 // Data fetching
@@ -211,7 +212,7 @@ const Index: PageHomeDetailsComp = (props) => {
     }
   })
 
-  const carouselBanners = data.metaobjects.edges[0] ? data.metaobjects.edges.map(({node}) => JSON.parse(node.fields[0].value)) : (defaultBannerList as unknown as HighlightBanner[])
+  const carouselBanners = data.metaobjects.edges[0] ? data.metaobjects.edges.map(({node}) => JSON.parse(node.fields[0].value)) as HighlightBanner[] : (defaultBannerList as unknown as HighlightBanner[])
   console.log('carouselBanners', carouselBanners)
 
 

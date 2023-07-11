@@ -3,7 +3,8 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Button, Hidden, Typography } from '@material-ui/core'
 import Image from 'next/image'
-import { HighlightBanner } from '../../../../generated/graphql'
+//import { HighlightBanner } from '../../../../generated/graphql'
+import { HighlightBanner } from '../../../../util/custom_types'
 import { useRouter } from 'next/router'
 const useStyles = makeStyles(theme => ({
   root: {

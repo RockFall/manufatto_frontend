@@ -5,7 +5,8 @@ import { Link, Hidden } from '@material-ui/core'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import Image from 'next/image'
 
-import { HighlightBanner } from '../../../../generated/graphql'
+//import { HighlightBanner } from '../../../../generated/graphql'
+import { HighlightBanner } from '../../../../util/custom_types'
 const useStyles = makeStyles(theme => ({
   root: {
     boxShadow: 'none',

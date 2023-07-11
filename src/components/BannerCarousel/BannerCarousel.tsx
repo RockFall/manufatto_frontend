@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
 import { Carousel } from 'react-responsive-carousel'
 //import { HighlightBanner } from '../../generated/graphql'
+import { HighlightBanner } from '../../util/custom_types'
 import { OutfitBanner, MosaicBanner } from './components'
 const useStyles = makeStyles(theme => ({
   root: {
