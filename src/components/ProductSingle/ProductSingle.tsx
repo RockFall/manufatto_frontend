@@ -4,6 +4,7 @@ import { Hidden } from '@material-ui/core'
 import { addCartItem, CartItemType} from '../../actions'
 import { ProductDetails, ProductDetailsMobile } from './components'
 //import { Product, ProductDetail } from '../../generated/graphql'
+import { ProductDetail } from '../../util/custom_types'
 import { Product } from '../../generated/graphql'
 
 interface ProductSingleProps {
@@ -29,13 +30,13 @@ const ProductSingle = (props: ProductSingleProps) => {
   }
 
   const setVariant = (variant: ProductDetail) => {
-    if (variant.stock == 0) return;
-    setCartItem({... cartItem, productDetail: variant, count: (cartItem.count >= variant.stock) ? variant.stock : cartItem.count})
+    if (parseInt(variant.quantity, 10) == 0) return;
+    setCartItem({... cartItem, productDetail: variant, count: (cartItem.count >= parseInt(variant.quantity)) ? parseInt(variant.quantity) : cartItem.count})
   }
 
   const setCount = (count: number) => {
-    if(cartItem.productDetail.stock >= 1){
-      setCartItem({... cartItem, count: (count >= cartItem.productDetail.stock) ? cartItem.productDetail.stock : count})
+    if(parseInt(cartItem.productDetail.quantity) >= 1){
+      setCartItem({... cartItem, count: (count >= parseInt(cartItem.productDetail.quantity)) ? parseInt(cartItem.productDetail.quantity) : count})
     }
   }
   return (
