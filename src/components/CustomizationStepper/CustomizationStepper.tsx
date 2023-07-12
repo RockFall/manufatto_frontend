@@ -299,7 +299,7 @@ export default function CustomizationStepper(props: CustomizationStepperProps) {
           <div className={classes.brand}>{item.product?.vendor}</div>
           <div className={classes.name}>{item.product?.title}</div>
           <div className={classes.ref}>REF:1234567GH</div>
-          <div className={classes.colorNSize}>Tamanho: {item.productDetail?.size} - Cor: {item.productDetail?.color.name}</div>
+          <div className={classes.colorNSize}>Tamanho: {item.productDetail?.size} - Cor: {item.productDetail?.color}</div>
         </div>
       </div>
     )
