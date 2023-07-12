@@ -66,11 +66,11 @@ const useStyles = makeStyles(theme => ({
 const ShopPage: PageShopDetailsComp = (props) => {
   const { data } = props
 
-  const [products, setProducts] = useState<Product[]>(data.productsCatalog.products as Product[])
+  const [products, setProducts] = useState<any[]>(data.productsCatalog.products)
   const classes = useStyles()
 
-  const minPrice = Math.min(...products.map(p => (p.promotionalUnitPrice || p.unitPrice)))
-  const maxPrice = Math.max(...products.map(p => (p.promotionalUnitPrice || p.unitPrice)))
+  const minPrice = Math.min(...products.map(p => (p.contextualPricing.maxVariantPricing.price.amount))) // TODO: Changed here || unit price
+  const maxPrice = Math.max(...products.map(p => (p.contextualPricing.maxVariantPricing.price.amount)))
 
   const [openFilter, setOpenFilter] = useState(false)
   const [filterItems, setFilterItems] = useState({
@@ -83,7 +83,8 @@ const ShopPage: PageShopDetailsComp = (props) => {
     price: [minPrice, maxPrice],
   })
 
-  const isLoadMoreEnabled = products.length < data.productsCatalog.metadata?.totalCount
+  //const isLoadMoreEnabled = products.length < data.productsCatalog.metadata?.totalCount
+  const isLoadMoreEnabled = false
 
   const handleFilterChange = (event, type) => {
     if (event.target.checked) {
@@ -107,16 +108,17 @@ const ShopPage: PageShopDetailsComp = (props) => {
 
   const theme = useTheme()
   const screenMatches = useMediaQuery(theme.breakpoints.down('md'))
-
+/*
   const {
     colors: availableColors,
     sizes: availableSizes,
     materials: availableMaterials,
     categories: availableCategories
   } = data.productsCatalog.facetedFilters
-  const { totalCount } = data.productsCatalog.metadata
+  const { totalCount } = data.productsCatalog.metadata*/
   const count = data.productsCatalog.products?.length
 
+  /*
   const filterProps: ProductFilterProps = {
     filterItems: filterItems,
     handleFilterChange: handleFilterChange,
@@ -146,23 +148,28 @@ const ShopPage: PageShopDetailsComp = (props) => {
         )}
       </Hidden>
     )
-  }
+  }*/
   return (
     <React.Fragment>
-      <BrandBanner shop={data.shop as Shop} />
+      {//<BrandBanner shop={data.shop as Shop} />
+      }
 
       <div className={classes.root}>
-        <ProductsHeader setOpenFilter={setOpenFilter} count={totalCount} />
+        <ProductsHeader setOpenFilter={setOpenFilter} count={//totalCount
+        32} />
         <div className={classes.content}>
           <Hidden mdDown>
-            <ProductFilter {...filterProps} />
+            {//<ProductFilter {...filterProps} />
+            }
           </Hidden>
           <div className={classes.prodGrid}>
             <FilterChips handleFilterDelete={handleFilterDelete} filterItems={filterItems} />
-            <ProductGrid productList={data.productsCatalog.products as Product[]} />
+            <ProductGrid productList={data.productsCatalog.products as any[]} />
             <div className={classes.loadMore}>
-              <Typography className={classes.loadText}>{count} de {totalCount} Produtos</Typography>
-              <LinearProgress className={classes.progressBar} variant='determinate' color='secondary' value={progress} />
+              {
+              //<Typography className={classes.loadText}>{count} de {totalCount} Produtos</Typography>
+              //<LinearProgress className={classes.progressBar} variant='determinate' color='secondary' value={progress} />
+              }
               {isLoadMoreEnabled && <Button variant='outlined' className={classes.button}> Carregar Mais </Button>}
             </div>
           </div>
@@ -177,14 +184,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   return (await ssrShopDetails.getServerPage({
     variables: {
-      pagination: {
-        limit: 20,
-        includeTotalCount: true,
-      },
-      filter: {
-        shop: [slug]
-      },
-      slug
+      slug: slug
     }
   }, ctx))
 }
