@@ -156,7 +156,7 @@ const CartRow = (props: CartRowProps) => {
               </div>
               <div className={classes.mobileInfoBlock}>
                 <Typography className={classes.size}>Subtotal</Typography>
-                <Typography>{formatMoney(cartItem.product.promotionalUnitPrice)}</Typography>
+                <Typography>{formatMoney(cartItem.product.contextualPricing.maxVariantPricing.price.amount)}</Typography>
                 <Typography className={classes.mobileShippingText}>{lastItem ? `Frete: ${formatMoney(shippingPrice)}`: ''}</Typography>
               </div>
             </div>
@@ -188,7 +188,7 @@ const CartRow = (props: CartRowProps) => {
         {lastItem ? formatMoney(shippingPrice) : ''}
       </TableCell> 
       <TableCell align='right' className={classes.size} style={{ borderBottom: lastItem ? 'inline' : 'none', borderColor: '#C2C2C2' }}>
-        {formatMoney(cartItem.product.promotionalUnitPrice)}
+        {formatMoney(cartItem.product.contextualPricing.maxVariantPricing.price.amount)}
       </TableCell>
       <TableCell align='right' style={{ paddingRight: 0, borderBottom: lastItem ? 'inline' : 'none', borderColor: '#C2C2C2' }}>
         <div className={classes.buttonColumn}>
