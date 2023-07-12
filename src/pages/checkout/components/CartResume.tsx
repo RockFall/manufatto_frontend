@@ -147,11 +147,11 @@ const CartResume = (props: CartResumeProp) => {
                 <div {...rest} className={classes.item}>
                     <img width={100} height={123} src={(cartItem.product.images && cartItem.product.images[0].path && cartItem.product.images[0].path.original) || ''} />
                     <div className={classes.infoColumn}>
-                        <Typography className={classes.storeName}>{cartItem.product.shop.name}</Typography>
-                        <Typography className={classes.nameText}>{cartItem.product.name}</Typography>
+                        <Typography className={classes.storeName}>{cartItem.product.vendor}</Typography>
+                        <Typography className={classes.nameText}>{cartItem.product.title}</Typography>
                         <Typography className={classes.codeText}>{cartItem.product.id}</Typography>
                         <Typography className={classes.infoText}>{cartItem.product.description}</Typography>
-                        <Typography className={classes.priceText}>{formatMoney(cartItem.product.promotionalUnitPrice)}</Typography>
+                        <Typography className={classes.priceText}>{formatMoney(cartItem.product.contextualPricing.maxVariantPricing.price.amount)}</Typography>
                     </div>
                 </div>
             ))

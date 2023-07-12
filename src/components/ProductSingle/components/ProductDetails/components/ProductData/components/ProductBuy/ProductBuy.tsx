@@ -28,6 +28,7 @@ import { useDispatch } from 'react-redux'
 import { addCustomizedProduct, CustomizedProductType, CartItemType } from '../../../../../../../../actions'
 import { CepMask } from '../../../../../../../../components'
 //import { ProductDetail, ProductSize } from '../../../../../../../../generated/graphql'
+import { ProductDetail } from '../../../../../../../../util/custom_types'
 import Image from 'next/image';
 import validate from 'validate.js'
 
@@ -295,10 +296,26 @@ const ProductBuy = (props: ProductBuyProp) => {
     e.preventDefault()
 
     if (formState.isValid) {
+      let variant_color, variant_size;
+      const variant = product.product.variants.nodes.find((variant) => {
+        variant.selectedOptions.forEach(option => {
+          if (option.name === "Color") variant_color = option.value;
+          if (option.name === "Size") variant_size = option.value;
+        });
+    
+        return (variant_color == formState.values.color && variant_size == formState.values.size);
+      });
+    
+      // You might want to handle the case when no matching variant is found.
+      if (!variant) {
+        throw new Error('No matching variant found'); // TODO: handle this case
+      }
+
       addToCart({
         productDetail: {
-          ...product.product.variants.find((variant) => 
-          (variant.color.rgb == formState.values.color && variant.size == formState.values.size as ProductSize))
+          color: variant_color,
+          size: variant_size,
+          quantity: formState.values.quantity
         },
         product: {
           ...product.product
@@ -393,22 +410,28 @@ const ProductBuy = (props: ProductBuyProp) => {
     let visited = []
 
     return (
-      product.product.variants.map((variant, _id) => {
-        if(!visited.includes(variant.size)){
+      product.product.variants.nodes.map((variant, _id) => {
+        let variant_color, variant_size;
+        variant.selectedOptions.forEach(option => {
+          if (option.name === "Color") variant_color = option.value;
+          if (option.name === "Size") variant_size = option.value;
+        });
+
+        if(!visited.includes(variant_size)){
           if(formState.values.color && formState.values.color != ''){
-            if(formState.values.color  == variant.color.rgb){
-              visited.push(variant.size)
+            if(formState.values.color  == variant_color){
+              visited.push(variant_size)
               return (
-                <MenuItem key={_id} value={variant.size}>
-                  {variant.size}
+                <MenuItem key={_id} value={variant_size}>
+                  {variant_size}
                 </MenuItem>
               )
             }else return null
           }else{
-            visited.push(variant.size)
+            visited.push(variant_size)
             return (
-              <MenuItem key={_id} value={variant.size}>
-                {variant.size}
+              <MenuItem key={_id} value={variant_size}>
+                {variant_size}
               </MenuItem>
             )
           }
@@ -422,19 +445,25 @@ const ProductBuy = (props: ProductBuyProp) => {
     let visited = []
     
     return (
-      product.product.variants.map((variant) => {
-        if(!(visited.includes(variant.color.rgb))){
+      product.product.variants.nodes.map((variant) => {
+        let variant_color, variant_size;
+        variant.selectedOptions.forEach(option => {
+          if (option.name === "Color") variant_color = option.value;
+          if (option.name === "Size") variant_size = option.value;
+        });
+
+        if(!(visited.includes(variant_color))){
           if(formState.values.size && formState.values.size != ''){
-            if(formState.values.size == variant.size){
-              visited.push(variant.color.rgb)
-              return (<ToggleButton disabled={variant.stock == 0} className={classes.colorButton} style={{ background: variant.color.rgb }} value={variant.color.rgb} key={variant.id.toString()} id={variant.id.toString()}>
-                        {(variant.stock == 0) ? <Clear color="secondary"/> : ((document.getElementById(variant.id.toString())) && (product.productDetail.color.rgb == variant.color.rgb)) ? <Check color="secondary"/> : '' }
+            if(formState.values.size == variant_size){
+              visited.push(variant_color)
+              return (<ToggleButton disabled={variant.inventoryQuantity == 0} className={classes.colorButton} style={{ background: variant_color }} value={variant_color} key={variant.id.toString()} id={variant.id.toString()}>
+                        {(variant.inventoryQuantity == 0) ? <Clear color="secondary"/> : ((document.getElementById(variant.id.toString())) && (product.productDetail.color == variant_color)) ? <Check color="secondary"/> : '' }
                       </ToggleButton>)
 
             }else return null
           }else{
-            visited.push(variant.color.rgb)
-            return <ToggleButton className={classes.colorButton} style={{ background: variant.color.rgb }} value={variant.color.rgb} key={variant.id.toString()} id={variant.id.toString()}>
+            visited.push(variant_color)
+            return <ToggleButton className={classes.colorButton} style={{ background: variant_color }} value={variant_color} key={variant.id.toString()} id={variant.id.toString()}>
                       {((document.getElementById(variant.id.toString())) && (document.getElementById(variant.id.toString()).attributes[4].nodeValue == 'true')) ? <Check color="secondary"/> : ''}
                     </ToggleButton>
 
@@ -535,11 +564,11 @@ const ProductBuy = (props: ProductBuyProp) => {
       {/* Preço e compra */}
       <div>
         <Typography>
-          <span className={classes.oldPrice}> {(product.product.unitPrice).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
-          <span className={classes.price}> {(product.product.promotionalUnitPrice).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
+          <span className={classes.oldPrice}> {(product.product.contextualPricing.maxVariantPricing.compareAtPrice.amount).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
+          <span className={classes.price}> {(product.product.contextualPricing.maxVariantPricing.price.amount).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
           <span className={classes.creditCardPayment}>
             {' '}
-            ou 12x de {(parseFloat((product.product.promotionalUnitPrice / 12).toFixed(2))).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}
+            ou 12x de {(parseFloat((product.product.contextualPricing.maxVariantPricing.price.amount / 12).toFixed(2))).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})}
           </span>
         </Typography>
       </div>

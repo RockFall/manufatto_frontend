@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Button, Link, Typography, Divider, Hidden } from '@material-ui/core'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
-import { ProductSingle, ProductGrid, Breadcrumbs } from '../../components'
+import { ProductSingle, ProductGrid, Breadcrumbs } from '../../../components'
 import { GetServerSideProps } from 'next'
 import { useDispatch } from 'react-redux'
-import { PageProductsCatalogComp, ssrProductByHandle, ssrProductById } from '../../generated/page'
+import { PageProductsCatalogComp, ssrProductByHandle, ssrProductById } from '../../../generated/page'
 import { useRouter } from 'next/router'
-import {useProductByIdQuery, Product} from '../../generated/graphql'
+import { Product } from '../../../generated/graphql'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -222,7 +222,8 @@ export default function Index(props) {
       <div className={classes.productGrid}>
         <Typography className={classes.textGrid1}>RECOMENDAÇÕES</Typography>
         <Typography className={classes.textGrid2}>Você também pode gostar</Typography>
-        <ProductGrid productList={productList} />
+        <ProductGrid productList={//productList TODO: FIX IT
+        []} />
         <Button className={classes.seeMoreButtom} variant='outlined'>
           VEJA MAIS PRODUTOS
         </Button>

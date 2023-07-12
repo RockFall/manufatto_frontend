@@ -35,4 +35,11 @@ export type OutfitType = {
     links: LinkType[];
 };
 
+type ProductDetailType = {
+  size: string,
+  color: string,
+  quantity: string,
+}
+
+export type ProductDetail = ProductDetailType
 export type HighlightBanner = MosaicType | OutfitType;

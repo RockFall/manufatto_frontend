@@ -27,5 +27,14 @@ query productById($id: ID!) {
             }
             }
         }
+        variants(first:15) {
+                nodes {
+                    inventoryQuantity
+                    selectedOptions {
+                        name
+                        value
+                    }
+                }
+            }
     }
 }
