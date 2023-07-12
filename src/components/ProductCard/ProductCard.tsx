@@ -116,10 +116,13 @@ const Product = (props: ProductProp) => {
   const discount = compareAtPrice? Math.round(((compareAtPrice - price) / compareAtPrice) * 100) : undefined
 
   //const imagePath: ProductImagePath = product.images && product.images.length ? (
+    console.log(product.images.edges[0].node);
   const imagePath = product?.images.edges[0].node ? (
+    
     {
-      original: product.images.edges[0].node.original,
-      originalWbp: product.images.edges[0].node.originalWbp
+      
+      original: (product.images.edges[0].node as any).original,
+      originalWbp: (product.images.edges[0].node as any).originalWbp
     }
   ) : (
     {

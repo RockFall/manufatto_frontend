@@ -199,13 +199,13 @@ const Index: PageHomeDetailsComp = (props) => {
   // Getting random products from each vendor
   const randomVendors = Array.from(vendors).sort(() => 0.5 - Math.random())
 
-  const randomProducts : Product[] = []
+  const randomProducts = []
 
   data?.collections.edges.forEach(({ node }) => {
     if (randomProducts.length >= 8) return;
     const vendorName = node.title;
     if (randomVendors.includes(vendorName)) {
-      const vendorProducts = node.products.edges.map(({ node }) => node) as Product[];
+      const vendorProducts = node.products.edges.map(({ node }) => node);
       const randomProduct = vendorProducts.slice(0,5).sort(() => 0.5 - Math.random())[0];
       randomProducts.push(randomProduct);
       console.log("Product selected: ", randomProduct.title, "from vendor: ", vendorName)
