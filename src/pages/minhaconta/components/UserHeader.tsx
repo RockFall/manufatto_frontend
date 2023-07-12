@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
 import { Typography, TextField, Button, Link, FormControl, Select, InputLabel } from '@material-ui/core'
 import { addCartItem } from '../../../actions'
-import { ProductMaterial, ProductOccasion, ProductSize } from '../../../generated/graphql'
+//import { ProductMaterial, ProductOccasion, ProductSize } from '../../../generated/graphql'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const useStyles = makeStyles(theme => ({
