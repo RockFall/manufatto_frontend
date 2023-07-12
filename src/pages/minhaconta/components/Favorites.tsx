@@ -163,7 +163,8 @@ const Favorites = (props: FavoritesProp) => {
 
   return (
     <div className={clsx(classes.root, className)} {... rest} >
-        <ProductGrid productList={productList}/>
+        <ProductGrid productList={//productList
+        []}/>
     </div>
   )
 }
