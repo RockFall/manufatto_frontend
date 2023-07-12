@@ -1,5 +1,5 @@
 import { CustomizedProductTypes, CustomizedProductType} from '../actions/customizationActions'
-import { CurrentAdminUser } from '../generated/graphql'
+//import { CurrentAdminUser } from '../generated/graphql'
 
 export interface CustomizedProduct {
   customizedProduct: CustomizedProductType
