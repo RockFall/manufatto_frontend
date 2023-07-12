@@ -7,7 +7,7 @@ import {
 } from '@material-ui/core'
 import { ProductBuy } from './components'
 import { CartItemType } from '../../../../../../actions'
-//import { ProductDetail } from '../../../../../../generated/graphql'
+import { ProductDetail } from '../../../../../../util/custom_types'
 
 const useStyles = makeStyles(theme => ({
   root: {

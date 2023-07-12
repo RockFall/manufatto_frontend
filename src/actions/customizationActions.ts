@@ -1,4 +1,4 @@
-//import { Product, ProductDetail } from '../generated/graphql'
+import { ProductDetail } from '../util/custom_types'
 import { Product } from '../generated/graphql'
 export const CUSTOMIZED_PRODUCT_ADD = 'CUSTOMIZED_PRODUCT_ADD'
 

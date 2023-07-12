@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux'
 import { Hidden } from '@material-ui/core'
 import { addCartItem, CartItemType} from '../../actions'
 import { ProductDetails, ProductDetailsMobile } from './components'
-//import { Product, ProductDetail } from '../../generated/graphql'
 import { ProductDetail } from '../../util/custom_types'
 import { Product } from '../../generated/graphql'
 
