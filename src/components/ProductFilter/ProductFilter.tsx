@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import { makeStyles, withStyles } from '@material-ui/core/styles'
 import { Checkbox, Typography, Slider, Input, InputAdornment, RadioGroup, Radio, FormControlLabel, FormGroup } from '@material-ui/core'
 import { FilterAcordion } from './components'
-import { ColorGroup, ProductMaterial, ProductSize } from '../../generated/graphql'
+//import { ColorGroup, ProductMaterial, ProductSize } from '../../generated/graphql'
 
 const useStyles = makeStyles(theme => ({
   root: {
