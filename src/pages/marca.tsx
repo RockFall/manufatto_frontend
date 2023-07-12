@@ -5,7 +5,7 @@ import { ProductFilter, ProductFilterMobile, ProductsHeader, ProductGrid, Filter
 
 // Data fetching
 import { GetServerSideProps } from 'next'
-import { ssrRandomProducts, PageRandomProductsComp } from '../generated/page'
+//import { ssrRandomProducts, PageRandomProductsComp } from '../generated/page'
 import { withApollo } from '../withApollo'
 import { Product } from '../generated/graphql'
 
@@ -60,7 +60,9 @@ const useStyles = makeStyles(theme => ({
 }))
 
 
-const Index: PageRandomProductsComp = (props) => {
+//const Index: PageRandomProductsComp = (props) => {
+  
+const Index = (props) => {
   console.log({ props })
 
   const { data } = props
@@ -157,11 +159,11 @@ const Index: PageRandomProductsComp = (props) => {
   )
 }
 
-
+/*
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   return (await ssrRandomProducts.getServerPage({
     variables: { amount: 9 }
   }, ctx))
-}
+}*/
 
 export default Index

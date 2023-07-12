@@ -6,8 +6,10 @@ import { Button, Typography, Link, Hidden } from '@material-ui/core'
 import FavoriteIcon from '@material-ui/icons/Favorite'
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import { useRouter } from 'next/router'
-import { useSignupCustomerMutation, CustomerCreateParams } from '../generated/graphql'
+//import { useSignupCustomerMutation, CustomerCreateParams } from '../generated/graphql'
 import { withApollo } from '../withApollo'
+
+
 
 const productList = [
   {
@@ -199,6 +201,7 @@ function Index() {
   const [loginSelected, setLoginSelected] = useState<boolean>(true)
   const [errorMessage, setErrorMessage] = useState<string>('')
   
+  /*
   const [signUpCostumer, { loading }] = useSignupCustomerMutation({
     onError(error) {
       const fieldsTranslations = {
@@ -259,7 +262,10 @@ function Index() {
     e.preventDefault()
     router.push('/')
   }
+  */
   
+  const loading = true;
+
   if(loading){
     return (
       <div />
@@ -273,7 +279,8 @@ function Index() {
         <FavoriteIcon className={classes.heartIcon}/>
         <Typography variant='h6'>Cadastro realizado com sucesso</Typography>
         <Typography variant='body1'>Boas compras</Typography>
-        <Button variant='outlined' className={classes.homeButton} onClick={handleHomeClick}>Voltar para a home</Button>
+        <Button variant='outlined' className={classes.homeButton} onClick={//handleHomeClick
+        () => {}}>Voltar para a home</Button>
 
         <div className={classes.separator}>
           <div className={classes.separatorLine}/>
@@ -284,7 +291,8 @@ function Index() {
         <div className={classes.productGrid}>
           <p className={classes.textGrid1}>Shop now</p>
           <p className={classes.textGrid2}>O que vira tendência, está aqui.</p>
-          <ProductGrid productList={productList} />
+          <ProductGrid productList={//productList
+          []} />
           <Button style={{ margin: '3.4%' }} className={classes.productButton} color="inherit">VEJA MAIS PRODUTOS</Button>
         </div>
       </div>
@@ -307,7 +315,8 @@ function Index() {
             <Typography variant='h6' className={classes.formTitleRegister}> Cadastro </Typography>
             <div className={classes.dividerDown} />
             <RegisterForm className={classes.RegisterSpacing}
-              onSubmit={handleFormSubmit}
+              onSubmit={//handleFormSubmit
+                () => {}}
               errorMessage={errorMessage}
             />
           </div>
@@ -324,7 +333,8 @@ function Index() {
               <LoginForm onSubmit={e => console.log(e)}/> 
               : 
               <RegisterForm 
-                onSubmit={handleFormSubmit}
+                onSubmit={//handleFormSubmit
+                  () => {}}
                 errorMessage={errorMessage}
               /> 
             }
