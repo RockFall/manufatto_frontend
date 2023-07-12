@@ -1,7 +1,8 @@
-import { Product, ProductMaterial, ProductSize } from '../generated/graphql'
+//import { Product, ProductMaterial, ProductSize } from '../generated/graphql'
 import * as actionTypes from '../actions'
 import { CartActionTypes, CartItemType } from '../actions/cartActions'
-import { CurrentAdminUser } from '../generated/graphql'
+//import { CurrentAdminUser } from '../generated/graphql'
+import Utils from '../util/custom_formatter'
 
 interface shopCart {
   shopName: string
@@ -29,10 +30,11 @@ export function cartReducer(state = initialState, action: CartActionTypes): Cart
   switch (action.type) {
     case actionTypes.CART_ITEM_ADD:
       const { cartItem: addCartItem } = action
-      const shopIndex = findShop(state, addCartItem.product.shop.slug)
+      const shopSlug = Utils.handleFromVendor(addCartItem.product.vendor)
+      const shopIndex = findShop(state, shopSlug)
       let newShopItems = state.shopItems
       if( shopIndex <= -1 ){
-        newShopItems =  [...state?.shopItems, {shopName: addCartItem.product.shop.slug , cartItems: [addCartItem]}]
+        newShopItems =  [...state?.shopItems, {shopName: shopSlug , cartItems: [addCartItem]}]
       }else {
         newShopItems[shopIndex] = {...newShopItems[shopIndex], cartItems: [...newShopItems[shopIndex].cartItems, addCartItem]}
       }
@@ -59,7 +61,7 @@ export function cartReducer(state = initialState, action: CartActionTypes): Cart
 
     case actionTypes.CART_ITEM_UPDATE:
       const { cartItem: updatedCartItem, index: editIndex } = action
-      const editShopIndex = findShop(state, updatedCartItem.product.shop.slug)
+      const editShopIndex = findShop(state, Utils.handleFromVendor(updatedCartItem.product.vendor))
       let editShopItems = state.shopItems
       if( editShopIndex => 0 ){
         editShopItems[editShopIndex].cartItems[editIndex] = updatedCartItem

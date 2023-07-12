@@ -468,8 +468,8 @@ const ProductBuy = (props: ProductBuyProp) => {
     <div className={classes.root}>
       {/* Elementos de texto do produto */}
       <Typography className={classes.ref}> REF: 1234567GH </Typography>
-      <Typography className={classes.brand}> {product.product.shop.name} </Typography>
-      <Typography className={classes.name}> {product.product.name} </Typography>
+      <Typography className={classes.brand}> {product.product.vendor} </Typography>
+      <Typography className={classes.name}> {product.product.title} </Typography>
       <Typography className={classes.bio}> {product.product.description} </Typography>
 
       {/* Formulários de cor e tamanhos */}
