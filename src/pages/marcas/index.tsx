@@ -5,7 +5,7 @@ import { BrandGrid, Breadcrumbs, ProductGrid, ProductsButtonGrid } from '../../c
 
 // Data fetching
 import { GetServerSideProps } from 'next'
-import { ssrRandomProducts, PageRandomProductsComp } from '../../generated/page'
+//import { ssrRandomProducts, PageRandomProductsComp } from '../../generated/page'
 import { Product } from '../../generated/graphql'
 import { useRouter } from 'next/router'
 
@@ -131,7 +131,8 @@ const brandList = [
 ]
 
 
-const Index: PageRandomProductsComp = (props) => {
+//const Index: PageRandomProductsComp = (props) => {
+const Index = (props) => {
   const classes = useStyles()
   const router = useRouter()
   const { data } = props
@@ -171,11 +172,11 @@ const Index: PageRandomProductsComp = (props) => {
   </>
   )
 }
-
+/*
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   return (await ssrRandomProducts.getServerPage({
     variables: { amount: 10 }
   }, ctx))
-}
+}*/
 
 export default Index
