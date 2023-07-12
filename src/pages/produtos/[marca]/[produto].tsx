@@ -5,7 +5,7 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
 import { ProductSingle, ProductGrid, Breadcrumbs } from '../../components'
 import { GetServerSideProps } from 'next'
 import { useDispatch } from 'react-redux'
-import { PageProductsCatalogComp, ssrProductById } from '../../generated/page'
+import { PageProductsCatalogComp, ssrProductByHandle, ssrProductById } from '../../generated/page'
 import { useRouter } from 'next/router'
 import {useProductByIdQuery, Product} from '../../generated/graphql'
 
@@ -201,7 +201,7 @@ const productList = [
 export default function Index(props) {
   const classes = useStyles()
   const router = useRouter()
-  const { id } = router.query
+  const { produto } = router.query
   const {data} = props
   console.log(data);
   const product = data.product as Product
@@ -210,7 +210,7 @@ export default function Index(props) {
   return (
     <React.Fragment>
       <div className={classes.root}>
-        <Breadcrumbs page={product.name} path={[{name:'Marcas', url:'/marcas'}, {name:product.shop.name, url:`/marcas/${product.shop.name}`}]} />
+        <Breadcrumbs page={product.title} path={[{name:'Marcas', url:'/marcas'}, {name:product.vendor, url:`/marcas/${product.vendor}`}]} />
         <div className={classes.productDetails}>
           
           <Divider className={classes.divider} />
@@ -233,9 +233,9 @@ export default function Index(props) {
 
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {  
-  return (await ssrProductById.getServerPage({
+  return (await ssrProductByHandle.getServerPage({
     variables: {
-      id: parseInt(ctx.params.id as string)
+      handle: ctx.params.produto as string
     }
   }, ctx))
 }

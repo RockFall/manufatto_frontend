@@ -126,7 +126,7 @@ const CartTable = (props: CartTableProps) => {
             {products &&
               products.map((shop, i) => (
                 <React.Fragment key={i}>
-                  <Typography className={classes.shopTitle}> {shop.cartItems[0].product.shop.name} </Typography>
+                  <Typography className={classes.shopTitle}> {shop.cartItems[0].product.vendor} </Typography>
                   {shop.cartItems.map((product, j) => (
                     <React.Fragment key={j}>
                     <Hidden smDown>

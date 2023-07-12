@@ -1,5 +1,5 @@
 query shopDetails($slug: String!, $cursor: String) {
-    metaobject(handle:{handle:$slug, type:"brand"}) {
+    metaobjectByHandle(handle:{handle:$slug, type:"brand"}) {
         id
         name : field(key:"name") {
       		text: value

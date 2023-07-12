@@ -194,7 +194,7 @@ const Index: PageHomeDetailsComp = (props) => {
   const { data } = props
 
   // Getting vendor list
-  const vendors = data?.shop.productVendors.edges.map(({node}) => node) as String[]
+  const vendors = data?.shopsList.shops.map(({name}) => name.text) as String[]
 
   // Getting random products from each vendor
   const randomVendors = Array.from(vendors).sort(() => 0.5 - Math.random())

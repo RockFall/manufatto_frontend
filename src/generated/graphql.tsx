@@ -40133,8 +40133,13 @@ export type HomePageDetailsQuery = { __typename?: 'QueryRoot' } & {
       }
     >
   }
-  shop: { __typename?: 'Shop' } & {
-    productVendors: { __typename?: 'StringConnection' } & { edges: Array<{ __typename?: 'StringEdge' } & Pick<StringEdge, 'node'>> }
+  shopsList: { __typename?: 'MetaobjectConnection' } & {
+    shops: Array<
+      { __typename?: 'Metaobject' } & {
+        name?: Maybe<{ __typename?: 'MetaobjectField' } & { text: MetaobjectField['value'] }>
+        small_description?: Maybe<{ __typename?: 'MetaobjectField' } & { text: MetaobjectField['value'] }>
+      }
+    >
   }
   collections: { __typename?: 'CollectionConnection' } & {
     edges: Array<
@@ -40213,6 +40218,120 @@ export type ProductsCatalogQuery = { __typename?: 'QueryRoot' } & {
   }
 }
 
+export type ProductByHandleQueryVariables = Exact<{
+  handle: Scalars['String']
+}>
+
+export type ProductByHandleQuery = { __typename?: 'QueryRoot' } & {
+  productByHandle?: Maybe<
+    { __typename?: 'Product' } & Pick<Product, 'id' | 'title' | 'vendor' | 'handle' | 'onlineStoreUrl'> & {
+        contextualPricing: { __typename?: 'ProductContextualPricing' } & {
+          maxVariantPricing?: Maybe<
+            { __typename?: 'ProductVariantContextualPricing' } & {
+              price: { __typename?: 'MoneyV2' } & Pick<MoneyV2, 'amount'>
+              compareAtPrice?: Maybe<{ __typename?: 'MoneyV2' } & Pick<MoneyV2, 'amount'>>
+            }
+          >
+        }
+        images: { __typename?: 'ImageConnection' } & {
+          edges: Array<
+            { __typename?: 'ImageEdge' } & {
+              node: { __typename?: 'Image' } & Pick<Image, 'id' | 'width' | 'height'> & {
+                  original: Image['url']
+                  originalWbp: Image['url']
+                  zoomed: Image['url']
+                }
+            }
+          >
+        }
+      }
+  >
+}
+
+export type ProductByIdQueryVariables = Exact<{
+  id: Scalars['ID']
+}>
+
+export type ProductByIdQuery = { __typename?: 'QueryRoot' } & {
+  product?: Maybe<
+    { __typename?: 'Product' } & Pick<Product, 'id' | 'title' | 'vendor' | 'handle' | 'onlineStoreUrl'> & {
+        contextualPricing: { __typename?: 'ProductContextualPricing' } & {
+          maxVariantPricing?: Maybe<
+            { __typename?: 'ProductVariantContextualPricing' } & {
+              price: { __typename?: 'MoneyV2' } & Pick<MoneyV2, 'amount'>
+              compareAtPrice?: Maybe<{ __typename?: 'MoneyV2' } & Pick<MoneyV2, 'amount'>>
+            }
+          >
+        }
+        images: { __typename?: 'ImageConnection' } & {
+          edges: Array<
+            { __typename?: 'ImageEdge' } & {
+              node: { __typename?: 'Image' } & Pick<Image, 'id' | 'width' | 'height'> & {
+                  original: Image['url']
+                  originalWbp: Image['url']
+                  zoomed: Image['url']
+                }
+            }
+          >
+        }
+      }
+  >
+}
+
+export type ShopDetailsQueryVariables = Exact<{
+  slug: Scalars['String']
+  cursor?: Maybe<Scalars['String']>
+}>
+
+export type ShopDetailsQuery = { __typename?: 'QueryRoot' } & {
+  metaobjectByHandle?: Maybe<
+    { __typename?: 'Metaobject' } & Pick<Metaobject, 'id'> & {
+        name?: Maybe<{ __typename?: 'MetaobjectField' } & { text: MetaobjectField['value'] }>
+        small_description?: Maybe<{ __typename?: 'MetaobjectField' } & { text: MetaobjectField['value'] }>
+        big_description?: Maybe<{ __typename?: 'MetaobjectField' } & { text: MetaobjectField['value'] }>
+      }
+  >
+  productsCatalog: { __typename?: 'ProductConnection' } & {
+    products: Array<
+      { __typename?: 'Product' } & Pick<Product, 'id' | 'title' | 'vendor' | 'handle' | 'onlineStoreUrl'> & {
+          contextualPricing: { __typename?: 'ProductContextualPricing' } & {
+            maxVariantPricing?: Maybe<
+              { __typename?: 'ProductVariantContextualPricing' } & {
+                price: { __typename?: 'MoneyV2' } & Pick<MoneyV2, 'amount'>
+                compareAtPrice?: Maybe<{ __typename?: 'MoneyV2' } & Pick<MoneyV2, 'amount'>>
+              }
+            >
+          }
+          images: { __typename?: 'ImageConnection' } & {
+            edges: Array<
+              { __typename?: 'ImageEdge' } & {
+                node: { __typename?: 'Image' } & Pick<Image, 'id' | 'width' | 'height'> & {
+                    original: Image['url']
+                    originalWbp: Image['url']
+                    zoomed: Image['url']
+                  }
+              }
+            >
+          }
+        }
+    >
+    pageInfo: { __typename?: 'PageInfo' } & Pick<PageInfo, 'hasNextPage' | 'endCursor'>
+  }
+}
+
+export type ShopsListQueryVariables = Exact<{ [key: string]: never }>
+
+export type ShopsListQuery = { __typename?: 'QueryRoot' } & {
+  shopsList: { __typename?: 'MetaobjectConnection' } & {
+    shops: Array<
+      { __typename?: 'Metaobject' } & { name: Metaobject['displayName'] } & {
+        small_description?: Maybe<{ __typename?: 'MetaobjectField' } & { text: MetaobjectField['value'] }>
+        big_description?: Maybe<{ __typename?: 'MetaobjectField' } & { text: MetaobjectField['value'] }>
+      }
+    >
+  }
+}
+
 export const HomePageDetailsDocument = gql`
   query HomePageDetails {
     metaobjects(type: "highlight_banner", first: 5) {
@@ -40224,10 +40343,13 @@ export const HomePageDetailsDocument = gql`
         }
       }
     }
-    shop {
-      productVendors(first: 15) {
-        edges {
-          node
+    shopsList: metaobjects(first: 20, type: "brand") {
+      shops: nodes {
+        name: field(key: "name") {
+          text: value
+        }
+        small_description: field(key: "small_description") {
+          text: value
         }
       }
     }
@@ -40386,3 +40508,249 @@ export function useProductsCatalogLazyQuery(
 export type ProductsCatalogQueryHookResult = ReturnType<typeof useProductsCatalogQuery>
 export type ProductsCatalogLazyQueryHookResult = ReturnType<typeof useProductsCatalogLazyQuery>
 export type ProductsCatalogQueryResult = Apollo.QueryResult<ProductsCatalogQuery, ProductsCatalogQueryVariables>
+export const ProductByHandleDocument = gql`
+  query productByHandle($handle: String!) {
+    productByHandle(handle: $handle) {
+      id
+      title
+      vendor
+      handle
+      onlineStoreUrl
+      contextualPricing(context: {}) {
+        maxVariantPricing {
+          price {
+            amount
+          }
+          compareAtPrice {
+            amount
+          }
+        }
+      }
+      images(first: 10) {
+        edges {
+          node {
+            id
+            width
+            height
+            original: url
+            originalWbp: url(transform: { preferredContentType: WEBP })
+            zoomed: url(transform: { scale: 2 })
+          }
+        }
+      }
+    }
+  }
+`
+
+/**
+ * __useProductByHandleQuery__
+ *
+ * To run a query within a React component, call `useProductByHandleQuery` and pass it any options that fit your needs.
+ * When your component renders, `useProductByHandleQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useProductByHandleQuery({
+ *   variables: {
+ *      handle: // value for 'handle'
+ *   },
+ * });
+ */
+export function useProductByHandleQuery(baseOptions: Apollo.QueryHookOptions<ProductByHandleQuery, ProductByHandleQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<ProductByHandleQuery, ProductByHandleQueryVariables>(ProductByHandleDocument, options)
+}
+export function useProductByHandleLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<ProductByHandleQuery, ProductByHandleQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<ProductByHandleQuery, ProductByHandleQueryVariables>(ProductByHandleDocument, options)
+}
+export type ProductByHandleQueryHookResult = ReturnType<typeof useProductByHandleQuery>
+export type ProductByHandleLazyQueryHookResult = ReturnType<typeof useProductByHandleLazyQuery>
+export type ProductByHandleQueryResult = Apollo.QueryResult<ProductByHandleQuery, ProductByHandleQueryVariables>
+export const ProductByIdDocument = gql`
+  query productById($id: ID!) {
+    product(id: $id) {
+      id
+      title
+      vendor
+      handle
+      onlineStoreUrl
+      contextualPricing(context: {}) {
+        maxVariantPricing {
+          price {
+            amount
+          }
+          compareAtPrice {
+            amount
+          }
+        }
+      }
+      images(first: 10) {
+        edges {
+          node {
+            id
+            width
+            height
+            original: url
+            originalWbp: url(transform: { preferredContentType: WEBP })
+            zoomed: url(transform: { scale: 2 })
+          }
+        }
+      }
+    }
+  }
+`
+
+/**
+ * __useProductByIdQuery__
+ *
+ * To run a query within a React component, call `useProductByIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useProductByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useProductByIdQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useProductByIdQuery(baseOptions: Apollo.QueryHookOptions<ProductByIdQuery, ProductByIdQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<ProductByIdQuery, ProductByIdQueryVariables>(ProductByIdDocument, options)
+}
+export function useProductByIdLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ProductByIdQuery, ProductByIdQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<ProductByIdQuery, ProductByIdQueryVariables>(ProductByIdDocument, options)
+}
+export type ProductByIdQueryHookResult = ReturnType<typeof useProductByIdQuery>
+export type ProductByIdLazyQueryHookResult = ReturnType<typeof useProductByIdLazyQuery>
+export type ProductByIdQueryResult = Apollo.QueryResult<ProductByIdQuery, ProductByIdQueryVariables>
+export const ShopDetailsDocument = gql`
+  query shopDetails($slug: String!, $cursor: String) {
+    metaobjectByHandle(handle: { handle: $slug, type: "brand" }) {
+      id
+      name: field(key: "name") {
+        text: value
+      }
+      small_description: field(key: "small_description") {
+        text: value
+      }
+      big_description: field(key: "big_description") {
+        text: value
+      }
+    }
+    productsCatalog: products(first: 10, query: $slug, after: $cursor) {
+      products: nodes {
+        id
+        title
+        vendor
+        handle
+        onlineStoreUrl
+        contextualPricing(context: {}) {
+          maxVariantPricing {
+            price {
+              amount
+            }
+            compareAtPrice {
+              amount
+            }
+          }
+        }
+        images(first: 2) {
+          edges {
+            node {
+              id
+              width
+              height
+              original: url
+              originalWbp: url(transform: { preferredContentType: WEBP })
+              zoomed: url(transform: { scale: 2 })
+            }
+          }
+        }
+      }
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+    }
+  }
+`
+
+/**
+ * __useShopDetailsQuery__
+ *
+ * To run a query within a React component, call `useShopDetailsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useShopDetailsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useShopDetailsQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *      cursor: // value for 'cursor'
+ *   },
+ * });
+ */
+export function useShopDetailsQuery(baseOptions: Apollo.QueryHookOptions<ShopDetailsQuery, ShopDetailsQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<ShopDetailsQuery, ShopDetailsQueryVariables>(ShopDetailsDocument, options)
+}
+export function useShopDetailsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ShopDetailsQuery, ShopDetailsQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<ShopDetailsQuery, ShopDetailsQueryVariables>(ShopDetailsDocument, options)
+}
+export type ShopDetailsQueryHookResult = ReturnType<typeof useShopDetailsQuery>
+export type ShopDetailsLazyQueryHookResult = ReturnType<typeof useShopDetailsLazyQuery>
+export type ShopDetailsQueryResult = Apollo.QueryResult<ShopDetailsQuery, ShopDetailsQueryVariables>
+export const ShopsListDocument = gql`
+  query shopsList {
+    shopsList: metaobjects(first: 20, type: "brand") {
+      shops: nodes {
+        name: displayName
+        small_description: field(key: "small_description") {
+          text: value
+        }
+        big_description: field(key: "big_description") {
+          text: value
+        }
+      }
+    }
+  }
+`
+
+/**
+ * __useShopsListQuery__
+ *
+ * To run a query within a React component, call `useShopsListQuery` and pass it any options that fit your needs.
+ * When your component renders, `useShopsListQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useShopsListQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useShopsListQuery(baseOptions?: Apollo.QueryHookOptions<ShopsListQuery, ShopsListQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useQuery<ShopsListQuery, ShopsListQueryVariables>(ShopsListDocument, options)
+}
+export function useShopsListLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ShopsListQuery, ShopsListQueryVariables>) {
+  const options = { ...defaultOptions, ...baseOptions }
+  return Apollo.useLazyQuery<ShopsListQuery, ShopsListQueryVariables>(ShopsListDocument, options)
+}
+export type ShopsListQueryHookResult = ReturnType<typeof useShopsListQuery>
+export type ShopsListLazyQueryHookResult = ReturnType<typeof useShopsListLazyQuery>
+export type ShopsListQueryResult = Apollo.QueryResult<ShopsListQuery, ShopsListQueryVariables>
