@@ -70,9 +70,9 @@ export default function Index() {
     setCategoriesChips([...newChips])
   }
 
-  const getCategoriesNames = () => {
-    const categoriesNames = ['Roupas', 'Calçados', 'Bolsas', 'Acessórios']
-    return categoriesNames.filter((value, i) => categoriesChips[i] )
+  const getCategories = () => {
+    const categories = ['Roupas', 'Calçados', 'Bolsas', 'Acessórios']
+    return categories.filter((value, i) => categoriesChips[i] )
   }
   return (
     <div className={classes.root}>
@@ -127,7 +127,7 @@ export default function Index() {
             <InputAdornment position="end">
               <IconButton
                 aria-label="toggle password visibility"
-                onClick={() => router.push({pathname: `/produtos`, query: {search: searchText, CategoriesNames: getCategoriesNames()}})}
+                onClick={() => router.push({pathname: `/produtos`, query: {search: searchText, Categories: getCategories()}})}
               >
                 <SearchIcon />
               </IconButton>

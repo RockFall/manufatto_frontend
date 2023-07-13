@@ -101,7 +101,7 @@ export default function Index(props)  {
   const [minPrice, setMinPrice] = useState<number>(Math.min(...products.map(p => (p.contextualPricing.maxVariantPricing.price.amount))))
   const [maxPrice, setMaxPrice] = useState<number>(Math.max(...products.map(p => (p.contextualPricing.maxVariantPricing.price.amount))))
   const initialFilter = {
-    categoriesNames: [],
+    categories: [],
     produto: '',
     colorGroups: [],
     sizes: [],
@@ -122,8 +122,8 @@ export default function Index(props)  {
   }
 
   const applyFilter = async () => {
-    const { shop, colors, materials, categoriesNames, sizes } = filterItems
-    const queryString = Util.makeShopifyQueryFromFilters(shop, colors, materials, categoriesNames, sizes)
+    const { shop, colors, materials, categories, sizes } = filterItems
+    const queryString = Util.makeShopifyQueryFromFilters(shop, colors, materials, categories, sizes)
 
     const {data: res} = await axios.get('../api/products', { params: {filters: queryString} })
     setProducts([...res.data?.products.nodes])
@@ -236,9 +236,9 @@ export default function Index(props)  {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
     return (await ssrProductsCatalog.getServerPage({
-        //variables: {
-            //filter: {
-                //search: ctx.query?.search as string,
+        variables: {
+            filter: ctx.query.search as string
+        }
                 //categoriesNames: ctx.query?.categoriesNames
             //}
         //}
