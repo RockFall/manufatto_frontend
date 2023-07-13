@@ -7,7 +7,7 @@ import { ProductDetail } from '../../util/custom_types'
 import { Product } from '../../generated/graphql'
 
 interface ProductSingleProps {
-  product: any//Product
+  product: Product
 }
 
 const ProductSingle = (props: ProductSingleProps) => {
@@ -18,7 +18,7 @@ const ProductSingle = (props: ProductSingleProps) => {
   const initialCartItem = {
     productDetail: product.variants[0],
     product: product,
-    count: product.variants[0].stock == 0 ? 0 : 1,
+    count: product.variants.nodes[0].inventoryQuantity == 0 ? 0 : 1,
   }
   const [cartItem, setCartItem] = useState<CartItemType>(initialCartItem)
 

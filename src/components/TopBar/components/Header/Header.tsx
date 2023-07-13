@@ -82,15 +82,15 @@ const Header = (props: HeaderProps) => {
         <Typography className={classes.buttonTypography}>CUSTOMIZAÇÃO</Typography>
       </Button>
 
-      <IconButton className={classes.iconSpacing} color='primary' size='small' onClick={() => router.push('busca')}>
+      <IconButton className={classes.iconSpacing} color='primary' size='small' onClick={() => router.push('/busca')}>
         <SearchIcon className={classes.iconStyle} />
       </IconButton>
-      <IconButton className={classes.iconSpacing} color='primary' size='small' onClick={() => router.push('carrinho')}>
+      <IconButton className={classes.iconSpacing} color='primary' size='small' onClick={() => router.push('/carrinho')}>
         <Badge badgeContent={cartSize || 0} color='error' overlap='rectangle' max={99}>
           <LocalMallIcon className={classes.iconStyle} />
         </Badge>
       </IconButton>
-      <IconButton className={classes.iconSpacing} color='primary' size='small' onClick={() => router.push('minhaconta')}>
+      <IconButton className={classes.iconSpacing} color='primary' size='small' onClick={() => router.push('/minhaconta')}>
         <AccountCircleIcon className={classes.iconStyle} />
       </IconButton>
     </div>

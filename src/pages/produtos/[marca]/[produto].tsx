@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux'
 import { PageProductsCatalogComp, ssrProductByHandle, ssrProductById } from '../../../generated/page'
 import { useRouter } from 'next/router'
 import { Product } from '../../../generated/graphql'
+import Util from '../../../util/custom_formatter'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -204,13 +205,12 @@ export default function Index(props) {
   const { produto } = router.query
   const {data} = props
   console.log(data);
-  const product = data.product as Product
-
+  const product = data.productByHandle as Product
   
   return (
     <React.Fragment>
       <div className={classes.root}>
-        <Breadcrumbs page={product.title} path={[{name:'Marcas', url:'/marcas'}, {name:product.vendor, url:`/marcas/${product.vendor}`}]} />
+        <Breadcrumbs page={product.title} path={[{name:'Marcas', url:'/marcas'}, {name:product.vendor, url:`/marcas/${Util.handleFromVendor(product.vendor)}`}]} />
         <div className={classes.productDetails}>
           
           <Divider className={classes.divider} />

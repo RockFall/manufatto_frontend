@@ -101,7 +101,7 @@ const OutfiBanner = (props: OutfiBannerProps) => {
   return (
     <div className={classes.root}>
       <Hidden xsDown>
-        <Image src={`/BackgroundGreen.png`} width='1920px' height='934px' layout='responsive' />
+        <Image src={`/${item.background}`} width='1920px' height='934px' layout='responsive' />
         <div className={classes.croqui}>
           <Image src={item.images[0].image.original} layout='fill' />
         </div>
@@ -117,7 +117,7 @@ const OutfiBanner = (props: OutfiBannerProps) => {
         <div className={classes.mobileCentering}>
           <div className={classes.mobileImages}>
             <div className={classes.mobileBackgroundPosition}>
-              <Image src={`/BackgroundGreen.png`} layout='fill' />
+              <Image src={`/${item.background}`} layout='fill' />
             </div>
             <div className={classes.mobileCroqui}>
               <Image src={item.images[0].image.original} layout='fill' />

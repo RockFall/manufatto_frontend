@@ -106,8 +106,6 @@ const ProductData = (props: ProductDataProp) => {
 
   return (
     <div className={classes.root}>
-
-
       {/* Seletor de imagem */}
       {/* Versão estática */}
       <GridList cellHeight={210} className={classes.imageGrid} cols={1}>

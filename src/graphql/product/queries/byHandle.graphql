@@ -29,6 +29,7 @@ query productByHandle($handle: String!) {
         }
         variants(first:15) {
                 nodes {
+                    id
                     inventoryQuantity
                     selectedOptions {
                         name

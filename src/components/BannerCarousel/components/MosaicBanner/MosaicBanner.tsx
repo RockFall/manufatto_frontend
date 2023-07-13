@@ -147,7 +147,7 @@ const MosaicBanner = (props: MosaicBannerProps) => {
     <div className={classes.root}>
       <Hidden xsDown>
         <div className={classes.backgroundMosaic}>
-          <Image src={`/light1.png`} layout='fill' />
+          <Image src={`/${item.background}`} layout='fill' />
           <div className={classes.primaryImage}>
             <Image src={item.images[0].image.originalWbp} width='488.15px' height='615.81px' layout='responsive' />
           </div>

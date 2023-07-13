@@ -154,6 +154,8 @@ export default function Index(props)  {
     setFilterItems({ ...filterItems, produto: event.target.value })
   }
 
+  console.log(data?.metaobjects.nodes[0].fields[0].value)
+
   const {
       colors: availableColors,
       sizes: availableSizes,
@@ -161,11 +163,8 @@ export default function Index(props)  {
       categories: availableCategories,
   } = JSON.parse(data?.metaobjects.nodes[0].fields[0].value)
 
-  console.log(JSON.parse(data?.metaobjects.nodes[0].fields[0].value));
-  
-
   //const { totalCount} = data.productsCatalog.metadata
-  const totalCount = 250
+  const totalCount = 250 // FIXME: get from api
   const count = products.length
 
   console.log();
@@ -178,10 +177,10 @@ export default function Index(props)  {
       maxPrice,
       minPrice,
       shop: data?.shop.productVendors.edges.map(({ node }) => node),
-      colorGroups: availableColors.map(c => c.value),
-      sizes: availableSizes.map(c => c.value),
+      colors: availableColors.map(c => c),
+      sizes: availableSizes.map(c => c),
       //materials: availableMaterials.map(c => c.value), TODO:
-      categoriesNames: availableCategories.map(c => c.value),
+      categories: availableCategories.map(c => c),
   }
   const theme = useTheme()
   const screenMatches = useMediaQuery(theme.breakpoints.down('md'))

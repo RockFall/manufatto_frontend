@@ -86,8 +86,8 @@ export interface ProductFilterProps {
   handlePriceChange: Function
   handleProductChange: Function
   shop?: string[]
-  categoriesNames?: string[]
-  colorGroups?: string[]
+  categories?: string[]
+  colors?: string[]
   sizes?: string[]
   materials?: string[]
   occasion?: string[]
@@ -103,8 +103,8 @@ const ProductFilter = (props: ProductFilterProps) => {
     handleProductChange,
     className,
     shop,
-    categoriesNames,
-    colorGroups,
+    categories,
+    colors,
     sizes,
     materials,
     minPrice,
@@ -150,18 +150,18 @@ const ProductFilter = (props: ProductFilterProps) => {
           </RadioGroup>
         </FormGroup>
       </FilterAcordion> */}
-      {categoriesNames && categoriesNames.length && (<>
+      {categories && categories.length && (<>
         <FilterAcordion title='Categorias'>
           <FormGroup>
-            {categoriesNames.map((category, i) => {
+            {categories.map((category, i) => {
               return (
                 <div className={classes.checkbox} key={i}>
                   <FormControlLabel
                     className={classes.filterItem}
                     control={
                       <Checkbox
-                        checked={filterItems['categoriesNames'].includes(category)}
-                        onChange={e => handleFilterChange(e, 'categoriesNames')}
+                        checked={filterItems['categories'].includes(category)}
+                        onChange={e => handleFilterChange(e, 'categories')}
                         name={category}
                       />
                     }
@@ -226,16 +226,16 @@ const ProductFilter = (props: ProductFilterProps) => {
         <div className={classes.spacer} />
       </>)}
 
-      {colorGroups && colorGroups.length && (<>
+      {colors && colors.length && (<>
         <FilterAcordion title='Cores'>
           <FormGroup>
-            {colorGroups.map((color, i) => {
+            {colors.map((color, i) => {
               return (
                 <div className={classes.checkbox} key={i}>
                   <FormControlLabel
                     className={classes.filterItem}
                     control={
-                      <Checkbox checked={filterItems['colorGroups'].includes(color)} onChange={e => handleFilterChange(e, 'colorGroups')} name={color} />
+                      <Checkbox checked={filterItems['colors'].includes(color)} onChange={e => handleFilterChange(e, 'colors')} name={color} />
                     }
                     label={color}
                   />

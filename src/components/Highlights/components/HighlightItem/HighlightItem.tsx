@@ -1,11 +1,13 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 import clsx from 'clsx'
-
+import { useRouter } from 'next/router'
 import { makeStyles } from '@material-ui/core/styles'
 import { Box, Typography, Button, Hidden } from '@material-ui/core'
 import Image from 'next/image'
+import Util from '../../../../util/custom_formatter'
 const useStyles = makeStyles(theme => ({
+  
   root: {
     width: '100%',
     display: 'flex',
@@ -19,6 +21,7 @@ const useStyles = makeStyles(theme => ({
     },
     margin: '40px 0px',
   },
+  
   info: {
     display: 'flex',
     flexDirection: 'column',
@@ -50,6 +53,10 @@ const useStyles = makeStyles(theme => ({
     lineHeight: '32px',
     margin: '15px 0px',
   },
+  image: {
+    height: 'auto',
+    minHeight: '0%'
+  },
 }))
 
 interface HighlightItemProps {
@@ -63,25 +70,26 @@ interface HighlightItemProps {
 const HighlightItem = (props: HighlightItemProps) => {
   const { className, rightImage, src, title, text, ...rest } = props
   const classes = useStyles()
+  const router = useRouter()
 
   return (
     <React.Fragment {...rest}>
       <Hidden smDown>
         <Box className={clsx(className, classes.root)}>
-          {!rightImage ? <Image src={src} width='620px' height='586px' layout='intrinsic' /> : <React.Fragment />}
+          {!rightImage ? <Image className={classes.image} src={src} width='620px' height='586px' layout='intrinsic' /> : <React.Fragment />}
           <Box className={classes.info}>
             <Typography variant='h4' className={classes.textTitle}>
               {' '}
               {title}{' '}
             </Typography>
             <Typography> {text} </Typography>
-            <Button variant='outlined' className={classes.button}>
+            <Button variant='outlined' className={classes.button}  onClick={()=> router.push(`/marcas/${Util.handleFromVendor(title)}`)}>
               {' '}
               Ver Produtos{' '}
             </Button>
           </Box>
 
-          {rightImage ? <Image src={src} width='620px' height='586px' layout='intrinsic' /> : <React.Fragment />}
+          {rightImage ? <Image className={classes.image} src={src} width='620px' height='586px' layout='intrinsic' /> : <React.Fragment />}
         </Box>
       </Hidden>
       <Hidden mdUp>
@@ -93,7 +101,7 @@ const HighlightItem = (props: HighlightItemProps) => {
               {title}{' '}
             </Typography>
             <Typography> {text} </Typography>
-            <Button variant='outlined' className={classes.button}>
+            <Button variant='outlined' className={classes.button} onClick={()=> router.push(`/marcas/${Util.handleFromVendor(title)}`)}>
               {' '}
               Ver Produtos{' '}
             </Button>

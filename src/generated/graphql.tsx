@@ -26957,14 +26957,7 @@ export enum PrivateMetafieldValueType {
 }
 
 /** The Product resource lets you manage products in a merchant’s store. You can use [ProductVariants](https://shopify.dev/api/admin-graphql/latest/objects/productvariant) to create or update different versions of the same product. You can also add or update product [Media](https://shopify.dev/api/admin-graphql/latest/interfaces/media). Products can be organized by grouping them into a [Collection](https://shopify.dev/api/admin-graphql/latest/objects/collection). */
-export type Product = HasMetafieldDefinitions &
-  HasMetafields &
-  HasPublishedTranslations &
-  LegacyInteroperability &
-  Navigable &
-  Node &
-  OnlineStorePreviewable &
-  Publishable & {
+export type Product = {
     __typename?: 'Product'
     /** The number of publications a resource is published to without feedback errors. */
     availablePublicationCount: Scalars['Int']
@@ -34271,9 +34264,7 @@ export type ShippingRefundInput = {
 }
 
 /** Represents a collection of general settings and information about the shop. */
-export type Shop = HasMetafields &
-  HasPublishedTranslations &
-  Node & {
+export type Shop = {
     __typename?: 'Shop'
     /** A list of the shop's active alert messages that appear in the Shopify admin. */
     alerts: Array<ShopAlert>
@@ -40244,6 +40235,13 @@ export type ProductByHandleQuery = { __typename?: 'QueryRoot' } & {
             }
           >
         }
+        variants: { __typename?: 'ProductVariantConnection' } & {
+          nodes: Array<
+            { __typename?: 'ProductVariant' } & Pick<ProductVariant, 'id' | 'inventoryQuantity'> & {
+                selectedOptions: Array<{ __typename?: 'SelectedOption' } & Pick<SelectedOption, 'name' | 'value'>>
+              }
+          >
+        }
       }
   >
 }
@@ -40274,6 +40272,13 @@ export type ProductByIdQuery = { __typename?: 'QueryRoot' } & {
             }
           >
         }
+        variants: { __typename?: 'ProductVariantConnection' } & {
+          nodes: Array<
+            { __typename?: 'ProductVariant' } & Pick<ProductVariant, 'inventoryQuantity'> & {
+                selectedOptions: Array<{ __typename?: 'SelectedOption' } & Pick<SelectedOption, 'name' | 'value'>>
+              }
+          >
+        }
       }
   >
 }
@@ -40284,11 +40289,15 @@ export type ShopDetailsQueryVariables = Exact<{
 }>
 
 export type ShopDetailsQuery = { __typename?: 'QueryRoot' } & {
+  filtersData: { __typename?: 'MetaobjectConnection' } & {
+    nodes: Array<{ __typename?: 'Metaobject' } & { fields: Array<{ __typename?: 'MetaobjectField' } & Pick<MetaobjectField, 'value'>> }>
+  }
   metaobjectByHandle?: Maybe<
     { __typename?: 'Metaobject' } & Pick<Metaobject, 'id'> & {
         name?: Maybe<{ __typename?: 'MetaobjectField' } & { text: MetaobjectField['value'] }>
         small_description?: Maybe<{ __typename?: 'MetaobjectField' } & { text: MetaobjectField['value'] }>
         big_description?: Maybe<{ __typename?: 'MetaobjectField' } & { text: MetaobjectField['value'] }>
+        background?: Maybe<{ __typename?: 'MetaobjectField' } & { text: MetaobjectField['value'] }>
       }
   >
   productsCatalog: { __typename?: 'ProductConnection' } & {
@@ -40324,7 +40333,8 @@ export type ShopsListQueryVariables = Exact<{ [key: string]: never }>
 export type ShopsListQuery = { __typename?: 'QueryRoot' } & {
   shopsList: { __typename?: 'MetaobjectConnection' } & {
     shops: Array<
-      { __typename?: 'Metaobject' } & { name: Metaobject['displayName'] } & {
+      { __typename?: 'Metaobject' } & {
+        name?: Maybe<{ __typename?: 'MetaobjectField' } & { text: MetaobjectField['value'] }>
         small_description?: Maybe<{ __typename?: 'MetaobjectField' } & { text: MetaobjectField['value'] }>
         big_description?: Maybe<{ __typename?: 'MetaobjectField' } & { text: MetaobjectField['value'] }>
       }
@@ -40538,6 +40548,16 @@ export const ProductByHandleDocument = gql`
           }
         }
       }
+      variants(first: 15) {
+        nodes {
+          id
+          inventoryQuantity
+          selectedOptions {
+            name
+            value
+          }
+        }
+      }
     }
   }
 `
@@ -40601,6 +40621,15 @@ export const ProductByIdDocument = gql`
           }
         }
       }
+      variants(first: 15) {
+        nodes {
+          inventoryQuantity
+          selectedOptions {
+            name
+            value
+          }
+        }
+      }
     }
   }
 `
@@ -40634,6 +40663,13 @@ export type ProductByIdLazyQueryHookResult = ReturnType<typeof useProductByIdLaz
 export type ProductByIdQueryResult = Apollo.QueryResult<ProductByIdQuery, ProductByIdQueryVariables>
 export const ShopDetailsDocument = gql`
   query shopDetails($slug: String!, $cursor: String) {
+    filtersData: metaobjects(type: "filters", first: 1) {
+      nodes {
+        fields {
+          value
+        }
+      }
+    }
     metaobjectByHandle(handle: { handle: $slug, type: "brand" }) {
       id
       name: field(key: "name") {
@@ -40643,6 +40679,9 @@ export const ShopDetailsDocument = gql`
         text: value
       }
       big_description: field(key: "big_description") {
+        text: value
+      }
+      background: field(key: "background") {
         text: value
       }
     }
@@ -40716,7 +40755,9 @@ export const ShopsListDocument = gql`
   query shopsList {
     shopsList: metaobjects(first: 20, type: "brand") {
       shops: nodes {
-        name: displayName
+        name: field(key: "name") {
+          text: value
+        }
         small_description: field(key: "small_description") {
           text: value
         }

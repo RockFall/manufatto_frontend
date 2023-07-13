@@ -101,19 +101,18 @@ const useStyles = makeStyles(theme => ({
 }))
 interface BrandsBannerProps {
   className?: string
-  shop?: Shop
+  shop?: any
 }
 
 const BrandsBanner = (props: BrandsBannerProps) => {
   const { className, shop, ...rest } = props
   const classes = useStyles()
-
   return (
     <Container className={clsx(className, classes.root)} maxWidth={false}>
-      <Breadcrumbs path={[{name: 'Marcas', url: '/marcas'}]} page={shop.name} className={classes.history}/>
+      <Breadcrumbs path={[{name: 'Marcas', url: '/marcas'}]} page={shop?.name.text} className={classes.history}/>
       <Hidden mdDown>
         <div className={classes.backgroundImage}>
-          <img src='/Bg-cold4.png' width='100%' height='934px'/>
+          <img src={shop?.background? `/${shop.background.text}.png` : '/Bg-cold4.png'} width='100%' height='934px'/>
         </div>
       </Hidden>
       <div className={classes.content}>
@@ -121,8 +120,8 @@ const BrandsBanner = (props: BrandsBannerProps) => {
           <Image src={'/brand/brand9.svg'} layout='fixed' width='620px' height='586px' />
         </div>
         <div className={classes.brandInfo}>
-          <Typography className={classes.shopName}> {shop?.name || ""}</Typography>
-          <Typography className={classes.brandText}> {shop?.description || ""} </Typography>
+          <Typography className={classes.shopName}> {shop?.name.text || ""}</Typography>
+          <Typography className={classes.brandText}> {shop?.small_description.text || ""} </Typography>
         </div>
       </div>
     </Container>

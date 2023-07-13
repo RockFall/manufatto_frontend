@@ -2,8 +2,12 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import clsx from 'clsx'
+import { useRouter } from 'next/router'
 import { Button, Typography, Container } from '@material-ui/core'
 import { HighlightItem } from './components'
+import Util from '../../util/custom_formatter'
+
+
 const useStyles = makeStyles(theme => ({
   highlightItems: {
     display: 'flex',
@@ -46,12 +50,14 @@ const useStyles = makeStyles(theme => ({
 }))
 
 interface HighlightsProps {
-  className?: string
+  className?: string,
+  shopsList?: any[],
 }
 
 const Highlights = (props: HighlightsProps) => {
-  const { className, ...rest } = props
+  const { className, shopsList, ...rest } = props
   const classes = useStyles()
+  const router = useRouter()
 
   return (
     <Container className={clsx(className, classes.root)} maxWidth={false}>
@@ -60,30 +66,17 @@ const Highlights = (props: HighlightsProps) => {
         <Typography className={classes.subtitle}>Uma curadoria especial para você</Typography>
       </div>
       <div {...rest} className={classes.highlightItems}>
-        <HighlightItem
-          src={'/brand/brand4.svg'}
-          text='An mel corpora consectetuer. Duo veri eripuit honestatis ei. Mandamus expetenda has ex. Eu minim movet quodsi eum.  Lorem ipsum dolor seat meadimed conor.'
-          title='Mabô Rio'
-        />
-        <HighlightItem
-          src={'/brand/brand2.svg'}
-          text='An mel corpora consectetuer. Duo veri eripuit honestatis ei. Mandamus expetenda has ex. Eu minim movet quodsi eum.  Lorem ipsum dolor seat meadimed conor.'
-          title='Burberry'
-          rightImage
-        />
-        <HighlightItem
-          src={'/brand/brand3.svg'}
-          text='An mel corpora consectetuer. Duo veri eripuit honestatis ei. Mandamus expetenda has ex. Eu minim movet quodsi eum.  Lorem ipsum dolor seat meadimed conor.'
-          title='Tommy Hilfiger'
-        />
-        <HighlightItem
-          src={'/brand/brand1.svg'}
-          text='An mel corpora consectetuer. Duo veri eripuit honestatis ei. Mandamus expetenda has ex. Eu minim movet quodsi eum.  Lorem ipsum dolor seat meadimed conor.'
-          title='Damsel In Dior'
-          rightImage
-        />
+      {shopsList.map((shop, idx) => (
+          <HighlightItem
+            key={shop.name.text}
+            src={`/brand/${Util.handleFromVendor(shop.name.text)}.svg`}
+            text={shop.small_description.text}
+            title={shop.name.text}
+            rightImage={(idx + 1) % 2 === 0} // Set rightImage to true every second shop
+          />
+        ))}
       </div>
-      <Button variant='contained' className={classes.button}>VER TODAS AS MARCAS</Button>
+      <Button variant='contained' className={classes.button} onClick={()=> router.push(`/marcas`)}>VER TODAS AS MARCAS</Button>
     </Container>
   )
 }

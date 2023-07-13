@@ -564,7 +564,7 @@ const ProductBuy = (props: ProductBuyProp) => {
       {/* Preço e compra */}
       <div>
         <Typography>
-          <span className={classes.oldPrice}> {(product.product.contextualPricing.maxVariantPricing.compareAtPrice.amount).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
+          <span className={classes.oldPrice}> {(product.product.contextualPricing.maxVariantPricing.compareAtPrice?.amount)?.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
           <span className={classes.price}> {(product.product.contextualPricing.maxVariantPricing.price.amount).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'})} </span>
           <span className={classes.creditCardPayment}>
             {' '}

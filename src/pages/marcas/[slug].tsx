@@ -65,8 +65,13 @@ const useStyles = makeStyles(theme => ({
 
 const ShopPage: PageShopDetailsComp = (props) => {
   const { data } = props
+  console.log(data)
 
-  const [products, setProducts] = useState<any[]>(data.productsCatalog.products)
+  const shop_name = data.metaobjectByHandle?.name
+  const shop_small_description = data.metaobjectByHandle?.small_description
+  const shop_big_description = data.metaobjectByHandle?.big_description
+
+  const [products, setProducts] = useState<any[]>(data.productsCatalog.products || [])
   const classes = useStyles()
 
   const minPrice = Math.min(...products.map(p => (p.contextualPricing.maxVariantPricing.price.amount))) // TODO: Changed here || unit price
@@ -83,8 +88,9 @@ const ShopPage: PageShopDetailsComp = (props) => {
     price: [minPrice, maxPrice],
   })
 
-  //const isLoadMoreEnabled = products.length < data.productsCatalog.metadata?.totalCount
-  const isLoadMoreEnabled = false
+  const totalCount = 10; // FIXME: data.productsCatalog.metadata?.totalCount / const { totalCount } = data.productsCatalog.metadata
+
+  const isLoadMoreEnabled = products.length < totalCount
 
   const handleFilterChange = (event, type) => {
     if (event.target.checked) {
@@ -108,17 +114,17 @@ const ShopPage: PageShopDetailsComp = (props) => {
 
   const theme = useTheme()
   const screenMatches = useMediaQuery(theme.breakpoints.down('md'))
-/*
+
   const {
     colors: availableColors,
     sizes: availableSizes,
     materials: availableMaterials,
     categories: availableCategories
-  } = data.productsCatalog.facetedFilters
-  const { totalCount } = data.productsCatalog.metadata*/
+  } = JSON.parse(data.filtersData.nodes[0].fields[0].value)
+  
   const count = data.productsCatalog.products?.length
 
-  /*
+  
   const filterProps: ProductFilterProps = {
     filterItems: filterItems,
     handleFilterChange: handleFilterChange,
@@ -126,10 +132,10 @@ const ShopPage: PageShopDetailsComp = (props) => {
     handleProductChange: handleProductChange,
     maxPrice,
     minPrice,
-    colors: availableColors.map(c => c.value),
-    sizes: availableSizes.map(c => c.value),
-    materials: availableMaterials.map(c => c.value),
-    categories: availableCategories.map(c => c.value),
+    colors: availableColors.map(c => c),
+    sizes: availableSizes.map(c => c),
+    //materials: availableMaterials.map(c => c.value),
+    categories: availableCategories.map(c => c),
   }
 
   const progress = ((count || 0) / totalCount) * 100
@@ -148,10 +154,13 @@ const ShopPage: PageShopDetailsComp = (props) => {
         )}
       </Hidden>
     )
-  }*/
+  }
   return (
+    
     <React.Fragment>
-      {//<BrandBanner shop={data.shop as Shop} />
+      
+      {
+        <BrandBanner shop={data.metaobjectByHandle} />
       }
 
       <div className={classes.root}>
@@ -160,6 +169,7 @@ const ShopPage: PageShopDetailsComp = (props) => {
         <div className={classes.content}>
           <Hidden mdDown>
             {//<ProductFilter {...filterProps} />
+              ''
             }
           </Hidden>
           <div className={classes.prodGrid}>
@@ -179,12 +189,9 @@ const ShopPage: PageShopDetailsComp = (props) => {
 )}
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const { params } = ctx
-  const slug = (typeof params.slug === 'object') ? params.slug[0] : params.slug
-
   return (await ssrShopDetails.getServerPage({
     variables: {
-      slug: slug
+      slug: ctx.params.slug as string
     }
   }, ctx))
 }

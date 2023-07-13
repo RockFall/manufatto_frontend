@@ -1,7 +1,9 @@
 query shopsList {
     shopsList : metaobjects(first:20, type:"brand") {
         shops : nodes {
-            name : displayName
+            name : field(key:"name") {
+      		    text: value
+            }
             small_description : field(key:"small_description") {
       		    text: value
             }

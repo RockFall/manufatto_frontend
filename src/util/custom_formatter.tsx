@@ -5,7 +5,7 @@ class Utils {
     }
 
     static handleFromVendor(vendor: string): string {
-        return vendor.replace(/ /g, '_').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "")
+        return vendor.replace(/ /g, '-').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9-]/g, ' ')
     }
 
     // From shops, colors, categories, size, all lists of strings

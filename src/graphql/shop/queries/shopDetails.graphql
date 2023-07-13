@@ -1,4 +1,11 @@
 query shopDetails($slug: String!, $cursor: String) {
+    filtersData : metaobjects(type:"filters", first:1) {
+    nodes {
+        fields {
+            value
+        }
+    }
+  }
     metaobjectByHandle(handle:{handle:$slug, type:"brand"}) {
         id
         name : field(key:"name") {
@@ -9,7 +16,10 @@ query shopDetails($slug: String!, $cursor: String) {
     	}
         big_description : field(key:"big_description") {
       		text: value
-    	}  
+    	}
+        background : field(key:"background") {
+            text: value
+        }
     }
     productsCatalog : products(first:10,query:$slug, after: $cursor) {
         products : nodes {
