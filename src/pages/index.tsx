@@ -249,9 +249,66 @@ const Index: PageHomeDetailsComp = (props) => {
   )
 }
 
+const MAX_RETRIES = 5;
+
+/*
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
+
+  let retries = 0;
+  let data;
+
+  // Try to get the data from the server, retrying if it fails.
+  while (retries < MAX_RETRIES) {
+    try {
+      console.log("Trying to get data from server...");
+      data = await ssrHomeDetails.getServerPage({});
+      break;  // Break out of the loop if the request was successful.
+    } catch (error) {
+      console.log("There was an error: ", error);
+      if (error.message === 'Throttled') {
+        console.log("Throttled, waiting for a bit before retrying...");
+        retries++;
+        await new Promise(resolve => setTimeout(resolve, retries * 1000));  // Wait for a bit before retrying.
+      } else {
+        throw error;  // If it's not a throttling error, re-throw it.
+      }
+    }
+  }
+
+  return data
+
   return (await ssrHomeDetails.getServerPage({
   }, ctx))
+}*/
+
+export async function getStaticProps() {
+  let retries = 0;
+  let data;
+
+  // Try to get the data from the server, retrying if it fails.
+  while (retries < MAX_RETRIES) {
+    try {
+      console.log("Trying to get data from server...");
+      data = await ssrHomeDetails.getServerPage({});
+      break;  // Break out of the loop if the request was successful.
+    } catch (error) {
+      console.log("There was an error: ", error);
+      if (error.message === 'Throttled') {
+        console.log("Throttled, waiting for a bit before retrying...");
+        retries++;
+        await new Promise(resolve => setTimeout(resolve, retries * 1000));  // Wait for a bit before retrying.
+      } else {
+        throw error;  // If it's not a throttling error, re-throw it.
+      }
+    }
+  }
+
+  return {
+    props: {
+      data,
+    },
+    revalidate: 120, // Page will be regenerated in the background every 1 second.
+  };
 }
 
 export default Index
