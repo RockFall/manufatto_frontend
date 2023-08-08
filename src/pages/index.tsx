@@ -193,8 +193,15 @@ const Index: PageHomeDetailsComp = (props) => {
   const router = useRouter()
   const { data } = props
 
+  console.log("Props: ", props)
+  console.log("Data: ", data)
+  console.log("shopsList: ", data?.shopsList)
+  console.log("shops: ", data?.shopsList?.shops)
+
   // Getting vendor list
   const vendors = data?.shopsList.shops.map(({name}) => name.text) as String[]
+
+  
 
   // Getting random products from each vendor
   const randomVendors = Array.from(vendors).sort(() => 0.5 - Math.random())
@@ -289,7 +296,7 @@ export async function getStaticProps() {
   while (retries < MAX_RETRIES) {
     try {
       console.log("Trying to get data from server...");
-      data = await ssrHomeDetails.getServerPage({});
+      data = (await ssrHomeDetails.getServerPage({})).props.data;
       break;  // Break out of the loop if the request was successful.
     } catch (error) {
       console.log("There was an error: ", error);
