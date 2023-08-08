@@ -33,7 +33,7 @@ const isSpecialPage = (pathname) => {
 
 const ShopLayout = (props: any) => {
   const { children } = props
-  const pathName = children._owner.memoizedProps.router.pathname
+  const pathName = children?._owner?.memoizedProps?.router?.pathname || '/';
   const classes = useStyles()
 
   return (
