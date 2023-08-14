@@ -219,7 +219,12 @@ const Index: PageHomeDetailsComp = (props) => {
     }
   })
 
-  const carouselBanners = data.metaobjects.edges[0] ? data.metaobjects.edges.map(({node}) => JSON.parse(node.fields[0].value)) as HighlightBanner[] : (defaultBannerList as unknown as HighlightBanner[])
+  const carouselBanners = data.metaobjects.edges[0] 
+    ? data.metaobjects.edges
+        .map(({node}) => JSON.parse(node.fields[0].value))
+        .filter(banner => banner.isActive === true)
+        .sort((a, b) => a.order - b.order) as HighlightBanner[] 
+    : (defaultBannerList as unknown as HighlightBanner[])
   console.log('carouselBanners', carouselBanners)
 
 
@@ -314,7 +319,7 @@ export async function getStaticProps() {
     props: {
       data,
     },
-    revalidate: 120, // Page will be regenerated in the background every 1 second.
+    revalidate: 120, // Page will be regenerated in the background every 120 seconds.
   };
 }
 
