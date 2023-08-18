@@ -62,11 +62,15 @@ const Header = (props: HeaderProps) => {
   const classes = useStyles()
   const router = useRouter()
 
+
+
   return (
     <div {...rest} className={classes.appBar}>
       <div className={classes.logos}>
         <Link href="/">
-          <Image src='/LogoBlack.svg' width='150%' height='70%' object-fit='fill' />
+          <a>
+            <Image src='/LogoBlack.svg' width='150%' height='70%' object-fit='fill' />
+          </a>
         </Link>
       </div>
       <div className={classes.flexGrow} />

@@ -92,6 +92,11 @@ const TopBar = (props: TopBarProps) => {
           setProductsMenuOpen(false)
           setBrandsMenuOpen(false)
         }}
+        onClickCloseMenuCompletely={() => {
+          setProductsMenuOpen(false)
+          setBrandsMenuOpen(false)
+          setMobileMenuOpen(false)
+        }}
       />
     </div>
   )

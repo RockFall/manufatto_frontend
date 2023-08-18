@@ -80,9 +80,11 @@ const useStyles = makeStyles(theme => ({
   },
   mobileBackgroundPosition: {
     position: 'absolute',
-    top: '20%',
+    top: '0',
     width: '100%',
-    height: '42%',
+    height: 'auto',
+    minHeight: '100%',
+    minWidth: '100%',
   },
 }))
 
@@ -117,7 +119,7 @@ const OutfiBanner = (props: OutfiBannerProps) => {
         <div className={classes.mobileCentering}>
           <div className={classes.mobileImages}>
             <div className={classes.mobileBackgroundPosition}>
-              <Image src={`/${item.background}`} layout='fill' />
+              <Image src={`/${item.background}`} layout='fill' objectFit='contain' />
             </div>
             <div className={classes.mobileCroqui}>
               <Image src={item.images[0].image.original} layout='fill' objectFit='contain' />

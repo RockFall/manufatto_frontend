@@ -41,6 +41,7 @@ const useStyles = makeStyles(theme => ({
 
     letterSpacing: '0.24em',
     textTransform: 'uppercase',
+    color: '#6F6C6B',
   },
 }))
 

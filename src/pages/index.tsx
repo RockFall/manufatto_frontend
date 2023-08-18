@@ -193,14 +193,15 @@ const Index: PageHomeDetailsComp = (props) => {
   const router = useRouter()
   const { data } = props
 
-  console.log("Props: ", props)
+  //console.log("Props: ", props)
   console.log("Data: ", data)
-  console.log("shopsList: ", data?.shopsList)
-  console.log("shops: ", data?.shopsList?.shops)
+  //console.log("shopsList: ", data?.shopsList)
+  //console.log("shops: ", data?.shopsList?.shops)
 
   // Getting vendor list
   const vendors = data?.shopsList.shops.map(({name}) => name.text) as String[]
 
+  console.log("Vendors: ", vendors)
   
 
   // Getting random products from each vendor
@@ -235,19 +236,15 @@ const Index: PageHomeDetailsComp = (props) => {
       <BannerCarousel
           items={data.metaobjects.edges[0] ? carouselBanners : (defaultBannerList as unknown as HighlightBanner[])}
         />
-
         <div className={classes.productSession}>
           <ProductsButtonGrid className={classes.buttonsRoot} />
-
           <Typography className={classes.shopNowTitle}> Shop Now </Typography>
           <Typography className={classes.shopNowSubtitle}> O que vira tendência, está aqui. </Typography>
-          
           {
             data && 
             data.collections.edges.length != 0 &&
             <ProductGrid productList={randomProducts} />
           }
-
           <Button style={{ margin: '3.4% 0 5%' }} className={classes.button} color='inherit' onClick={()=> router.push(`/produtos`)}>
             VEJA MAIS PRODUTOS
           </Button>

@@ -57,6 +57,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 interface HighlightBrand {
+  brand: string
   name: string
   url: string
   src: string
@@ -73,6 +74,7 @@ interface ProductsMenuProps {
   pages: Array<any>
   isOpen: boolean
   closeMenuMobile: Function
+  onClickCloseMenuCompletely: Function
 }
 
 const NavigationList = (props: NavigationListProp) => {

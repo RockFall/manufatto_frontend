@@ -37,40 +37,16 @@ const useStyles = makeStyles(theme => ({
 
 const brands = [
   {
-    name: 'By Rafael Motta',
-    url: '/marcas/aufderharabshire',
+    name: 'Khos Collection',
+    url: '/marcas/khos-collection',
   },
   {
-    name: 'Mabô Rio',
-    url: '/marcas/aufderharabshire',
+    name: 'Jours de Pluie',
+    url: '/marcas/jours-de-pluie',
   },
   {
-    name: 'Nammos Beachwear',
-    url: '/marcas/aufderharabshire',
-  },
-  {
-    name: 'Band it in',
-    url: '/marcas/aufderharabshire',
-  },
-  {
-    name: 'Tanden Aletier',
-    url: '/marcas/aufderharabshire',
-  },
-  {
-    name: 'Ima Handmade',
-    url: '/marcas/aufderharabshire',
-  },
-  {
-    name: 'Ana Duque',
-    url: '/marcas/aufderharabshire',
-  },
-  {
-    name: 'Anne Folle',
-    url: '/marcas/aufderharabshire',
-  },
-  {
-    name: 'Loja Löra',
-    url: '/marcas/aufderharabshire',
+    name: 'Cumuru',
+    url: '/marcas/cumuru',
   },
 ]
 
@@ -156,6 +132,7 @@ interface HeaderMenuProps {
   setProductsMenuOpen: Function
   setBrandsMenuOpen: Function
   closeMenuMobile: Function
+  onClickCloseMenuCompletely?: Function
   specialBackground: boolean
   className?: string
 }
@@ -168,6 +145,7 @@ const HeaderMenu = (props: HeaderMenuProps) => {
     isBrandsMenuOpen,
     setBrandsMenuOpen,
     setProductsMenuOpen,
+    onClickCloseMenuCompletely,
     className,
     ...rest
   } = props
@@ -179,19 +157,21 @@ const HeaderMenu = (props: HeaderMenuProps) => {
         closeMenuMobile={closeMenuMobile}
         pages={productsPages}
         isOpen={isProductsMenuOpen}
+        onClickCloseMenuCompletely={onClickCloseMenuCompletely}
 
-        highlight={{ name: 'Moda Beachwear', url: '', src: '/brandMenu02.png' }}
+        highlight={{ brand: 'Khos Collection', name: 'Moda Beachwear', url: '/marcas/khos-collection', src: '/SampleKhosFeaturedImage.webp' }}
       />
       <BrandsMenu
         closeMenuMobile={closeMenuMobile}
         brands={brands}
         isOpen={isBrandsMenuOpen}
+        onClickCloseMenuCompletely={onClickCloseMenuCompletely}
         setBrandsMenuOpen={() => setBrandsMenuOpen(false)}
-        highlight={{ name: 'Moda Fitness', url: '', src: '/brandMenu01.png' }}
+        highlight={{ brand: 'Khos Collection', name: 'Moda Beachwear', url: '/marcas/khos-collection', src: '/SampleKhosFeaturedImage.webp' }}
       />
       <Hidden lgUp>
         <MobileMenu
-          highlightImage='/brandMenu01.png'
+          highlightImage='/SampleKhosFeaturedImage.webp'
           isOpen={isMobileMenuOpen && !isBrandsMenuOpen && !isProductsMenuOpen}
           setProductsMenuOpen={setProductsMenuOpen}
           setBrandsMenuOpen={setBrandsMenuOpen}
