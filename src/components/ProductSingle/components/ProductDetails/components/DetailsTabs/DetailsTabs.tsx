@@ -1,7 +1,8 @@
 import React from 'react'
 import SwipeableViews from 'react-swipeable-views'
-import { makeStyles, Theme, useTheme, withStyles, createStyles } from '@material-ui/core/styles'
-import { Divider, Box, Tabs, Tab, Typography } from '@material-ui/core'
+import { makeStyles, useTheme, withStyles, createStyles } from '@mui/styles'
+import { Theme } from '@mui/material/styles';
+import { Divider, Box, Tabs, Tab, Typography } from '@mui/material'
 import { Product } from '../../../../../../generated/graphql'
 const DetailTabs = withStyles({
   root: {
@@ -59,7 +60,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     marginBottom: '4%',
     marginTop: '2%',
     padding:'0 19% 0 19%',
-    [theme.breakpoints.between('md', 'lg')]: {
+    [theme.breakpoints.between('md', 'xl')]: {
       padding:'0 19%',
     },
     [theme.breakpoints.up(1800)]: {

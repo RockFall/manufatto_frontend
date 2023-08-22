@@ -1,9 +1,9 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import clsx from 'clsx'
-import { Container, Typography, Button } from '@material-ui/core'
+import { Container, Typography, Button } from '@mui/material'
 import Image from 'next/image'
-import ArrowRightIcon from '@material-ui/icons/ArrowRight'
+import ArrowRightIcon from '@mui/icons-material/ArrowRight'
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',

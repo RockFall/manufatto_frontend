@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Typography, Link, Hidden, Divider } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Button, Typography, Link, Hidden, Divider } from '@mui/material'
 import SelectionMenu from './components/SelectionMenu'
 import {Breadcrumbs} from '../../components'
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     marginLeft: '10%',
     flexDirection: 'row',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: '16px 28px',
       flexDirection: 'column',
     }
@@ -53,7 +53,7 @@ const useStyles = makeStyles(theme => ({
     
     position: 'relative',
     marginLeft: '10%',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: '18px 28px',
     }
   },
@@ -76,15 +76,15 @@ const useStyles = makeStyles(theme => ({
   textContainer: {
       marginLeft: theme.spacing(10),
       width: '90%',
-      [theme.breakpoints.down('sm')]: {
-        margin: `${theme.spacing(2)}px 28px`,
+      [theme.breakpoints.down('md')]: {
+        margin: `${theme.spacing(2)} 28px`,
       },
   },
   divider: {
     borderBottom: '1px solid #E0E0E0',
-    margin: `${theme.spacing(2)}px 10%`,
-    [theme.breakpoints.down('sm')]: {
-      margin: `${theme.spacing(2)}px 28px`,
+    margin: `${theme.spacing(2)} 10%`,
+    [theme.breakpoints.down('md')]: {
+      margin: `${theme.spacing(2)} 28px`,
     }
   },
 }))

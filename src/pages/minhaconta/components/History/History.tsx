@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import clsx from 'clsx'
-import { makeStyles } from '@material-ui/core/styles'
-import { Typography, Grid, Button, TableBody, TableCell, TableRow, TableHead, Table ,Hidden, Accordion, AccordionSummary, AccordionDetails } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Typography, Grid, Button, TableBody, TableCell, TableRow, TableHead, Table ,Hidden, Accordion, AccordionSummary, AccordionDetails } from '@mui/material'
 import HistoryRow from './components/HistoryRow'
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 
 const useStyles = makeStyles(theme => ({
   root:{
@@ -189,7 +189,7 @@ const History = (props: HistoryProp) => {
           <Typography variant='h6'>Você ainda não fez compras</Typography>
           <Typography variant='body1'>Vamos começar?</Typography>
         </div>
-        <Grid container justify='center' alignItems='center'>
+        <Grid container justifyContent='center' alignItems='center'>
             <Button className={classes.button} color='inherit'>
               ROUPAS +
             </Button>
@@ -204,14 +204,14 @@ const History = (props: HistoryProp) => {
             </Button>
           </Grid>
       </div>
-    )
+    );
   }
   
 
   return (
     <div {...rest} className={clsx(classes.root, className)}>
         <Table>
-          <Hidden smDown>
+          <Hidden mdDown>
             <TableHead>
               <TableRow>
                 <TableCell style={{width:'40%'}}>Item</TableCell>
@@ -234,7 +234,7 @@ const History = (props: HistoryProp) => {
           </TableBody>
         </Table>
     </div>
-  )
+  );
 }
 
 export default History

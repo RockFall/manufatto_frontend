@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Hidden, Typography } from '@material-ui/core'
-import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace'
+import { makeStyles } from '@mui/styles'
+import { Button, Hidden, Typography } from '@mui/material'
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'
 
 const useStyles = makeStyles(theme => ({
   root: {

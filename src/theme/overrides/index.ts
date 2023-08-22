@@ -1,8 +1,8 @@
-import { Overrides } from '@material-ui/core/styles/overrides'
+/*import { Overrides } from '@mui/material/styles/overrides'
 import MuiButton from './MuiButton'
 
 const overrides: Overrides = {
   MuiButton,
 }
 
-export default overrides
+export default overrides*/

@@ -1,7 +1,7 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { LockOutlined, Facebook, Instagram, Twitter } from '@material-ui/icons/'
-import { Grid, IconButton } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { LockOutlined, Facebook, Instagram, Twitter } from '@mui/icons-material/'
+import { Grid, IconButton } from '@mui/material'
 import Image from 'next/image'
 
 const useStyles = makeStyles(theme => ({
@@ -61,7 +61,7 @@ const FooterMobile = (props: any) => {
   return (
     <div className={classes.root}>
       {/*Footer*/}
-      <Grid direction='column' container justify='space-between' className={classes.footer}>
+      <Grid direction='column' container justifyContent='space-between' className={classes.footer}>
         {/* Descrição Manuffato */}
         <div className={classes.bio}>
           <Image src='/Logo.svg' alt='Logo' width={200} height={70} object-fit='cover' />
@@ -111,7 +111,7 @@ const FooterMobile = (props: any) => {
       </Grid>
 
       {/*Sign*/}
-      <Grid container direction='column' justify='space-between' alignItems='center' className={classes.sign}>
+      <Grid container direction='column' justifyContent='space-between' alignItems='center' className={classes.sign}>
         <p>Formas de pagamento </p>
         <Image src='/cards.svg' alt='creditCards' width={190} height={50} />
 
@@ -121,15 +121,15 @@ const FooterMobile = (props: any) => {
         </div>
 
         <div className={classes.iconGroup}>
-          <IconButton className={classes.iconButton}>
+          <IconButton className={classes.iconButton} size="large">
             <Facebook color='action' />
           </IconButton>
 
-          <IconButton className={classes.iconButton}>
+          <IconButton className={classes.iconButton} size="large">
             <Twitter color='action' />
           </IconButton>
 
-          <IconButton className={classes.iconButton}>
+          <IconButton className={classes.iconButton} size="large">
             <Instagram color='action' />
           </IconButton>
         </div>
@@ -137,7 +137,7 @@ const FooterMobile = (props: any) => {
         <p className={classes.copyright}> © Copyright 2021 - Manufatto, All Right Reserved </p>
       </Grid>
     </div>
-  )
+  );
 }
 
 export default FooterMobile

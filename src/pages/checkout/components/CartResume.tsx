@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import clsx from 'clsx'
-import { makeStyles } from '@material-ui/core/styles'
-import { Typography, Select, MenuItem, TextField, Button } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Typography, Select, MenuItem, TextField, Button } from '@mui/material'
 import {CartItemType} from '../../../actions'
 import { formatMoney } from '../../../mixins/formatter'
 
@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'flex-start',
     alignItems: 'center',
     marginLeft: theme.spacing(10.5),
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       marginLeft: 0
     },
   },
@@ -59,7 +59,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-end',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: 0,
       alignItems: 'flex-start',
     },
@@ -68,7 +68,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-end',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: 0,
     },
   },
@@ -90,7 +90,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'row',
     margin: '18px 0px',
     justifyContent: 'space-between',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       justifyContent: 'space-between',
     },
   },

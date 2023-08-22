@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import { Hidden, Typography, Link, Button, LinearProgress, useMediaQuery } from '@material-ui/core'
+import { makeStyles, useTheme } from '@mui/styles'
+import { Hidden, Typography, Link, Button, LinearProgress, useMediaQuery } from '@mui/material'
 import { ProductFilter, ProductFilterMobile, ProductGrid, ProductsHeader, Breadcrumbs } from '../../components'
 import NotFoundScreen from './components/NotFoundScreen'
 import { ssrProductsCatalog, PageProductsCatalogComp } from '../../generated/page'
@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     background: '#fff',
     flexDirection: 'column',
     margin: '18px 8vw',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       margin: '18px 28px',
     },
   },
@@ -63,7 +63,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       flexDirection: 'column',
     },
   },
@@ -183,7 +183,7 @@ export default function Index(props)  {
       categories: availableCategories.map(c => c),
   }
   const theme = useTheme()
-  const screenMatches = useMediaQuery(theme.breakpoints.down('md'))
+  const screenMatches = useMediaQuery(theme.breakpoints.down('lg'))
 
   const progress = (count / totalCount) * 100
   if (!screenMatches && openFilter) {
@@ -207,7 +207,7 @@ export default function Index(props)  {
       <ProductsHeader count={products.length} setOpenFilter={setOpenFilter} />
       {found ? (
         <div className={classes.content}>
-          <Hidden mdDown>
+          <Hidden lgDown>
             <ProductFilter {... filterProps} />
           </Hidden>
           <div className={classes.prodGrid}>
@@ -231,7 +231,7 @@ export default function Index(props)  {
         <NotFoundScreen searchText={search as string} />
       )}
     </div>
-  )
+  );
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {

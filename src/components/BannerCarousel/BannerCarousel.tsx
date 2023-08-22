@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { CSSProperties } from 'react'
 import clsx from 'clsx'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import { Carousel } from 'react-responsive-carousel'
 //import { HighlightBanner } from '../../generated/graphql'
 import { HighlightBanner } from '../../util/custom_types'

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import SwipeableViews from 'react-swipeable-views'
-import { makeStyles, Theme, useTheme, withStyles, createStyles } from '@material-ui/core/styles'
+import { makeStyles, createStyles, useTheme, withStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
 import { 
   Box,
   Button,
@@ -16,7 +17,7 @@ import {
   Tab, 
   TextField,
   Typography 
-} from '@material-ui/core'
+} from '@mui/material'
 import { LoginForm, RegisterForm } from '../../components'
 import validate from 'validate.js'
 

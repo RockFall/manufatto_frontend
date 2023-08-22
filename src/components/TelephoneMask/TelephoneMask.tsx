@@ -30,7 +30,7 @@ const TelephoneMaskInput = (props: any) => {
       }
       placeholderChar={'\u2000'}
     />
-  )
+  );
 }
 
 export default TelephoneMaskInput

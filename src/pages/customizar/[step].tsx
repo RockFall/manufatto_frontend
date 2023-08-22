@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 import Login from './components/Login';
 import StepOne from './components/StepOne';
 import StepTwo from './components/StepTwo';
@@ -29,13 +29,13 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     padding: '0 6% 0 4%',
     margin: '2% 50% 0 0',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: '2.3% 20.7% 0 17%',
     },
   },
   divider: {
     margin: '2% 6% 4.2% 4%',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: '3% 20.7% 4.2%',
     },
   },

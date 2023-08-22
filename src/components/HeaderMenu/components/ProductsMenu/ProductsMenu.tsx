@@ -1,7 +1,7 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import clsx from 'clsx'
-import { Container, Typography, List, Hidden, Button } from '@material-ui/core'
+import { Container, Typography, List, Hidden, Button } from '@mui/material'
 import { NavigationListItem } from './components'
 import Image from 'next/image'
 import { BackToMenuMobile } from '../../..'
@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'space-between',
     alignItems: 'flex-start',
     padding: '90px 120px',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       padding: '30px 32px',
     },
   },
@@ -109,7 +109,7 @@ const ProductsMenu = (props: ProductsMenuProps) => {
 
   return (
     <Container className={clsx(className, classes.root)} maxWidth={false}>
-      <Hidden mdDown>
+      <Hidden lgDown>
         <div className={classes.list}>
           <NavigationList depth={0} pages={pages} />
         </div>
@@ -132,7 +132,7 @@ const ProductsMenu = (props: ProductsMenuProps) => {
         </div>
       </Hidden>
     </Container>
-  )
+  );
 }
 
 export default ProductsMenu

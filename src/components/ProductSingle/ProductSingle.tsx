@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { useDispatch } from 'react-redux'
-import { Hidden } from '@material-ui/core'
+import { Hidden } from '@mui/material'
 import { addCartItem, CartItemType} from '../../actions'
 import { ProductDetails, ProductDetailsMobile } from './components'
 import { ProductDetail } from '../../util/custom_types'
@@ -40,7 +40,7 @@ const ProductSingle = (props: ProductSingleProps) => {
   }
   return (
     <div>
-      <Hidden smDown>
+      <Hidden mdDown>
         <ProductDetails product={cartItem} addToCart={addToCart} setVariant={setVariant} setCount={setCount}/>
       </Hidden>
 
@@ -48,7 +48,7 @@ const ProductSingle = (props: ProductSingleProps) => {
         <ProductDetailsMobile product={cartItem} addToCart={addToCart} setVariant={setVariant} setCount={setCount}/>
       </Hidden>
     </div>
-  )
+  );
 }
 
 export default ProductSingle

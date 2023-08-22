@@ -1,15 +1,15 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, IconButton, Typography, Badge } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Button, IconButton, Typography, Badge } from '@mui/material'
 
 import Link from 'next/link'
 import Image from 'next/image'
-import SearchIcon from '@material-ui/icons/Search'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle'
-import LocalMallIcon from '@material-ui/icons/LocalMall'
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
-import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp'
+import SearchIcon from '@mui/icons-material/Search'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import LocalMallIcon from '@mui/icons-material/LocalMall'
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp'
 import { useRouter } from 'next/router'
 
 const useStyles = makeStyles(theme => ({
@@ -88,7 +88,7 @@ const Header = (props: HeaderProps) => {
         <SearchIcon className={classes.iconStyle} />
       </IconButton>
       <IconButton className={classes.iconSpacing} color='primary' size='small' onClick={() => router.push('/carrinho')}>
-        <Badge badgeContent={cartSize || 0} color='error' overlap='rectangle' max={99}>
+        <Badge badgeContent={cartSize || 0} color='error' overlap="rectangular" max={99}>
           <LocalMallIcon className={classes.iconStyle} />
         </Badge>
       </IconButton>
@@ -96,7 +96,7 @@ const Header = (props: HeaderProps) => {
         <AccountCircleIcon className={classes.iconStyle} />
       </IconButton>
     </div>
-  )
+  );
 }
 
 export default Header

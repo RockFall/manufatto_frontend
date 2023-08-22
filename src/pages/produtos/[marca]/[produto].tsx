@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Link, Typography, Divider, Hidden } from '@material-ui/core'
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
+import { makeStyles } from '@mui/styles'
+import { Button, Link, Typography, Divider, Hidden } from '@mui/material'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import { ProductSingle, ProductGrid, Breadcrumbs } from '../../../components'
 import { GetServerSideProps } from 'next'
 import { useDispatch } from 'react-redux'
@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     margin: '18px 122px',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       margin: '18px 28px',
     },
     background: '#fff',
@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   divider: {
     marginBottom: theme.spacing(7),
     marginTop: theme.spacing(3),
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       marginBottom: theme.spacing(5),
     marginTop: theme.spacing(3),
     },

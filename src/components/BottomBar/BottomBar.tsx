@@ -1,14 +1,14 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 
-import { Hidden } from '@material-ui/core'
+import { Hidden } from '@mui/material'
 
 import { Footer, FooterMobile } from './components'
 
 const BottomBar = (props: any) => {
   return (
     <div>
-      <Hidden smDown>
+      <Hidden mdDown>
         <Footer />
       </Hidden>
 
@@ -16,7 +16,7 @@ const BottomBar = (props: any) => {
         <FooterMobile />
       </Hidden>
     </div>
-  )
+  );
 }
 
 export default BottomBar

@@ -1,9 +1,9 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import clsx from 'clsx'
-import { Container, Typography, Link, Hidden } from '@material-ui/core'
+import { Container, Typography, Link, Hidden } from '@mui/material'
 import Image from 'next/image'
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import { Shop } from '../../generated/graphql'
 import Breadcrumbs from '../Breadcrumbs'
 const useStyles = makeStyles(theme => ({
@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     justifyItems: 'center',
     padding: '0px 128px 0px 0px',
     margin: '21px 188px 51px 188px',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       padding: '30px 32px',
       flexDirection: 'column',
       margin: '0px',
@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     margin: '0px 188px',
     position: 'relative',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: '18px 28px',
     }
   },
@@ -110,7 +110,7 @@ const BrandsBanner = (props: BrandsBannerProps) => {
   return (
     <Container className={clsx(className, classes.root)} maxWidth={false}>
       <Breadcrumbs path={[{name: 'Marcas', url: '/marcas'}]} page={shop?.name.text} className={classes.history}/>
-      <Hidden mdDown>
+      <Hidden lgDown>
         <div className={classes.backgroundImage}>
           <img src={shop?.background? `/${shop.background.text}.png` : '/Bg-cold4.png'} width='100%' height='934px'/>
         </div>
@@ -125,7 +125,7 @@ const BrandsBanner = (props: BrandsBannerProps) => {
         </div>
       </div>
     </Container>
-  )
+  );
 }
 
 export default BrandsBanner

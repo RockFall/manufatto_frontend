@@ -1,8 +1,8 @@
 import React from 'react'
 import clsx from 'clsx'
-import { makeStyles } from '@material-ui/core/styles'
-import { Select, IconButton, TableCell, TableRow, Typography } from '@material-ui/core'
-import CloseIcon from '@material-ui/icons/Close'
+import { makeStyles } from '@mui/styles'
+import { Select, IconButton, TableCell, TableRow, Typography } from '@mui/material'
+import CloseIcon from '@mui/icons-material/Close'
 import { formatMoney } from '../../../../../mixins/formatter'
 
 const useStyles = makeStyles((theme) => ({

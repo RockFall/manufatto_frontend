@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
+import { makeStyles, useTheme } from '@mui/styles'
 
-import { Hidden, Typography, Button, LinearProgress, useMediaQuery } from '@material-ui/core'
+import { Hidden, Typography, Button, LinearProgress, useMediaQuery } from '@mui/material'
 import { ProductFilter, ProductFilterMobile, ProductsHeader, ProductGrid, FilterChips, BrandBanner } from '../../components'
 
 import { PageShopDetailsComp, ssrShopDetails } from '../../generated/page'
@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     background: '#fff',
     flexDirection: 'column',
     padding: '18px 188px',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       padding: '18px 28px',
     },
   },
@@ -113,7 +113,7 @@ const ShopPage: PageShopDetailsComp = (props) => {
   }
 
   const theme = useTheme()
-  const screenMatches = useMediaQuery(theme.breakpoints.down('md'))
+  const screenMatches = useMediaQuery(theme.breakpoints.down('lg'))
 
   const {
     colors: availableColors,
@@ -156,7 +156,6 @@ const ShopPage: PageShopDetailsComp = (props) => {
     )
   }
   return (
-    
     <React.Fragment>
       
       {
@@ -167,7 +166,7 @@ const ShopPage: PageShopDetailsComp = (props) => {
         <ProductsHeader setOpenFilter={setOpenFilter} count={//totalCount
         32} />
         <div className={classes.content}>
-          <Hidden mdDown>
+          <Hidden lgDown>
             {//<ProductFilter {...filterProps} />
               ''
             }
@@ -186,7 +185,7 @@ const ShopPage: PageShopDetailsComp = (props) => {
         </div>
       </div>
     </React.Fragment>
-)}
+  );}
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   return (await ssrShopDetails.getServerPage({

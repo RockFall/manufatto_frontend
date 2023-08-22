@@ -1,7 +1,8 @@
 import React from 'react'
 import SwipeableViews from 'react-swipeable-views'
-import { makeStyles, Theme, useTheme, withStyles, createStyles } from '@material-ui/core/styles'
-import { Divider, Box, Tabs, Tab, Typography } from '@material-ui/core'
+import { makeStyles, useTheme, withStyles, createStyles } from '@mui/styles'
+import { Theme } from '@mui/material/styles';
+import { Divider, Box, Tabs, Tab, Typography } from '@mui/material'
 
 const DetailTabs = withStyles({
   root: {

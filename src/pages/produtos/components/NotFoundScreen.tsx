@@ -1,6 +1,6 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Typography } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Typography } from '@mui/material'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     alignItems: 'center',
     margin: '56px 0px 278px 0px',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       margin: '40px 0px 90px 0px',
     },
   },

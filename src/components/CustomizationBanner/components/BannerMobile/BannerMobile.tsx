@@ -1,6 +1,6 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Grid } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Button, Grid } from '@mui/material'
 import Image from 'next/image'
 
 const useStyles = makeStyles(theme => ({
@@ -39,7 +39,7 @@ const BannerMobile = (props: any) => {
 
   return (
     <div className={classes.root}>
-      <Grid className={classes.content} container justify='space-between' direction='column'>
+      <Grid className={classes.content} container justifyContent='space-between' direction='column'>
         <h2 className={classes.titleText}>Suas peças com um toque único e original.</h2>
         <Image src='/CustomBannerMobile.svg' width={1100} height={1100} alt=""  />
         <p className={classes.infoText}>
@@ -48,7 +48,7 @@ const BannerMobile = (props: any) => {
         <Button className={classes.button}> Conheça</Button>
       </Grid>
     </div>
-  )
+  );
 }
 
 export default BannerMobile

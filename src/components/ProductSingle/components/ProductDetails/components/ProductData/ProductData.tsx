@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import { 
-  GridList,
-  GridListTile,
+  ImageList,
+  ImageListItem,
   Hidden,
-} from '@material-ui/core'
+} from '@mui/material'
 import { ProductBuy } from './components'
 import { CartItemType } from '../../../../../../actions'
 import { ProductDetail } from '../../../../../../util/custom_types'
@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
       '@media (hover: none)': {
         backgroundColor: 'transparent',
       },
-      '&$disabled': {
+      '& .Mui-disabled': {
         backgroundColor: 'transparent',
       },
      },
@@ -108,27 +108,27 @@ const ProductData = (props: ProductDataProp) => {
     <div className={classes.root}>
       {/* Seletor de imagem */}
       {/* Versão estática */}
-      <GridList cellHeight={210} className={classes.imageGrid} cols={1}>
+      <ImageList rowHeight={210} className={classes.imageGrid} cols={1}> {/* TODO: changed cellHeight to rowHeight*/}
         {staticImages.map((image) => {
           return(
-            <GridListTile key={image.id} style={{width: '187px'}} className={classes.imageButton} component="button" onClick={event => handleCurrentImageChange(event, image.path)}> 
+            <ImageListItem key={image.id} style={{width: '187px'}} className={classes.imageButton} component="button" onClick={event => handleCurrentImageChange(event, image.path)}> 
               <img src={image.path}/>
-            </GridListTile>
+            </ImageListItem>
           )
         })}
-      </GridList>
+      </ImageList>
 
       {/* Versão dinâmica */}
       {/*<Hidden smDown>
-        <GridList cellHeight={210} className={classes.imageGrid} cols={1}>
+        <ImageList cellHeight={210} className={classes.imageGrid} cols={1}>
           {product.product.images && product.product.images.map((image) => {
             return(
-              <GridListTile key={image.id} style={{width: '187px'}} className={classes.imageButton} component="button" onClick={event => handleCurrentImageChange(event, image.path.originalWbp)}> 
+              <ImageListItem key={image.id} style={{width: '187px'}} className={classes.imageButton} component="button" onClick={event => handleCurrentImageChange(event, image.path.originalWbp)}> 
                 <img src={image.path.thumbnailWbp}/>
-              </GridListTile>
+              </ImageListItem>
             )
           })}
-        </GridList>
+        </ImageList>
       </Hidden>*/}
 
       {/* Imagem selecionada */}

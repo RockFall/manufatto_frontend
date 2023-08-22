@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Typography, Link, Hidden } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Button, Typography, Link, Hidden } from '@mui/material'
 import { useRouter } from 'next/router'
 import { CartTable, Breadcrumbs } from '../../components'
 import PriceDisplay from './components/PriceDisplay'
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     marginTop: theme.spacing(10),
     flexDirection: 'column',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: '18px 0px',
     },
   },
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
 
     position: 'relative',
     marginLeft: '10%',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
         margin: '18px 28px',
     }
   },
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: '10%',
     marginTop: theme.spacing(6),
     fontWeight: 600,
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: '18px 0px',
     },
   },
@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       flexDirection: 'column',
     },
   },
@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
   },
   checkoutButton: {
     backgroundColor: '#219653',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       width: '100%',
     },
   },

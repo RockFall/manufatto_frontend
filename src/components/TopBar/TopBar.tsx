@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from 'react'
 
 import clsx from 'clsx'
-import { makeStyles } from '@material-ui/core/styles'
-import { AppBar, Toolbar, Hidden } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { AppBar, Toolbar, Hidden } from '@mui/material'
 import { Header, HeaderMobile } from './components'
 import { HeaderMenu } from '..'
 
@@ -43,7 +43,7 @@ const TopBar = (props: TopBarProps) => {
     <div>
       <AppBar {...rest} className={clsx(className, classes.root)} color='default' position='sticky' >
         <Toolbar className={classes.appBar} style={specialBackground ? {background: '#ebe9df'} : {background: '#fff'}}>
-          <Hidden mdDown>
+          <Hidden lgDown>
             <Header
               cartSize={cartSize}
               isBrandsOpen={isBrandsMenuOpen}
@@ -99,7 +99,7 @@ const TopBar = (props: TopBarProps) => {
         }}
       />
     </div>
-  )
+  );
 }
 
 export default TopBar

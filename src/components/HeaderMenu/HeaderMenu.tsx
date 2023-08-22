@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 
 import clsx from 'clsx'
-import { Container, Hidden } from '@material-ui/core'
+import { Container, Hidden } from '@mui/material'
 import { ProductsMenu, MobileMenu, BrandsMenu } from './components'
 const useStyles = makeStyles(theme => ({
   root: { overflowY: 'auto' },

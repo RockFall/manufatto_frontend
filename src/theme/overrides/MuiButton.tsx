@@ -1,4 +1,4 @@
-import { Overrides } from '@material-ui/core/styles/overrides'
+/*import { Overrides } from '@mui/material/styles/overrides'
 
 const MuiButton: Overrides['MuiButton'] = {
   outlined: {
@@ -48,3 +48,4 @@ const MuiButton: Overrides['MuiButton'] = {
 }
 
 export default MuiButton
+*/

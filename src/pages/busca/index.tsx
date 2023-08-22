@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
-import { Hidden, Typography, Input, Chip, IconButton, InputAdornment } from '@material-ui/core'
-import SearchIcon from '@material-ui/icons/Search'
+import { makeStyles, useTheme } from '@mui/styles'
+import { Hidden, Typography, Input, Chip, IconButton, InputAdornment } from '@mui/material'
+import SearchIcon from '@mui/icons-material/Search'
 import { useRouter } from 'next/router'
-import DoneIcon from '@material-ui/icons/Done';
+import DoneIcon from '@mui/icons-material/Done';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     alignItems: 'center',
     margin: '18px 188px',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       margin: '18px 28px',
     },
   },
@@ -128,7 +128,7 @@ export default function Index() {
               <IconButton
                 aria-label="toggle password visibility"
                 onClick={() => router.push({pathname: `/produtos`, query: {search: searchText, Categories: getCategories()}})}
-              >
+                size="large">
                 <SearchIcon />
               </IconButton>
             </InputAdornment>
@@ -136,5 +136,5 @@ export default function Index() {
         />
       </div>
     </div>
-  )
+  );
 }

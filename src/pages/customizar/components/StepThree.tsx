@@ -1,11 +1,11 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
+import { makeStyles } from '@mui/styles'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import {
   Divider, 
   Link,
   Typography 
-} from '@material-ui/core'
+} from '@mui/material'
 import { CustomizationStepper } from '../../../components'
 
 const useStyles = makeStyles(theme => ({
@@ -22,13 +22,13 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     padding: '0 6% 0 4%',
     margin: '2% 50% 0 0',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: '2.3% 20.7% 0 17%',
     },
   },
   divider: {
     margin: '2% 6% 4.2% 4%',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: '3% 20.7% 4.2%',
     },
   },

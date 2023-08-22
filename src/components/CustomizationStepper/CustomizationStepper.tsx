@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
-import { makeStyles, Theme, createStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles, createStyles, withStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
 import {
   Button,
   FormControlLabel,
@@ -10,10 +11,10 @@ import {
   StepLabel,
   Stepper,
   TextareaAutosize
-} from '@material-ui/core';
-import { StepIconProps } from '@material-ui/core/StepIcon';
+} from '@mui/material';
+import { StepIconProps } from '@mui/material/StepIcon';
 //import { ArtGrid } from '../../components'
-import AddIcon from '@material-ui/icons/Add'
+import AddIcon from '@mui/icons-material/Add'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import { CartItemType, addCartItem } from '../../actions'
@@ -25,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     stepper: {
       width: '1086px',
-      [theme.breakpoints.down('lg')]: {
+      [theme.breakpoints.down('xl')]: {
         width: '84%',
       },
       display: 'block',
@@ -358,7 +359,7 @@ export default function CustomizationStepper(props: CustomizationStepperProps) {
                   value={message}
                   onChange={handleChangeMessage}
                   style={{backgroundColor: '#F3F3F3', marginBottom: '25px',}}
-                  rowsMin={8}
+                  minRows={8}
                   placeholder="Digite sua mensagem"
                 />
               }
@@ -367,7 +368,7 @@ export default function CustomizationStepper(props: CustomizationStepperProps) {
             </div>
             <br style={{margin: '3% 0'}}/>
           </div>
-        )
+        );
       default:
         return <div>Não encontrado</div>;
     }

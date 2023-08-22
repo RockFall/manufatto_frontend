@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Hidden, Typography, Button, FormControl, InputLabel, Select, MenuItem } from '@material-ui/core'
-import FilterListIcon from '@material-ui/icons/FilterList'
+import { makeStyles } from '@mui/styles'
+import { Hidden, Typography, Button, FormControl, InputLabel, Select, MenuItem } from '@mui/material'
+import FilterListIcon from '@mui/icons-material/FilterList'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -50,7 +50,7 @@ const ProductsHeader = (props: ProductsHeaderProp) => {
 
   return (
     <div className={classes.root}>
-      <Hidden mdDown>
+      <Hidden lgDown>
         <Typography className={classes.pieceNumber}>{count} Peças</Typography>
       </Hidden>
       <Hidden lgUp>
@@ -67,7 +67,7 @@ const ProductsHeader = (props: ProductsHeaderProp) => {
         </Select>
       </FormControl>
     </div>
-  )
+  );
 }
 
 export default ProductsHeader

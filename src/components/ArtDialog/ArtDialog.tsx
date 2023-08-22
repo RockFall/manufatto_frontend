@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 import {
   Button,
   Dialog,
@@ -15,8 +15,8 @@ import {
   RadioGroup,
   Typography,
   DialogContent,
-} from '@material-ui/core';
-import { Close } from '@material-ui/icons/';
+} from '@mui/material';
+import { Close } from '@mui/icons-material/';
 import { addCustomizedProduct, CustomizedProductType } from '../../actions'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
@@ -185,7 +185,7 @@ const ArtDialog = (props: ArtDialogProps) => {
       <div>
         <Dialog fullWidth open={open} scroll="body">
           <DialogTitle>
-            <IconButton className={classes.closeButton} onClick={handleClose}>
+            <IconButton className={classes.closeButton} onClick={handleClose} size="large">
               <Close color="action"/>
             </IconButton>      
           </DialogTitle>
@@ -194,7 +194,7 @@ const ArtDialog = (props: ArtDialogProps) => {
             <Typography className={classes.title} component="p" variant="h4">
               Escolha o tamanho da arte que será customizada na sua peça
             </Typography>
-            <Grid container direction="row" justify="space-between">
+            <Grid container direction="row" justifyContent="space-between">
               {/*Imagem ilustrativa */}
               <img style={{objectFit: 'cover'}} src={image.path} width="132" height="132"/>
               
@@ -221,7 +221,7 @@ const ArtDialog = (props: ArtDialogProps) => {
           </DialogContent> 
         </Dialog>
       </div>
-    </div>  
+    </div>
   );
 }
       

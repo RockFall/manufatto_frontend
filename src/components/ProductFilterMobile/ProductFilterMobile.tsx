@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import clsx from 'clsx'
-import { makeStyles, withStyles } from '@material-ui/core/styles'
-import { Button, Typography, IconButton } from '@material-ui/core'
-import FilterListIcon from '@material-ui/icons/FilterList'
-import CloseIcon from '@material-ui/icons/Close'
+import { makeStyles, withStyles } from '@mui/styles'
+import { Button, Typography, IconButton } from '@mui/material'
+import FilterListIcon from '@mui/icons-material/FilterList'
+import CloseIcon from '@mui/icons-material/Close'
 const useStyles = makeStyles(theme => ({
   root: {
     height: '100%',
@@ -67,7 +67,7 @@ const ProductFilterMobile = (props: ProductFilterMobileProps) => {
         <Typography variant='h5'>
           <FilterListIcon /> Filtro{' '}
         </Typography>
-        <IconButton aria-label='delete' onClick={() => clearFilter()}>
+        <IconButton aria-label='delete' onClick={() => clearFilter()} size="large">
           <CloseIcon className={classes.close} />
         </IconButton>
       </div>
@@ -82,7 +82,7 @@ const ProductFilterMobile = (props: ProductFilterMobileProps) => {
         </Button>
       </div>
     </div>
-  )
+  );
 }
 
 export default ProductFilterMobile

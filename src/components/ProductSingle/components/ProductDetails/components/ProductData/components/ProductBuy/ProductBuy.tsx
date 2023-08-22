@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import CropFreeIcon from '@material-ui/icons/CropFree';
+import { makeStyles } from '@mui/styles';
+import CropFreeIcon from '@mui/icons-material/CropFree';
 import { 
   Button, 
   Divider, 
@@ -15,14 +15,14 @@ import {
   Select,
   TextField,
   Typography,
-} from '@material-ui/core';
+} from '@mui/material';
 import { 
   Check,
   RemoveCircleOutline,
   AddCircleOutline,
   Clear
-} from '@material-ui/icons';
-import { ToggleButton, ToggleButtonGroup } from '@material-ui/lab';
+} from '@mui/icons-material';
+import { ToggleButton, ToggleButtonGroup } from '@mui/lab';
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import { addCustomizedProduct, CustomizedProductType, CartItemType } from '../../../../../../../../actions'
@@ -502,7 +502,7 @@ const ProductBuy = (props: ProductBuyProp) => {
       <Typography className={classes.bio}> {product.product.description} </Typography>
 
       {/* Formulários de cor e tamanhos */}
-      <Grid className={classes.container} container direction='row' justify="space-between">
+      <Grid className={classes.container} container direction='row' justifyContent="space-between">
         <FormControl error={!!(formState.errors.size) && formState.showErrors} className={classes.selectFieldControl}>
           <FormLabel className={classes.label}>
             <b>TAMANHO</b>
@@ -526,7 +526,7 @@ const ProductBuy = (props: ProductBuyProp) => {
         </FormControl>
 
         <div className={classes.measuresTable}>
-          <IconButton className={classes.iconButton}>
+          <IconButton className={classes.iconButton} size="large">
             <CropFreeIcon />
           </IconButton>
           <Typography className={classes.label} style={{ padding: '5px 0 0 6px' }}>
@@ -574,7 +574,10 @@ const ProductBuy = (props: ProductBuyProp) => {
       </div>
 
       <div className={classes.numberFieldContainer}>
-        <IconButton className={classes.numberFieldButton} onClick={(e) => handleChangeQuantity(e, document.getElementsByName('numberField')[0].attributes[4].nodeValue, false)}>
+        <IconButton
+          className={classes.numberFieldButton}
+          onClick={(e) => handleChangeQuantity(e, document.getElementsByName('numberField')[0].attributes[4].nodeValue, false)}
+          size="large">
           <RemoveCircleOutline color="primary"/>
         </IconButton>
 
@@ -592,7 +595,10 @@ const ProductBuy = (props: ProductBuyProp) => {
           variant='outlined'
         />
         
-        <IconButton className={classes.numberFieldButton} onClick={(e) => handleChangeQuantity(e, document.getElementsByName('numberField')[0].attributes[4].nodeValue, true)}>
+        <IconButton
+          className={classes.numberFieldButton}
+          onClick={(e) => handleChangeQuantity(e, document.getElementsByName('numberField')[0].attributes[4].nodeValue, true)}
+          size="large">
           <AddCircleOutline color="primary" />
         </IconButton>
         
@@ -650,7 +656,7 @@ const ProductBuy = (props: ProductBuyProp) => {
         </Button>
       </div>
     </div>
-  )
+  );
 }
 
 export default ProductBuy

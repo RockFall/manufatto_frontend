@@ -1,6 +1,6 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Hidden, Button, Grid, Link, Typography } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Hidden, Button, Grid, Link, Typography } from '@mui/material'
 import { BrandGrid, Breadcrumbs, ProductGrid, ProductsButtonGrid } from '../../components'
 
 // Data fetching
@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     paddingLeft: theme.spacing(3),
     position: 'relative',
     marginLeft: '10%',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: '18px 28px',
     }
   },
@@ -136,11 +136,10 @@ const Index = (props) => {
   const classes = useStyles()
   const router = useRouter()
   const { data } = props
-  return (
-  <>
+  return <>
     <div className={classes.root}>
       <Breadcrumbs page='Marcas' className={classes.history}/>
-      <Hidden smDown>
+      <Hidden mdDown>
         <div className={classes.backgroundImage}>
           <img src='/light1.png' width='100%' height='934px'/>
         </div>
@@ -169,8 +168,7 @@ const Index = (props) => {
         VEJA MAIS PRODUTOS
       </Button>
     </div>
-  </>
-  )
+  </>;
 }
 /*
 export const getServerSideProps: GetServerSideProps = async (ctx) => {

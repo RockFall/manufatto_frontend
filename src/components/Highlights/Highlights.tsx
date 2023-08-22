@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import clsx from 'clsx'
 import { useRouter } from 'next/router'
-import { Button, Typography, Container } from '@material-ui/core'
+import { Button, Typography, Container } from '@mui/material'
 import { HighlightItem } from './components'
 import Util from '../../util/custom_formatter'
 

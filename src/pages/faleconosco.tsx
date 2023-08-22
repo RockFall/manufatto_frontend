@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Typography, Link, Hidden } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Button, Typography, Link, Hidden } from '@mui/material'
 import { useRouter } from 'next/router'
 import {Breadcrumbs, ContactUsForm} from '../components'
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import theme from '../theme'
 
 const useStyles = makeStyles(theme => ({
@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     marginLeft: '10%',
     flexDirection: 'row',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: '18px 28px',
       flexDirection: 'column',
     }
@@ -44,7 +44,7 @@ const useStyles = makeStyles(theme => ({
 
     position: 'relative',
     marginLeft: '10%',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
         margin: '18px 28px',
     }
   },
@@ -66,7 +66,7 @@ const useStyles = makeStyles(theme => ({
   }, 
   form: {
     marginLeft: '12%',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
         marginLeft: 0,
         paddingLeft: 0
       }

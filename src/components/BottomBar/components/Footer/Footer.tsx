@@ -1,7 +1,7 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { LockOutlined, Facebook, Instagram, Twitter } from '@material-ui/icons/'
-import { Grid, IconButton, Link } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { LockOutlined, Facebook, Instagram, Twitter } from '@mui/icons-material/'
+import { Grid, IconButton, Link } from '@mui/material'
 import Image from 'next/image'
 
 const useStyles = makeStyles(theme => ({
@@ -70,7 +70,7 @@ const Footer = (props: any) => {
   return (
     <div className={classes.root}>
       {/*Footer*/}
-      <Grid container justify='space-between' className={classes.footer}>
+      <Grid container justifyContent='space-between' className={classes.footer}>
         {/* Descrição Manuffato */}
         <div className={classes.bio}>
           <Image src='/Logo.svg' alt='Logo' width={200} height={70} object-fit='cover' />
@@ -139,7 +139,7 @@ const Footer = (props: any) => {
         </div>
       </Grid>
 
-      <Grid container justify='space-between' alignItems='center' className={classes.sign}>
+      <Grid container justifyContent='space-between' alignItems='center' className={classes.sign}>
         <p className={classes.signCopyright}> © Copyright 2021 - Manufatto, All Right Reserved </p>
 
         <div className={classes.signInfo}>
@@ -154,22 +154,22 @@ const Footer = (props: any) => {
           </div>
 
           <div>
-            <IconButton className={classes.iconButton}>
+            <IconButton className={classes.iconButton} size="large">
               <Facebook color='action' />
             </IconButton>
 
-            <IconButton className={classes.iconButton}>
+            <IconButton className={classes.iconButton} size="large">
               <Twitter color='action' />
             </IconButton>
 
-            <IconButton className={classes.iconButton}>
+            <IconButton className={classes.iconButton} size="large">
               <Instagram color='action' />
             </IconButton>
           </div>
         </div>
       </Grid>
     </div>
-  )
+  );
 }
 
 export default Footer

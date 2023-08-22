@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import clsx from 'clsx'
 import {
   Container,
@@ -7,8 +7,8 @@ import {
   Hidden,
   Link,
   Button,
-} from '@material-ui/core'
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
+} from '@mui/material'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import Image from 'next/image'
 const useStyles = makeStyles(theme => ({
   root: {
@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
     justifyItems: 'center',
     marginTop: theme.spacing(13),
     marginBottom: theme.spacing(12),
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       padding: '30px 32px',
       flexDirection: 'column',
       margin: '0px',
@@ -130,7 +130,7 @@ const AboutBanner = (props: AboutBannerProps) => {
         <Typography className={classes.text}> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Risus non sit risus gravida tempor magnis. A in aliquet dignissim augue sit donec. Netus eget magna eu eleifend nullam pulvinar dignissim. Sit sit felis ullamcorper suspendisse leo diam. A nunc luctus nibh volutpat pellentesque turpis lectus aenean. Sapien in vitae magna nibh.</Typography>
         <Button variant='outlined' className={classes.button}>ver todas as marcas</Button>
       </div>
-      <Hidden mdDown>
+      <Hidden lgDown>
         <div className={classes.imagesBg}>
           <div className={classes.topLeftImage}>
             <Image
@@ -189,7 +189,7 @@ const AboutBanner = (props: AboutBannerProps) => {
         </div>
       </Hidden>
     </Container>
-  )
+  );
 }
 
 

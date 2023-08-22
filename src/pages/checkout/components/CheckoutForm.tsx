@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import clsx from 'clsx'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import {
   TextField, Typography, Button, FormControlLabel, Checkbox, InputLabel, FormControl, FormHelperText, Select, MenuItem, Link
-} from '@material-ui/core'
+} from '@mui/material'
 import validate from 'validate.js'
 
 import {CepMask, CpfMask, TelephoneMask} from '../../../components'
@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       padding: theme.spacing(1),
       justifyContent: 'center',
     },
@@ -46,7 +46,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'flex-start',
     alignItems: 'center',
     width: '100%',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       flexDirection: 'column',
     },
   },
@@ -62,7 +62,7 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     marginRight: theme.spacing(3),
     marginBottom: theme.spacing(3),
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       marginRight: 0,
     },
   },
@@ -72,7 +72,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     marginRight: theme.spacing(3),
     marginBottom: theme.spacing(3),
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       marginRight: 0,
     },
   },
@@ -99,7 +99,7 @@ const useStyles = makeStyles(theme => ({
   },
   stateDiv: {
     width: '48.5%',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       width: '100%'
     },
   }
@@ -290,9 +290,9 @@ const CheckoutFormForm = (props: CheckoutFormProp) => {
       ...formState,
       isValid: !errors,
       errors: {
-        ...errors || {},
+        ...(errors || {}),
         address: {
-          ...address || {}
+          ...(address || {})
         },
       }
     }))

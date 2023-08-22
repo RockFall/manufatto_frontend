@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { makeStyles } from '@material-ui/core/styles'
-import { Container, Button } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Container, Button } from '@mui/material'
 
 import { ProductCard } from '..'
 
@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
   button: {
     color: '#6F6C6B',
     fontSize: theme.spacing(2),
-    margin: `0px ${theme.spacing(2)}px`,
+    margin: `0px ${theme.spacing(2)}`,
     padding: theme.spacing(4),
     width: theme.spacing(27.5),
     height: theme.spacing(11),

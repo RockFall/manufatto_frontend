@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Link, Hidden } from '@material-ui/core'
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
+import { makeStyles } from '@mui/styles'
+import { Link, Hidden } from '@mui/material'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import Image from 'next/image'
 
 //import { HighlightBanner } from '../../../../generated/graphql'
@@ -102,7 +102,7 @@ const OutfiBanner = (props: OutfiBannerProps) => {
 // TODO: Change Croqui Image back to Webg
   return (
     <div className={classes.root}>
-      <Hidden xsDown>
+      <Hidden smDown>
         <Image src={`/${item.background}`} width={1920} height={934} layout='responsive' objectFit='cover' alt="Croqui Background" />
         <div className={classes.croqui}>
           <Image src={item.images[0].image.original} layout='fill' objectFit='contain' alt="Croqui image" />
@@ -135,7 +135,7 @@ const OutfiBanner = (props: OutfiBannerProps) => {
         </div>
       </Hidden>
     </div>
-  )
+  );
 }
 
 export default OutfiBanner

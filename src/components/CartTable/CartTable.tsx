@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import clsx from 'clsx'
-import { makeStyles } from '@material-ui/core/styles'
-import { Select, Hidden, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@material-ui/core'
-import CloseIcon from '@material-ui/icons/Close'
+import { makeStyles } from '@mui/styles'
+import { Select, Hidden, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material'
+import CloseIcon from '@mui/icons-material/Close'
 import { useDispatch } from 'react-redux'
 import { CartItem, CartRow } from './components'
 import { Product } from '../../generated/graphql'
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'flex-end',
     marginLeft: theme.spacing(6),
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: 0,
       alignItems: 'flex-start',
     },
@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'flex-end',
     marginLeft: theme.spacing(6),
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: 0,
     },
   },
@@ -107,7 +107,7 @@ const CartTable = (props: CartTableProps) => {
     <div {...rest} className={clsx(classes.root, className)}>
       <div className={classes.inner}>
         <Table>
-          <Hidden smDown>
+          <Hidden mdDown>
             <TableHead>
               <TableRow>
                 <TableCell style={{ borderColor: '#C2C2C2', paddingLeft: 0 }}>Item</TableCell>
@@ -129,7 +129,7 @@ const CartTable = (props: CartTableProps) => {
                   <Typography className={classes.shopTitle}> {shop.cartItems[0].product.vendor} </Typography>
                   {shop.cartItems.map((product, j) => (
                     <React.Fragment key={j}>
-                    <Hidden smDown>
+                    <Hidden mdDown>
                       <CartRow shippingPrice={1000} cartItem={product} setCount={(qtd) => handleCountChange(qtd, i, j)} lastItem={(j + 1) == shop.cartItems.length}/>
                     </Hidden>
                     <Hidden mdUp>
@@ -141,7 +141,7 @@ const CartTable = (props: CartTableProps) => {
               ))}
           </TableBody>
         </Table>
-        <Hidden smDown>
+        <Hidden mdDown>
           <div className={classes.subtotalContainer}>
             <div className={classes.infoDisplay}>
               <Typography className={classes.infoText}>Subtotal</Typography>
@@ -154,7 +154,7 @@ const CartTable = (props: CartTableProps) => {
         </Hidden>
       </div>
     </div>
-  )
+  );
 }
 
 export default CartTable

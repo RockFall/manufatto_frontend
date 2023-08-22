@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Typography, TextField, Button, Link, FormControl, Select, InputLabel } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Typography, TextField, Button, Link, FormControl, Select, InputLabel } from '@mui/material'
 import { addCartItem } from '../../../actions'
 //import { ProductMaterial, ProductOccasion, ProductSize } from '../../../generated/graphql'
 
@@ -11,14 +11,14 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'row',
     margin: '28px 0px',
     justifyContent: 'flex-start',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
         flexDirection: 'column',
     }
   },
   inputField: {
     width: theme.spacing(25),
     height: theme.spacing(6),
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       width: '100%',
   }
   },
@@ -53,10 +53,10 @@ const useStyles = makeStyles(theme => ({
     marginTop: theme.spacing(1),
     width: theme.spacing(50),
     height: theme.spacing(7),
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       width: theme.spacing(22),
     },
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       width: '100%',
     }
   },
@@ -64,7 +64,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     marginLeft: theme.spacing(6),
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       marginLeft: 0,
       marginTop: theme.spacing(5),
       width: '100%',

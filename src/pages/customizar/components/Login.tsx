@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
-import { Link, Grid, Typography, Divider } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
+import { Link, Grid, Typography, Divider } from '@mui/material'
 import { LoginTabs } from '../../../components'
 
 
@@ -37,13 +37,13 @@ const useStyles = makeStyles(theme => ({
     position: 'relative',
     padding: '0 6% 0 4%',
     margin: '2% 50% 0 0',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: '2.3% 20.7% 0 17%',
     },
   },
   divider: {
     margin: '2% 6% 4.2% 4%',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: '3% 20.7% 4.2%',
     },
   },

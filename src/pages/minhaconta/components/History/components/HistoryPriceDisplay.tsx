@@ -1,6 +1,6 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Typography } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Typography } from '@mui/material'
 import { formatMoney } from '../../../../../mixins/formatter'
 
 const useStyles = makeStyles((theme) => ({
@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     marginBottom: theme.spacing(4),
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       justifyContent: 'space-between',
     },
   },
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     width: '90%',
     marginTop: theme.spacing(2.5),
     marginBottom: theme.spacing(0.5),
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: 0,
       alignItems: 'flex-start',
     },
@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'flex-start',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: 0,
     },
   },

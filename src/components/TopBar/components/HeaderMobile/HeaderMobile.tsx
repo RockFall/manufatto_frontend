@@ -1,15 +1,15 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { IconButton, Badge } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { IconButton, Badge } from '@mui/material'
 
 import Link from 'next/link'
 import Image from 'next/image'
-import MenuIcon from '@material-ui/icons/Menu'
-import SearchIcon from '@material-ui/icons/Search'
-import AccountCircleIcon from '@material-ui/icons/AccountCircle'
-import LocalMallIcon from '@material-ui/icons/LocalMall'
-import CloseIcon from '@material-ui/icons/Close'
+import MenuIcon from '@mui/icons-material/Menu'
+import SearchIcon from '@mui/icons-material/Search'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
+import LocalMallIcon from '@mui/icons-material/LocalMall'
+import CloseIcon from '@mui/icons-material/Close'
 import { NumberLiteralType } from 'typescript'
 import { useRouter } from 'next/router'
 
@@ -70,7 +70,7 @@ const HeaderMobile = (props: HeaderMobileProps) => {
         <SearchIcon className={classes.iconStyle} />
       </IconButton>
       <IconButton className={classes.iconSpacing} color='primary' size='small' onClick={() => router.push('/carrinho')}>
-        <Badge badgeContent={cartSize || 0} color='error' overlap='rectangle' max={99}>
+        <Badge badgeContent={cartSize || 0} color='error' overlap="rectangular" max={99}>
           <LocalMallIcon className={classes.iconStyle} />
         </Badge>
       </IconButton>
@@ -81,7 +81,7 @@ const HeaderMobile = (props: HeaderMobileProps) => {
         {isMenuOpen ? <CloseIcon className={classes.iconStyle} /> : <MenuIcon className={classes.iconStyle} />}
       </IconButton>
     </div>
-  )
+  );
 }
 
 export default HeaderMobile

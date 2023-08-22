@@ -2,14 +2,14 @@
 import React from 'react'
 import clsx from 'clsx'
 
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import {
   Box,
   Typography,
   Button,
   Hidden,
   Container,
-} from '@material-ui/core'
+} from '@mui/material'
 import Image from 'next/image'
 const useStyles = makeStyles(theme => ({
   root: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center'
@@ -39,14 +39,14 @@ const useStyles = makeStyles(theme => ({
     padding: '0px',
     maxWidth: theme.spacing(65),
     margin: '0px 100px',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: theme.spacing(5),
       maxWidth: '348px',
     }
   },
   button: {
     margin: '15px 0px',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       width: '200px',
     }
   },
@@ -76,7 +76,7 @@ const AboutHighlight = (props: AboutHighlightProps) => {
   const costumizationText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Risus non sit risus gravida tempor magnis. A in aliquet dignissim augue sit donec. Netus eget magna eu eleifend nullam pulvinar dignissim. Sit sit felis ullamcorper suspendisse leo diam. A nunc luctus nibh volutpat lorem pellentesque turpis lectus aenean.'
   return (
     <Container className={classes.container}{...rest}>
-      <Hidden smDown>
+      <Hidden mdDown>
         <Box className={clsx(className, classes.root)}>
           <Box className={classes.info}>
             <Typography variant='h4' className={classes.textTitle}> Estilo feito a mão </Typography>
@@ -109,7 +109,7 @@ const AboutHighlight = (props: AboutHighlightProps) => {
       </Hidden>
 
 
-      <Hidden smDown>
+      <Hidden mdDown>
         <Box className={clsx(className, classes.root)}>
           <Image
             src="/CustomBanner.svg"
@@ -143,7 +143,7 @@ const AboutHighlight = (props: AboutHighlightProps) => {
 
 
     </Container>
-  )
+  );
 }
 
 export default AboutHighlight

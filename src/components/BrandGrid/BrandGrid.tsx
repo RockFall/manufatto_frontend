@@ -1,12 +1,12 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Grid } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Grid } from '@mui/material'
 import { BrandCard } from '../../components'
 
 const useStyles = makeStyles(theme => ({
   root: {
     paddingBottom: '1.7%',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       margin: '0px',
     }
   },
@@ -22,7 +22,7 @@ const BrandGrid = (props: BrandGridProp) => {
 
   return (
     <div className={classes.root}>
-      <Grid container justify='center' alignItems='flex-start'>
+      <Grid container justifyContent='center' alignItems='flex-start'>
         {brandList.map((brand, i) => {
           return (
             <div key={i}>
@@ -32,7 +32,7 @@ const BrandGrid = (props: BrandGridProp) => {
         })}
       </Grid>
     </div>
-  )
+  );
 }
 
 export default BrandGrid

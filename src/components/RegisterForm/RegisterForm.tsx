@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import clsx from 'clsx'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import {
   TextField, Typography, Button, FormControlLabel, Checkbox, InputAdornment, IconButton, OutlinedInput, InputLabel, FormControl, FormHelperText, Select, MenuItem
-} from '@material-ui/core'
+} from '@mui/material'
 import validate from 'validate.js'
-import {VisibilityOff, Visibility, TrendingUpTwoTone} from '@material-ui/icons'
+import {VisibilityOff, Visibility, TrendingUpTwoTone} from '@mui/icons-material'
 
 import {CepMask, CpfMask, TelephoneMask} from '../../components'
 
@@ -55,7 +55,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     flexDirection: 'row',
     marginBottom: theme.spacing(3),
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       marginLeft: 0,
     },
   },
@@ -175,9 +175,9 @@ const RegisterForm = (props: RegisterProp) => {
       ...formState,
       isValid: !errors,
       errors: {
-        ...errors || {},
+        ...(errors || {}),
         address: {
-          ...address || {}
+          ...(address || {})
         },
       }
     }))
@@ -281,7 +281,7 @@ const RegisterForm = (props: RegisterProp) => {
                 onClick={handleClickShowPassword}
                 onMouseDown={handleMouseDownPassword}
                 edge="end"
-              >
+                size="large">
                 {values.showPassword ? <Visibility /> : <VisibilityOff />}
               </IconButton>
             </InputAdornment>
@@ -306,7 +306,7 @@ const RegisterForm = (props: RegisterProp) => {
                 onClick={handleClickShowConfirmPassword}
                 onMouseDown={handleMouseDownPassword}
                 edge="end"
-              >
+                size="large">
                 {values.showConfirmPassword ? <Visibility /> : <VisibilityOff />}
               </IconButton>
             </InputAdornment>
@@ -326,7 +326,7 @@ const RegisterForm = (props: RegisterProp) => {
       <Button variant='contained' onClick={handleSubmit} disabled={!values.acceptTerms}>Cadastrar</Button>
       {!!errorMessage && <FormHelperText> {errorMessage} </FormHelperText>}
     </form>
-  )
+  );
 }
 
 export default RegisterForm

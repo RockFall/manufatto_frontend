@@ -2,8 +2,8 @@
 import React from 'react'
 import clsx from 'clsx'
 import { useRouter } from 'next/router'
-import { makeStyles } from '@material-ui/core/styles'
-import { Box, Typography, Button, Hidden } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Box, Typography, Button, Hidden } from '@mui/material'
 import Image from 'next/image'
 import Util from '../../../../util/custom_formatter'
 const useStyles = makeStyles(theme => ({
@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       flexDirection: 'column',
       alignItems: 'flex-start',
       justifyContent: 'flex-start',
@@ -31,14 +31,14 @@ const useStyles = makeStyles(theme => ({
     maxWidth: '509px',
     maxHeight: '410px',
     margin: '0px 100px',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: '0px',
       maxWidth: '348px',
     },
   },
   button: {
     margin: '15px 0px',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       width: '200px',
     },
   },
@@ -74,7 +74,7 @@ const HighlightItem = (props: HighlightItemProps) => {
 
   return (
     <React.Fragment {...rest}>
-      <Hidden smDown>
+      <Hidden mdDown>
         <Box className={clsx(className, classes.root)}>
           {!rightImage ? <Image className={classes.image} src={src} width={620} height={586} layout='intrinsic' alt=""  /> : <React.Fragment />}
           <Box className={classes.info}>
@@ -109,7 +109,7 @@ const HighlightItem = (props: HighlightItemProps) => {
         </Box>
       </Hidden>
     </React.Fragment>
-  )
+  );
 }
 
 export default HighlightItem

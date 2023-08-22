@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import CartResume from './components/CartResume'
 import CheckoutForm from './components/CheckoutForm'
 import {CartItemType} from '../../actions'
-import { Typography, Link } from '@material-ui/core'
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
+import { Typography, Link } from '@mui/material'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import {Breadcrumbs} from '../../components'
 
 const useStyles = makeStyles(theme => ({
@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(15),
     justifyContent: 'center',
     flexDirection: 'row',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
         margin: '28px 0px',
         marginBottom: theme.spacing(10),
         flexDirection: 'column',
@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'row',
     marginBottom: theme.spacing(1.5),
     marginLeft: theme.spacing(3),
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       marginLeft: 0,
   },
   },
@@ -62,7 +62,7 @@ const useStyles = makeStyles(theme => ({
   },
   formContainer: {
     width: '45%',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       width: '100%',
   }
   },
@@ -73,7 +73,7 @@ const useStyles = makeStyles(theme => ({
 
     position: 'relative',
     marginLeft: '10%',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: '18px 0px',
     },
   },
@@ -94,7 +94,7 @@ const useStyles = makeStyles(theme => ({
     marginLeft: '10%',
     marginTop: theme.spacing(6),
     fontWeight: 600,
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: '18px 0px',
     },
   },

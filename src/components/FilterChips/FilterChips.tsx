@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Chip } from '@material-ui/core'
-import CloseIcon from '@material-ui/icons/Close'
+import { makeStyles } from '@mui/styles'
+import { Chip } from '@mui/material'
+import CloseIcon from '@mui/icons-material/Close'
 
 const useStyles = makeStyles(theme => ({
   root: {

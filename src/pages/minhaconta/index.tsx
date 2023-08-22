@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Typography, Link, Hidden, Select } from '@material-ui/core'
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
+import { makeStyles } from '@mui/styles'
+import { Button, Typography, Link, Hidden, Select } from '@mui/material'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import { useRouter } from 'next/router'
 import UserHeader from './components/UserHeader'
 import PersonalInfo from './components/PersonalInfo'
@@ -14,7 +14,7 @@ import {Breadcrumbs} from '../../components'
 const useStyles = makeStyles(theme => ({
   root: {
     margin: '18px 188px',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       margin: '18px 28px',
     }
   },
@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
 
     position: 'relative',
     marginRight: '80%',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: '2% 52.1% 0 0'
     }
   },
@@ -62,7 +62,7 @@ const useStyles = makeStyles(theme => ({
     borderBottom: '1px solid #C2C2C2',
   },
   menuMobileContainer: {
-    margin: `${theme.spacing(2)}px 28px`,
+    margin: `${theme.spacing(2)} 28px`,
   },
 }))
 
@@ -115,7 +115,7 @@ function Index() {
       <Breadcrumbs page='Minha conta'/>
       <UserHeader className={classes.header} logout={()=> {}} name={mockUser.name}/>
       <PersonalInfo user={mockUser}/>
-      <Hidden smDown>
+      <Hidden mdDown>
         <div className={classes.tabSelector}>
           <Button className={classes.tabButtom} style={ tabIndex === 0 ? {borderBottom: '4px solid #000000', fontWeight: 600, color: '#1D1D1F'} : {}} onClick={() => setTabIndex(0)}>Histórico de compras</Button>
           <Button className={classes.tabButtom} style={ tabIndex === 1 ? {borderBottom: '4px solid #000000', fontWeight: 600, color: '#1D1D1F'} : {}} onClick={() => setTabIndex(1)}>Customizações</Button>
@@ -141,7 +141,7 @@ function Index() {
       <div className={classes.divider}/>
       {selectTab(tabIndex)}
     </div>
-  )
+  );
 }
 
 export default Index

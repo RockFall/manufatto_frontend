@@ -1,9 +1,9 @@
 import React from 'react'
 import clsx from 'clsx'
-import { makeStyles } from '@material-ui/core/styles'
-import { Link as ReactLink, Typography } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Link as ReactLink, Typography } from '@mui/material'
 import Link from 'next/link'
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 
 const useStyles = makeStyles(theme => ({
   history: {

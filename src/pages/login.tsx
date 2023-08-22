@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import { LoginForm, RegisterForm, Breadcrumbs } from '../components'
 import { ProductGrid } from '../components'
-import { Button, Typography, Link, Hidden } from '@material-ui/core'
-import FavoriteIcon from '@material-ui/icons/Favorite'
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
+import { Button, Typography, Link, Hidden } from '@mui/material'
+import FavoriteIcon from '@mui/icons-material/Favorite'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import { useRouter } from 'next/router'
 //import { useSignupCustomerMutation, CustomerCreateParams } from '../generated/graphql'
 import { withApollo } from '../withApollo'
@@ -73,7 +73,7 @@ const productList = [
 const useStyles = makeStyles(theme => ({
   root: {
     margin: '18px 188px',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       margin: '18px 28px',
     }
   },
@@ -302,7 +302,7 @@ function Index() {
     <div className={classes.root}>
       <Breadcrumbs page='Minha conta'/>
       <div className={classes.forms}>
-        <Hidden mdDown>
+        <Hidden lgDown>
           
           <div style={{display: 'flex', flexDirection:'column'}}>
             <div className={classes.divider} />
@@ -344,7 +344,7 @@ function Index() {
         </Hidden>
       </div>
     </div>
-  )
+  );
 }
 
 export default withApollo(Index)

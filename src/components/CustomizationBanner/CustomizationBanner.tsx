@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 
-import { makeStyles } from '@material-ui/core/styles'
-import { Hidden } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Hidden } from '@mui/material'
 
 import { Banner, BannerMobile } from './components'
 
@@ -21,7 +21,7 @@ const CustomizationBanner = (props: any) => {
 
   return (
     <div className={classes.root}>
-      <Hidden smDown>
+      <Hidden mdDown>
         <Banner />
       </Hidden>
 
@@ -29,7 +29,7 @@ const CustomizationBanner = (props: any) => {
         <BannerMobile />
       </Hidden>
     </div>
-  )
+  );
 }
 
 export default CustomizationBanner

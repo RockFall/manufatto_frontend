@@ -1,6 +1,6 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Box, Typography } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Button, Box, Typography } from '@mui/material'
 
 import { ProductGrid, Highlights, BannerCarousel, CustomizationBanner, ProductsButtonGrid } from '../components'
 //import { HighlightBanner } from '../generated/graphql'

@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import clsx from 'clsx'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Typography } from '@material-ui/core'
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
-import ArrowRightIcon from '@material-ui/icons/ArrowRight'
+import { makeStyles } from '@mui/styles'
+import { Button, Typography } from '@mui/material'
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
+import ArrowRightIcon from '@mui/icons-material/ArrowRight'
 
 const useStyles = makeStyles(theme => ({
   root: {

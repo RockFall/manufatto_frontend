@@ -1,13 +1,13 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Link } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Link } from '@mui/material'
 //import { Product as ProductType, ProductImagePath } from '../../generated/graphql'
 import { Product as ProductType } from '../../generated/graphql'
 
 import { formatMoney } from '../../mixins/formatter'
 import clsx from 'clsx'
 
-import FavoriteOutlinedIcon from '@material-ui/icons/FavoriteBorder'
+import FavoriteOutlinedIcon from '@mui/icons-material/FavoriteBorder'
 
 import Util from '../../util/custom_formatter'
 

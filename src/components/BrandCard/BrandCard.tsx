@@ -1,12 +1,12 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Link } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Link } from '@mui/material'
 import Image from 'next/image'
 
 const useStyles = makeStyles(theme => ({
   root: {
     textAlign: 'center',
-    padding: `${theme.spacing(2.5)}px ${theme.spacing(4)}px`,
+    padding: `${theme.spacing(2.5)} ${theme.spacing(4)}`,
   },
   brandCard: {
     

@@ -7,9 +7,16 @@ import '../components/BannerCarousel/BannerCarousel.css'
 import { PersistGate } from 'redux-persist/integration/react';
 import React from 'react'
 import Head from 'next/head'
-import { ThemeProvider } from '@material-ui/core/styles'
-import CssBaseline from '@material-ui/core/CssBaseline'
+import { ThemeProvider, Theme, StyledEngineProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline'
 import theme from '../theme'
+
+
+declare module '@mui/styles/defaultTheme' {
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  interface DefaultTheme extends Theme {}
+}
+
 
 export default function MyApp(props: any) {
   const { Component, pageProps } = props
@@ -33,14 +40,16 @@ export default function MyApp(props: any) {
       </Head>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <ShopLayout>
-              <Component {...pageProps} />
-            </ShopLayout>
-          </ThemeProvider>
+          <StyledEngineProvider injectFirst>
+            <ThemeProvider theme={theme}>
+              <CssBaseline />
+              <ShopLayout>
+                <Component {...pageProps} />
+              </ShopLayout>
+            </ThemeProvider>
+          </StyledEngineProvider>
         </PersistGate>
       </Provider>
     </React.Fragment>
-  )
+  );
 }

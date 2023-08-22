@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button, Hidden, Typography } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Button, Hidden, Typography } from '@mui/material'
 import Image from 'next/image'
 //import { HighlightBanner } from '../../../../generated/graphql'
 import { HighlightBanner } from '../../../../util/custom_types'
@@ -145,7 +145,7 @@ const MosaicBanner = (props: MosaicBannerProps) => {
 
   return (
     <div className={classes.root}>
-      <Hidden xsDown>
+      <Hidden smDown>
         <div className={classes.backgroundMosaic}>
           <Image src={`/${item.background}`} layout='fill' alt="" />
           <div className={classes.primaryImage}>
@@ -185,7 +185,7 @@ const MosaicBanner = (props: MosaicBannerProps) => {
         </div>
       </Hidden>
     </div>
-  )
+  );
 }
 
 export default MosaicBanner

@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles } from '@mui/styles'
 import { TopBar, BottomBar } from '../../components'
 import { withRouter } from 'next/router'
 
@@ -40,7 +40,7 @@ const ShopLayout = (props: any) => {
     <div className={classes.root}>
       <TopBar className={classes.topBar} specialBackground={isSpecialPage(pathName)} />
       <div className={classes.container}>{children}</div>
-
+      
       <BottomBar />
     </div>
   )

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import clsx from 'clsx'
-import { makeStyles, withStyles } from '@material-ui/core/styles'
-import { Checkbox, Typography, Slider, Input, InputAdornment, RadioGroup, Radio, FormControlLabel, FormGroup } from '@material-ui/core'
+import { makeStyles, withStyles } from '@mui/styles'
+import { Checkbox, Typography, Slider, Input, InputAdornment, RadioGroup, Radio, FormControlLabel, FormGroup } from '@mui/material'
 import { FilterAcordion } from './components'
 //import { ColorGroup, ProductMaterial, ProductSize } from '../../generated/graphql'
 

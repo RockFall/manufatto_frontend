@@ -1,8 +1,8 @@
 /* eslint-disable react/display-name */
 import React, { useState, forwardRef } from 'react'
 import clsx from 'clsx'
-import { makeStyles } from '@material-ui/core/styles'
-import { ListItem, Button, Collapse, colors, Typography } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { ListItem, Button, Collapse, colors, Typography } from '@mui/material'
 
 const useStyles = makeStyles(theme => ({
   item: {

@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import clsx from 'clsx'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import {
   TextField, Typography, Button, InputAdornment, IconButton, OutlinedInput, InputLabel, FormControl, Link, FormHelperText
-} from '@material-ui/core'
+} from '@mui/material'
 
-import {VisibilityOff, Visibility} from '@material-ui/icons'
+import {VisibilityOff, Visibility} from '@mui/icons-material'
 import validate from 'validate.js'
 
 const useStyles = makeStyles(theme => ({
@@ -171,7 +171,7 @@ const LoginForm = (props: LoginProp) => {
                 onClick={handleClickShowPassword}
                 onMouseDown={preventDefault}
                 edge="end"
-              >
+                size="large">
                 {showPassword ? <Visibility /> : <VisibilityOff />}
               </IconButton>
             </InputAdornment>
@@ -187,7 +187,7 @@ const LoginForm = (props: LoginProp) => {
       
       <Button variant='contained' onClick={handleSubmit}>Entrar</Button>
     </div>
-  )
+  );
 }
 
 export default LoginForm

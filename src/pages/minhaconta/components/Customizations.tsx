@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
 import clsx from 'clsx'
-import { makeStyles } from '@material-ui/core/styles'
-import { Typography, TextField, Button, Link, FormControl, Select, InputLabel } from '@material-ui/core'
+import { makeStyles } from '@mui/styles'
+import { Typography, TextField, Button, Link, FormControl, Select, InputLabel } from '@mui/material'
 import { addCartItem } from '../../../actions'
 //import { ProductMaterial, ProductOccasion, ProductSize } from '../../../generated/graphql'
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 const useStyles = makeStyles(theme => ({
   root:{

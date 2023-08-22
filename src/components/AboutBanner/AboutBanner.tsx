@@ -1,13 +1,13 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import clsx from 'clsx'
 import {
   Container,
   Typography,
   Hidden,
   Link,
-} from '@material-ui/core'
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
+} from '@mui/material'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import Image from 'next/image'
 import {Breadcrumbs} from '../'
 const useStyles = makeStyles(theme => ({
@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     transform: "scale(1)",
     display: 'flex',
     flexDirection: 'column',
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       flexDirection: 'column',
     }
   },
@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     justifyItems: 'center',
     marginTop: theme.spacing(4),
     marginBottom: theme.spacing(12),
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       flexDirection: 'column',
       margin: '0px',
       marginTop: theme.spacing(3),
@@ -45,7 +45,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: '20%',
     width: '100%',
     maxWidth: theme.spacing(82),
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       margin: '0px',
     }
   },
@@ -79,7 +79,7 @@ const useStyles = makeStyles(theme => ({
   },
   spacing: {
     paddingLeft: theme.spacing(24),
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       padding: 0,
       flexDirection: 'column',
       margin: '0px',
@@ -96,7 +96,7 @@ const AboutBanner = (props: AboutBannerProps) => {
 
   return (
     <Container className={clsx(className, classes.root)} maxWidth={false} >
-      <Hidden mdDown>
+      <Hidden lgDown>
         <div className={classes.bg}>
           <img src='/light1.png' width='100%' height='934px'/>
         </div>
@@ -125,7 +125,7 @@ const AboutBanner = (props: AboutBannerProps) => {
         </div>
       </div>
     </Container>
-  )
+  );
 }
 
 

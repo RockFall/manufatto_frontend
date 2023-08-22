@@ -1,8 +1,8 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@mui/styles'
 import clsx from 'clsx'
-import { Container, Typography, Hidden, Button } from '@material-ui/core'
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos'
+import { Container, Typography, Hidden, Button } from '@mui/material'
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'space-between',
     alignItems: 'flex-start',
     padding: '90px 120px',
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('lg')]: {
       padding: '30px 32px',
     },
   },
@@ -147,7 +147,7 @@ const BrandsMenu = (props: BrandsMenuProps) => {
         </div>
       </Hidden>
 
-      <Hidden mdDown>
+      <Hidden lgDown>
         <div className={classes.brands}>
           {brands.map((brand, idx) => (
             <Button key={idx} onClick={() => {setBrandsMenuOpen(); router.push(brand.url)}} className={classes.brandButton}>
@@ -177,7 +177,7 @@ const BrandsMenu = (props: BrandsMenuProps) => {
         </div>
       </Hidden>
     </Container>
-  )
+  );
 }
 
 export default BrandsMenu
