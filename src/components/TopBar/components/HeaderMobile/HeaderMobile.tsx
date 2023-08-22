@@ -61,9 +61,7 @@ const HeaderMobile = (props: HeaderMobileProps) => {
     <div className={classes.appBarMobile}>
       <div className={classes.logos}>
         <Link href="/">
-          <a>
-            <Image src='/LogoBlack.svg' width='150%' height='70%' object-fit='fill' />
-          </a>
+          <Image src='/LogoBlack.svg' width={150} height={70} object-fit='fill' alt="Logo Manufatto" />
         </Link>
       </div>
 

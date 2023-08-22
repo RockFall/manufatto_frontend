@@ -2,14 +2,16 @@ version: '2'
 
 services:
   front:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     image: manufatto-front:latest
-    working_dir: /code
     stdin_open: true
     container_name: manufatto-front
     command: bash -c 'yarn && yarn dev'
     volumes:
-      - ./:/code
-      - ./node_modules:/code/node_modules:cached
+      - ./:/tmp/frontend-build
+      - ./node_modules:/tmp/frontend-build/node_modules:cached
+    working_dir: /tmp/frontend-build
     ports:
       - 80:3000

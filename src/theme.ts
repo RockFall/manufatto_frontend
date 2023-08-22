@@ -1,9 +1,9 @@
-import { createMuiTheme } from '@material-ui/core'
+import { createTheme } from '@material-ui/core'
 import { red } from '@material-ui/core/colors'
 
 import overrides from './theme/overrides'
 
-const theme = createMuiTheme({
+const theme = createTheme({
   typography: {
     fontFamily: "Suisse Int\\'l, Roboto, Helvetica, Arial, sans-serif",
   },

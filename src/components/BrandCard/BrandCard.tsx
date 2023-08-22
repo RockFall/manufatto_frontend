@@ -34,7 +34,7 @@ const BrandCard = (props: BrandProp) => {
       <div className={classes.brandCard}>
         <Link href='#' underline='none'>
           {' '}
-          <Image src={image} width={488} height={461} />{' '}
+          <Image src={image} width={488} height={461} alt=""  />{' '}
         </Link>
         <h4 className={classes.name}>
           {' '}

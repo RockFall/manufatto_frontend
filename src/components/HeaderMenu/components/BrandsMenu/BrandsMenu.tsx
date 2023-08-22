@@ -166,12 +166,10 @@ const BrandsMenu = (props: BrandsMenuProps) => {
               </Typography>
           </Button>
         </div>
-        <Image src='/LateralOrangeBG.webp' layout='fill' />
+        <Image src='/LateralOrangeBG.webp' layout='fill' alt="Lateral Orange Background" />
         <div className={classes.image}>
           <Link href={highlight.url}>
-            <a>
-              <Image src={highlight.src} width={'884px'} height={'741px'} layout='intrinsic' className={classes.mouseCursor} />
-            </a>
+              <Image src={highlight.src} width={884} height={741} layout='intrinsic' className={classes.mouseCursor} alt="Highlighted Brand Image" />
           </Link>
           <div className={classes.brandName}>
             <Typography><strong>{highlight.brand}</strong> - {highlight.name}</Typography>

@@ -147,15 +147,15 @@ const MosaicBanner = (props: MosaicBannerProps) => {
     <div className={classes.root}>
       <Hidden xsDown>
         <div className={classes.backgroundMosaic}>
-          <Image src={`/${item.background}`} layout='fill' />
+          <Image src={`/${item.background}`} layout='fill' alt="" />
           <div className={classes.primaryImage}>
-            <Image src={item.images[0].image.originalWbp} width='488.15px' height='615.81px' layout='responsive' />
+            <Image src={item.images[0].image.originalWbp} width={488.15} height={615.81} layout='responsive' alt="" />
           </div>
           <div className={classes.secondaryImage}>
-            <Image src={item.images[1].image.originalWbp} width='620px' height='720px' layout='responsive' />
+            <Image src={item.images[1].image.originalWbp} width={620} height={720} layout='responsive' alt="" />
           </div>
           <div className={classes.tertiaryImage}>
-            <Image src={item.images[2].image.originalWbp} width='588px' height='633px' layout='responsive' />
+            <Image src={item.images[2].image.originalWbp} width={588} height={633} layout='responsive' alt="" />
           </div>
           <Button variant='outlined' className={classes.bttnShopnow} onClick={()=> router.push(item.links[0].url)}>
             {' '}
@@ -170,13 +170,13 @@ const MosaicBanner = (props: MosaicBannerProps) => {
       <Hidden smUp>
         <div className={classes.mobileCentering}>
           <div className={classes.primaryMobile}>
-            <Image src={item.images[0].image.originalWbp} layout='fill' />
+            <Image src={item.images[0].image.originalWbp} layout='fill' alt="" />
           </div>
           <div className={classes.secondaryMobile}>
-            <Image src={item.images[1].image.originalWbp} layout='fill' />
+            <Image src={item.images[1].image.originalWbp} layout='fill' alt=""  />
           </div>
           <div className={classes.tertiaryMobile}>
-            <Image src={item.images[2].image.originalWbp} layout='fill' />
+            <Image src={item.images[2].image.originalWbp} layout='fill' alt=""  />
           </div>
         </div>
         <div className={classes.mobileText}>

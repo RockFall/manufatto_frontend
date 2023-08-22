@@ -136,48 +136,54 @@ const AboutBanner = (props: AboutBannerProps) => {
             <Image
               src={'/brand/brand8.svg'}
               layout='fixed'
-              width="354px"
-              height="334px"
+              width={354}
+              height={334}
+              alt=""
             />
           </div>
           <div className={classes.leftImage}>
             <Image
               src={'/brand/brand4.svg'}
               layout='fixed'
-              width="354px"
-              height="334px"
+              width={354}
+              height={334}
+              alt=""
             />
           </div>
           <div className={classes.bottomLeftImage}>
             <Image
               src={'/brand/brand1.svg'}
               layout='fixed'
-              width="354px"
-              height="334px"
+              width={354}
+              height={334}
+              alt=""
             />
           </div>
           <div className={classes.topRightImage}>
             <Image
               src={'/brand/brand6.svg'}
               layout='fixed'
-              width="354px"
-              height="334px"
+              width={354}
+              height={334}
+              alt=""
             />
           </div>
           <div className={classes.rightImage}>
             <Image
               src={'/brand/brand2.svg'}
               layout='fixed'
-              width="354px"
-              height="334px"
+              width={354}
+              height={334}
+              alt=""
             />
           </div>
           <div className={classes.bottomRightImage}>
             <Image
               src={'/brand/brand9.svg'}
               layout='fixed'
-              width="354px"
-              height="334px"
+              width={354}
+              height={334}
+              alt=""
             />
           </div>
         </div>

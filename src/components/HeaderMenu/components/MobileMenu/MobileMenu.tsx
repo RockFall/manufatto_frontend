@@ -54,7 +54,7 @@ const MobileMenu = (props: MobileMenuProps) => {
         </Button>
       </div>
       <div className={classes.image}>
-        <Image src={highlightImage} width={'1299,5px'} height={'1093,7px'} layout='intrinsic' />
+        <Image src={highlightImage} width={1299.5} height={1093.7} layout='intrinsic' alt="Highlight Image" />
       </div>
     </Container>
   )

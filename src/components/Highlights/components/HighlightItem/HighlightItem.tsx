@@ -76,7 +76,7 @@ const HighlightItem = (props: HighlightItemProps) => {
     <React.Fragment {...rest}>
       <Hidden smDown>
         <Box className={clsx(className, classes.root)}>
-          {!rightImage ? <Image className={classes.image} src={src} width='620px' height='586px' layout='intrinsic' /> : <React.Fragment />}
+          {!rightImage ? <Image className={classes.image} src={src} width={620} height={586} layout='intrinsic' alt=""  /> : <React.Fragment />}
           <Box className={classes.info}>
             <Typography variant='h4' className={classes.textTitle}>
               {' '}
@@ -89,12 +89,12 @@ const HighlightItem = (props: HighlightItemProps) => {
             </Button>
           </Box>
 
-          {rightImage ? <Image className={classes.image} src={src} width='620px' height='586px' layout='intrinsic' /> : <React.Fragment />}
+          {rightImage ? <Image className={classes.image} src={src} width={620} height={586} layout='intrinsic' alt=""  /> : <React.Fragment />}
         </Box>
       </Hidden>
       <Hidden mdUp>
         <Box className={clsx(className, classes.root)}>
-          <Image src={src} width='354px' height='334px' layout='fixed' />
+          <Image src={src} width={354} height={334} layout='fixed' alt="" />
           <Box className={classes.info}>
             <Typography variant='h4' className={classes.textTitle}>
               {' '}

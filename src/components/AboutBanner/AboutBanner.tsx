@@ -109,8 +109,9 @@ const AboutBanner = (props: AboutBannerProps) => {
             <Image
               src={'/About.svg'}
               layout='fixed'
-              width="577px"
-              height="676px"
+              width={577}
+              height={676}
+              alt=""
             />
           </div>
           <div className={classes.about}>

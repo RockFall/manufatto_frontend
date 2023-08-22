@@ -103,9 +103,9 @@ const OutfiBanner = (props: OutfiBannerProps) => {
   return (
     <div className={classes.root}>
       <Hidden xsDown>
-        <Image src={`/${item.background}`} width='1920px' height='934px' layout='responsive' objectFit='cover' />
+        <Image src={`/${item.background}`} width={1920} height={934} layout='responsive' objectFit='cover' alt="Croqui Background" />
         <div className={classes.croqui}>
-          <Image src={item.images[0].image.original} layout='fill' objectFit='contain' />
+          <Image src={item.images[0].image.original} layout='fill' objectFit='contain' alt="Croqui image" />
         </div>
         <div className={classes.slide}>
           {item.links.map((link, i) => (
@@ -119,10 +119,10 @@ const OutfiBanner = (props: OutfiBannerProps) => {
         <div className={classes.mobileCentering}>
           <div className={classes.mobileImages}>
             <div className={classes.mobileBackgroundPosition}>
-              <Image src={`/${item.background}`} layout='fill' objectFit='contain' />
+              <Image src={`/${item.background}`} layout='fill' objectFit='contain' alt=""  />
             </div>
             <div className={classes.mobileCroqui}>
-              <Image src={item.images[0].image.original} layout='fill' objectFit='contain' />
+              <Image src={item.images[0].image.original} layout='fill' objectFit='contain' alt=""  />
             </div>
           </div>
           <div className={classes.mobileSlide}>

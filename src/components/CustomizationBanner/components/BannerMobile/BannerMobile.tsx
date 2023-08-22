@@ -41,7 +41,7 @@ const BannerMobile = (props: any) => {
     <div className={classes.root}>
       <Grid className={classes.content} container justify='space-between' direction='column'>
         <h2 className={classes.titleText}>Suas peças com um toque único e original.</h2>
-        <Image src='/CustomBannerMobile.svg' width={1100} height={1100} />
+        <Image src='/CustomBannerMobile.svg' width={1100} height={1100} alt=""  />
         <p className={classes.infoText}>
           Escolha um produto com o selo ”customizável” e deixe que nossos designers ou artistas parceiros customizem pra você.
         </p>

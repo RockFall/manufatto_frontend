@@ -67,7 +67,7 @@ const Banner = (props: any) => {
       <p className={classes.backgroundText}>Customização de Produtos. Customização de Produtos. Customização de Produtos.</p>
 
       <div className={classes.content}>
-        <Image src='/CustomBanner.svg' width={840} height={840} />
+        <Image src='/CustomBanner.svg' width={840} height={840} alt=""  />
         <div className={classes.text}>
           <h2 className={classes.titleText}>Suas peças com um toque único e original.</h2>
           <p className={classes.infoText}>

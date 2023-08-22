@@ -117,7 +117,7 @@ const BrandsBanner = (props: BrandsBannerProps) => {
       </Hidden>
       <div className={classes.content}>
         <div>
-          <Image src={'/brand/brand9.svg'} layout='fixed' width='620px' height='586px' />
+          <Image src={'/brand/brand9.svg'} layout='fixed' width={620} height={586} alt=""  />
         </div>
         <div className={classes.brandInfo}>
           <Typography className={classes.shopName}> {shop?.name.text || ""}</Typography>
