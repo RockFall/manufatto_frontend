@@ -88,6 +88,7 @@ const AboutHighlight = (props: AboutHighlightProps) => {
             width={482}
             height={829}
             layout="intrinsic"
+            alt=""
           />
         </Box>
       </Hidden>
@@ -98,6 +99,8 @@ const AboutHighlight = (props: AboutHighlightProps) => {
             width={354}
             height={609}
             layout="fixed"
+
+            alt=""
           />
           <div className={classes.info}>
             <Typography variant='h4' className={classes.textTitle}> Estilo feito a mão </Typography>
