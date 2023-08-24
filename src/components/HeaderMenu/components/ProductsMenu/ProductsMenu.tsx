@@ -113,7 +113,7 @@ const ProductsMenu = (props: ProductsMenuProps) => {
         <div className={classes.list}>
           <NavigationList depth={0} pages={pages} />
         </div>
-        <Image src='/BG01.png' layout='fill'  alt="Lateral Background" />
+        <Image src='/BG01.png' layout='fill' alt="Lateral Background" />
         <div className={classes.image}>
           <Image src={highlight.src} width={884} height={741} layout='intrinsic' alt="Highlighted Brand Image" />
           <div className={classes.brandName}>

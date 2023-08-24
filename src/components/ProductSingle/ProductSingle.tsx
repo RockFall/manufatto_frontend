@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { useDispatch } from 'react-redux'
 import { Hidden } from '@mui/material'
-import { addCartItem, CartItemType} from '../../actions'
+import { addItemToCart, CartItemType} from '../../slices/cartSlice'
 import { ProductDetails, ProductDetailsMobile } from './components'
 import { ProductDetail } from '../../util/custom_types'
 import { Product } from '../../generated/graphql'
@@ -24,7 +24,7 @@ const ProductSingle = (props: ProductSingleProps) => {
 
   const addToCart = () => {
     if(cartItem.count >= 0){
-      dispatch(addCartItem(cartItem))
+      dispatch(addItemToCart(cartItem))
     }
   }
 

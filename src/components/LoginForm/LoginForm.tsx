@@ -176,7 +176,8 @@ const LoginForm = (props: LoginProp) => {
               </IconButton>
             </InputAdornment>
           }
-          labelWidth={65}error={hasError('password')}
+          //labelWidth={65} FIXME
+          error={hasError('password')}
           onChange={event => handleFieldChange(event, 'password', event.target.value)}
           value={user.password}
         />

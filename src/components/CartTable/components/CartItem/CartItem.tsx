@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import { makeStyles } from '@mui/styles'
 import { Typography } from '@mui/material'
 
-import {CartItemType} from '../../../../actions'
+import {CartItemType} from '../../../../slices/cartSlice'
 
 const useStyles = makeStyles((theme) => ({
   root: {

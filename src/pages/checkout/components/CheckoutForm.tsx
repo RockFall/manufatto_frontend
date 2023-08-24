@@ -8,6 +8,8 @@ import validate from 'validate.js'
 
 import {CepMask, CpfMask, TelephoneMask} from '../../../components'
 
+import { SelectChangeEvent } from '@mui/material';
+
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(3),
@@ -360,7 +362,28 @@ const CheckoutFormForm = (props: CheckoutFormProp) => {
     }))
   }
 
-  const handleAddressFieldChange = (event: React.ChangeEvent<{ name?: string | undefined; value: unknown }>, field: string, value: string) => {
+  const handleAddressFieldChange = (event: SelectChangeEvent<string>, field: string, value: string) => {
+    setUser(values => ({
+      ...values,
+      address: {
+        ...values.address,
+        [field]: value
+      }
+    }))
+
+    setFormState(formState => ({
+      ...formState,
+      touched: {
+        ...formState.touched,
+        address:{
+          ...formState.touched.address,
+          [field]: true
+        } 
+      }
+    }))
+  }
+
+  const handleAddressTextAreaChange = (event: React.ChangeEvent<{ name?: string | undefined; value: unknown }>, field: string, value: string) => {
     event.persist && event.persist()
     setUser(values => ({
       ...values,
@@ -494,7 +517,7 @@ const CheckoutFormForm = (props: CheckoutFormProp) => {
                 <TextField className={classes.inputField}
                     error={hasAddressError('postal')}
                     helperText={hasAddressError('postal') ? formState.errors.address.postal[0] : null}
-                    onChange={event => handleAddressFieldChange(event, 'postal', event.target.value)}
+                    onChange={event => handleAddressTextAreaChange(event, 'postal', event.target.value)} // FIXME: SelectChangeEvent
                     value={user.address.postal}
                     variant="outlined"
                     placeholder='00.000-000'
@@ -517,7 +540,7 @@ const CheckoutFormForm = (props: CheckoutFormProp) => {
                       <TextField className={classes.inputField}
                           error={hasAddressError('street')}
                           helperText={hasAddressError('street') ? formState.errors.address.street[0] : null}
-                          onChange={event => handleAddressFieldChange(event, 'street', event.target.value)}
+                          onChange={event => handleAddressTextAreaChange(event, 'street', event.target.value)} // FIXME: SelectChangeEvent
                           value={user.address.street}
                           variant="outlined"
                           placeholder='Rua'
@@ -530,7 +553,7 @@ const CheckoutFormForm = (props: CheckoutFormProp) => {
                           <TextField className={classes.inputField}
                               error={hasAddressError('number')}
                               helperText={hasAddressError('number') ? formState.errors.address.number[0] : null}
-                              onChange={event => handleAddressFieldChange(event, 'number', event.target.value)}
+                              onChange={event => handleAddressTextAreaChange(event, 'number', event.target.value)}
                               value={user.address.number}
                               variant="outlined"
                               placeholder='Nº'
@@ -542,7 +565,7 @@ const CheckoutFormForm = (props: CheckoutFormProp) => {
                           <TextField className={classes.inputField}
                               error={hasAddressError('complement')}
                               helperText={hasAddressError('complement') ? formState.errors.address.complement[0] : null}
-                              onChange={event => handleAddressFieldChange(event, 'complement', event.target.value)}
+                              onChange={event => handleAddressTextAreaChange(event, 'complement', event.target.value)} // FIXME: SelectChangeEvent
                               value={user.address.complement}
                               variant="outlined"
                               placeholder='Complemento'
@@ -557,7 +580,7 @@ const CheckoutFormForm = (props: CheckoutFormProp) => {
                   <TextField className={classes.inputField}
                       error={hasAddressError('neighborhood')}
                       helperText={hasAddressError('neighborhood') ? formState.errors.address.neighborhood[0] : null}
-                      onChange={event => handleAddressFieldChange(event, 'neighborhood', event.target.value)}
+                      onChange={event => handleAddressTextAreaChange(event, 'neighborhood', event.target.value)} // FIXME: SelectChangeEvent
                       value={user.address.neighborhood}
                       variant="outlined"
                       placeholder='Bairro'
@@ -569,7 +592,7 @@ const CheckoutFormForm = (props: CheckoutFormProp) => {
                   <TextField className={classes.inputField}
                       error={hasAddressError('city')}
                       helperText={hasAddressError('city') ? formState.errors.address.city[0] : null}
-                      onChange={event => handleAddressFieldChange(event, 'city', event.target.value)}
+                      onChange={event => handleAddressTextAreaChange(event, 'city', event.target.value)} // FIXME: SelectChangeEvent
                       value={user.address.city}
                       variant="outlined"
                       placeholder='Cidade'
@@ -586,7 +609,7 @@ const CheckoutFormForm = (props: CheckoutFormProp) => {
                       placeholder="Estado"
                       value={user.address.state}
                       fullWidth
-                      onChange={event => handleAddressFieldChange(event, 'state', event.target.value as string)}
+                      onChange={event => handleAddressFieldChange(event, 'state', event.target.value as string)} // FIXME: SelectChangeEvent
                       disabled={formState.isLoading}
                       >
                       {ufList.map(item =>

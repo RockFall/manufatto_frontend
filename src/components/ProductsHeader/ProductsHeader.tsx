@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
 interface ProductsHeaderProp {
   className?: string
   setOpenFilter: Function
-  count: Number
+  count: number
 }
 
 const ProductsHeader = (props: ProductsHeaderProp) => {
@@ -51,7 +51,9 @@ const ProductsHeader = (props: ProductsHeaderProp) => {
   return (
     <div className={classes.root}>
       <Hidden lgDown>
-        <Typography className={classes.pieceNumber}>{count} Peças</Typography>
+        <Typography className={classes.pieceNumber}>
+          {count} Peças
+        </Typography>
       </Hidden>
       <Hidden lgUp>
         <Button className={classes.filterButton} onClick={() => setOpenFilter(true)} endIcon={<FilterListIcon />}>

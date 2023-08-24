@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import { applyMiddleware, createStore, compose, StoreEnhancer } from 'redux'
+import { configureStore } from '@reduxjs/toolkit'
 import { persistStore, persistReducer } from 'redux-persist'
 import thunkMiddleware from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
@@ -35,7 +36,7 @@ const initStore = (preloadedState = {}) => {
   return { store: _store, persistor }
 }
 
-export default function configureStore(preloadedState) {
+export default function configureStoreCustom(preloadedState) {
   let _store = store ?? initStore(preloadedState)
   if (preloadedState && store) {
     _store = initStore({
@@ -55,6 +56,6 @@ export default function configureStore(preloadedState) {
 }
 
 export function useStore(initialState) {
-  const store = useMemo(() => configureStore(initialState), [initialState])
+  const store = useMemo(() => configureStoreCustom(initialState), [initialState])
   return store
 }

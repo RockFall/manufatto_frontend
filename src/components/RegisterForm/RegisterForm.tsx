@@ -286,7 +286,7 @@ const RegisterForm = (props: RegisterProp) => {
               </IconButton>
             </InputAdornment>
           }
-          labelWidth={65}
+          //labelWidth={65}  // FIX ME
           error={hasError('password')}
           onChange={event => handleFieldChange(event, 'password', event.target.value)}
           value={user.password}
@@ -311,7 +311,7 @@ const RegisterForm = (props: RegisterProp) => {
               </IconButton>
             </InputAdornment>
           }
-          labelWidth={140}
+          //labelWidth={140}  // FIX ME
           error={hasError('password_confirmation')}
           onChange={event => handleFieldChange(event, 'password_confirmation', event.target.value)}
           value={user.password_confirmation}

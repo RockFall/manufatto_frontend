@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import clsx from 'clsx'
 import { makeStyles } from '@mui/styles'
 import { Typography, TextField, Button, Link, FormControl, Select, InputLabel } from '@mui/material'
-import { addCartItem } from '../../../actions'
+import { addItemToCart } from '../../../slices/cartSlice'
 //import { ProductMaterial, ProductOccasion, ProductSize } from '../../../generated/graphql'
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 

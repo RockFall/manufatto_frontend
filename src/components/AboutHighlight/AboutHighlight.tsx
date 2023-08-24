@@ -119,6 +119,7 @@ const AboutHighlight = (props: AboutHighlightProps) => {
             width={750}
             height={750}
             layout="fixed"
+            alt=""
           />
           <Box className={classes.info}>
             <Typography variant='h4' className={classes.textTitle}> Customize os produtos com os nossos artistas </Typography>
@@ -135,6 +136,7 @@ const AboutHighlight = (props: AboutHighlightProps) => {
             width={480}
             height={480}
             layout="fixed"
+            alt=""
           />
           <div className={classes.info}>
             <Typography variant='h4' className={classes.textTitle}> Customize os produtos com os nossos artistas </Typography>

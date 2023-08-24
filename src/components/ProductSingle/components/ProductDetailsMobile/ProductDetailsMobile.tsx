@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { makeStyles } from '@mui/styles'
 import { ProductData, DetailsTabs } from './components'
-import { CartItemType } from '../../../../actions'
+import { CartItemType } from '../../../../slices/cartSlice'
 //import { ProductDetail } from '../../../../generated/graphql'
 import { ProductDetail } from '../../../../util/custom_types'
 

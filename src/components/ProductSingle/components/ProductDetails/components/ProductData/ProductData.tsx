@@ -6,7 +6,7 @@ import {
   Hidden,
 } from '@mui/material'
 import { ProductBuy } from './components'
-import { CartItemType } from '../../../../../../actions'
+import { CartItemType } from '../../../../../../slices/cartSlice'
 import { ProductDetail } from '../../../../../../util/custom_types'
 
 const useStyles = makeStyles(theme => ({

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { makeStyles } from '@mui/styles'
 import { Typography, TextField, Button, Link, FormControl, Select, InputLabel } from '@mui/material'
-import { addCartItem } from '../../../actions'
+import { addItemToCart } from '../../../slices/cartSlice'
 //import { ProductMaterial, ProductOccasion, ProductSize } from '../../../generated/graphql'
 
 const useStyles = makeStyles(theme => ({

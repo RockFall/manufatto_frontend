@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux'
 import { CartItem, CartRow } from './components'
 import { Product } from '../../generated/graphql'
 import { formatMoney } from '../../mixins/formatter'
-import { CartItemType, updateCartItem, CartShopType } from '../../actions'
+import { CartItemType, CartShopType, updateCartItem, } from '../../slices/cartSlice'
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -93,7 +93,7 @@ const CartTable = (props: CartTableProps) => {
   const dispatch = useDispatch()
 
   const editItem = (index: number, item: CartItemType) => {
-    dispatch(updateCartItem(item, index))
+    dispatch(updateCartItem({cartItem: item, index: index}))
   }
 
   const handleCountChange = (qtd, i, j) => {

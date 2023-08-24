@@ -6,7 +6,7 @@ import CloseIcon from '@mui/icons-material/Close'
 
 import { CartItem } from '../'
 import { formatMoney } from '../../../../mixins/formatter'
-import {CartItemType} from '../../../../actions'
+import {CartItemType} from '../../../../slices/cartSlice'
 
 const useStyles = makeStyles((theme) => ({
   root: {},

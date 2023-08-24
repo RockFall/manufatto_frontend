@@ -129,7 +129,7 @@ const ArtDialog = (props: ArtDialogProps) => {
   };
 
   const addItem = (item: CustomizedProductType) => {
-    dispatch(addCustomizedProduct(item))
+    //dispatch(addCustomizedProduct(item)) FIXME: 
   };
 
   const handleUpdateRedux = (e) => {

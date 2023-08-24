@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import clsx from 'clsx'
 import { makeStyles } from '@mui/styles'
 import { Typography, Select, MenuItem, TextField, Button } from '@mui/material'
-import {CartItemType} from '../../../actions'
+import {CartItemType} from '../../../slices/cartSlice'
 import { formatMoney } from '../../../mixins/formatter'
 
 const useStyles = makeStyles(theme => ({

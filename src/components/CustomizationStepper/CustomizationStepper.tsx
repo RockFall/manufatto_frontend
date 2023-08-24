@@ -17,7 +17,7 @@ import { StepIconProps } from '@mui/material/StepIcon';
 import AddIcon from '@mui/icons-material/Add'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
-import { CartItemType, addCartItem } from '../../actions'
+import { CartItemType, addItemToCart } from '../../slices/cartSlice'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -264,7 +264,7 @@ export default function CustomizationStepper(props: CustomizationStepperProps) {
   }, [])  
 
   const addItem = (item: CartItemType) => {
-    dispatch(addCartItem(item))
+    dispatch(addItemToCart(item))
   }
   
   const handleUpdateRedux = (e) => {

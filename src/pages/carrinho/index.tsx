@@ -9,7 +9,7 @@ import CheckoutPage from '../checkout'
 //import { PageCartItemsComp, ssrCartItems } from '../../generated/page'
 import { GetServerSideProps } from 'next'
 import { useDispatch } from 'react-redux'
-import { addCartItem, CartItemType, removeCartItem, updateCartItem, CartShopType } from '../../actions'
+import { addItemToCart, CartItemType, removeItemFromCart, updateCartItem, CartShopType } from '../../slices/cartSlice'
 //import { ProductDetail, Product } from '../../generated/graphql'
 import { Product } from '../../generated/graphql'
 
@@ -88,15 +88,15 @@ const Index = (props) => {
   }, [])
 
   const deleteItem = (index: number, slug: string) => {
-    dispatch(removeCartItem(index, slug))
+    dispatch(removeItemFromCart({shopName: slug, index: index}))
   }
 
   const addItem = (item: CartItemType) => {
-    dispatch(addCartItem(item))
+    dispatch(addItemToCart(item))
   }
 
   const editItem = (index: number, item: CartItemType) => {
-    dispatch(updateCartItem(item, index))
+    dispatch(updateCartItem({cartItem: item, index: index}))
   }
 
   const onSubmit = (data) => {

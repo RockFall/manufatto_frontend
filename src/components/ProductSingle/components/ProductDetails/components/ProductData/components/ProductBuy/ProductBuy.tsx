@@ -31,6 +31,7 @@ import { CepMask } from '../../../../../../../../components'
 import { ProductDetail } from '../../../../../../../../util/custom_types'
 import Image from 'next/image';
 import validate from 'validate.js'
+import { SelectChangeEvent } from '@mui/material';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -288,7 +289,8 @@ const ProductBuy = (props: ProductBuyProp) => {
   
   //Operação de dispacho para o redux
   const addItem = (item: CustomizedProductType) => {
-    dispatch(addCustomizedProduct(item))
+    //dispatch(addCustomizedProduct(item))
+    // FIXME: 
   };
   
   //Envia dados para o Redux
@@ -374,7 +376,7 @@ const ProductBuy = (props: ProductBuyProp) => {
   };
 
   //Controle do valor de tamanho
-  const handleChangeSize = (event: React.ChangeEvent<{ value: unknown }>) => {
+  const handleChangeSize = (event: SelectChangeEvent<string>) => {
     setFormState({
       ...formState,
       values: {
@@ -515,7 +517,7 @@ const ProductBuy = (props: ProductBuyProp) => {
             open={openSelect}
             onClose={() => {setOpenSelect(false)}}
             onOpen={() => {setOpenSelect(true)}}
-            onChange={handleChangeSize}
+            onChange={(e) => handleChangeSize(e)} // FIXME: broken?
             displayEmpty
           >
             <MenuItem value="">
@@ -650,6 +652,7 @@ const ProductBuy = (props: ProductBuyProp) => {
           src={'/selo-customizavel.svg'}
           width="75"
           height="75"
+          alt=""
         />
         <Button className={classes.customizationButton} color='inherit' onClick={(e) => handleSendToRedux(e)}>
           Customizar este produto
