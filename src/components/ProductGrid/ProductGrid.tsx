@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   },
   gridItem: {
     //width: '356px',
-    width: 'calc(18vw + 52px)',
+    width: '284px',
     //height: '441px',
     //maxWidth: '25%',
   } 

@@ -14,21 +14,23 @@ const DivRoot = styled("div")(({ theme }) => ({
 }));
 
 const StyledLink = styled(Link)(({ theme }) => ({
-  fontFamily: "Suisse Int\\'l",
+  fontFamily: "Akshar",
   fontStyle: "normal",
   fontWeight: 600,
-  fontSize: "1rem",
+  fontSize: "1.3rem",
   lineHeight: "32px",
   textAlign: "right",
   padding: "10px 0px",
+  textDecoration: "none",
 }));
 
 const LinkMobileLink = styled(Link)(({ theme }) => ({
-  fontFamily: "Suisse Int\\'l",
+  fontFamily: "Akshar",
   fontStyle: "normal",
   fontWeight: 600,
   fontSize: "20px",
   lineHeight: "32px",
+  textDecoration: "none",
 }));
 
 const DivMobileSlide = styled("div")(({ theme }) => ({

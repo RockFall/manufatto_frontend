@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
   buttonTypography: {
     color: '#6F6C6B',
     fontSize: theme.spacing(1.8),
-    fontFamily: "Suisse Int\\'l",
+    fontFamily: "Akshar",
     letterSpacing: '0.16em',
   },
 }))

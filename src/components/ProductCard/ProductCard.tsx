@@ -13,8 +13,9 @@ import Util from '../../util/custom_formatter'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    fontSize: 14,
+    fontSize: 15,
     textAlign: 'center',
+    fontFamily: 'Akshar',
   },
   productCard: {
     display: 'block',
@@ -146,7 +147,7 @@ const Product = (props: ProductProp) => {
     <div {...rest} className={clsx(classes.root, className)}>
 
       <div className={classes.productCard}>
-        <Link href={productLink} underline='none'>
+        <Link href={productLink} underline='none' style={{ textDecoration: 'none' }}>
           <div className={classes.favoriteShortcutContainer}>
             <FavoriteOutlinedIcon className={classes.favoriteIcon} color="disabled" />
           </div>
@@ -169,11 +170,11 @@ const Product = (props: ProductProp) => {
           </div>
         </Link>
 
-        <Link href={shopLink}>
+        <Link href={shopLink} style={{ textDecoration: 'none' }}>
           <h5 className={classes.brand}> {product.vendor} </h5>
         </Link>
 
-        <Link href={productLink}>
+        <Link href={productLink} style={{ textDecoration: 'none' }}>
           <p className={classes.name}> {product.title} </p>
         </Link>
 

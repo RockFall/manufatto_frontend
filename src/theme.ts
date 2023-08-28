@@ -3,7 +3,7 @@ import { red } from '@mui/material/colors'
 
 const theme = createTheme({ // TODO: May be changed manually in the future
   typography: {
-    fontFamily: "Suisse Int\\'l, Roboto, Helvetica, Arial, sans-serif",
+    fontFamily: "Lora, Akshar, Suisse Int\\'l, Roboto, Helvetica, Arial, sans-serif",
   },
   palette: {
     primary: {
@@ -32,8 +32,9 @@ const theme = createTheme({ // TODO: May be changed manually in the future
           color: '#6F6C6B',
           border: '1px solid #6F6C6B',
           textTransform: 'uppercase',
-          fontFamily: "Suisse Int\\'l",
+          fontFamily: "Akshar",
           fontStyle: 'normal',
+          fontSize: '1rem',
           borderRadius: '0px',
       
           '&:hover': {
@@ -52,7 +53,8 @@ const theme = createTheme({ // TODO: May be changed manually in the future
           height: '58px',
           backgroundColor: '#1D1D1F',
           textTransform: 'uppercase',
-          fontFamily: "Suisse Int\\'l",
+          fontFamily: "Akshar",
+          fontSize: '1rem',
           fontStyle: 'normal',
           color: '#FFFFFF',
           borderRadius: '0px',

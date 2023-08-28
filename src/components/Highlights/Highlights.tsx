@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
     letterSpacing: '0.08em',
     color: '#6F6C6B',
-    fontfamily: "Suisse Int\\'l",
+    fontfamily: "Akshar",
     textTransform: 'uppercase',
   },
   subtitle: {
@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
     lineHeight: '32px',
     textAlign: 'center',
     color: '#1D1D1F',
-    fontfamily: "Suisse Int\\'l",
+    fontfamily: "Lora",
   },
   button: {
     marginTop: theme.spacing(5)

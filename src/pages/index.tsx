@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@mui/styles'
-import { Button, Box, Typography } from '@mui/material'
+import { Button, Box, Typography, Hidden } from '@mui/material'
 
 import { ProductGrid, Highlights, BannerCarousel, CustomizationBanner, ProductsButtonGrid } from '../components'
 //import { HighlightBanner } from '../generated/graphql'
@@ -47,6 +47,7 @@ const useStyles = makeStyles(theme => ({
     textTransform: 'uppercase',
     color: '#6F6C6B',
     marginTop: theme.spacing(10),
+    fontFamily: "Akshar",
 
   },
   shopNowSubtitle: {
@@ -56,12 +57,14 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'center',
     marginTop: theme.spacing(1),
     marginBottom: theme.spacing(7.5),
+    fontFamily: "Akshar",
   },
   buttonsRoot: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    fontFamily: "Akshar",
   }
 }))
 
@@ -205,20 +208,29 @@ const Index: PageHomeDetailsComp = (props) => {
   
 
   // Getting random products from each vendor
-  const randomVendors = Array.from(vendors).sort(() => 0.5 - Math.random())
+  const randomVendors = vendors.length <= 8 ? Array.from(vendors) : Array.from(vendors).sort(() => 0.5 - Math.random())
 
   const randomProducts = []
 
   data?.collections.edges.forEach(({ node }) => {
     if (randomProducts.length >= 8) return;
     const vendorName = node.title;
-    if (randomVendors.includes(vendorName)) {
+    console.log("FOR EACH Vendor name: ", vendorName)
+    if (randomVendors.some(v => v.toLowerCase() === vendorName.toLowerCase())) {
+      console.log("Vendor selected: ", vendorName)
       const vendorProducts = node.products.edges.map(({ node }) => node);
-      const randomProduct = vendorProducts.slice(0,5).sort(() => 0.5 - Math.random())[0];
-      randomProducts.push(randomProduct);
-      console.log("Product selected: ", randomProduct.title, "from vendor: ", vendorName)
+      const randomProductsFromVendor = vendorProducts.slice(0,5).sort(() => 0.5 - Math.random());
+      randomProducts.push(randomProductsFromVendor[0]);
+      if (randomVendors.length <= 4) {
+        randomProducts.push(randomProductsFromVendor[1]);
+        console.log("Product selected: ", randomProductsFromVendor[1].title, "from vendor: ", vendorName)
+      }
+      console.log("Product selected: ", randomProductsFromVendor[0].title, "from vendor: ", vendorName)
     }
   })
+
+  // Shuffle randomPorducts array
+  randomProducts.sort(() => 0.5 - Math.random());
 
   const carouselBanners = data.metaobjects.edges[0] 
     ? data.metaobjects.edges
@@ -237,7 +249,9 @@ const Index: PageHomeDetailsComp = (props) => {
           items={data.metaobjects.edges[0] ? carouselBanners : (defaultBannerList as unknown as HighlightBanner[])}
         />
         <div className={classes.productSession}>
-          <ProductsButtonGrid className={classes.buttonsRoot} />
+          <Hidden smDown>
+            <ProductsButtonGrid className={classes.buttonsRoot} />
+          </Hidden>
           <Typography className={classes.shopNowTitle}> Shop Now </Typography>
           <Typography className={classes.shopNowSubtitle}> O que vira tendência, está aqui. </Typography>
           {

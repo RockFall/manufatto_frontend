@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
   backMobile: {
     color: '#6F6C6B',
     margin: '8px 6px',
-    fontFamily: "Suisse Int\\'l",
+    fontFamily: "Akshar",
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: '12px',
