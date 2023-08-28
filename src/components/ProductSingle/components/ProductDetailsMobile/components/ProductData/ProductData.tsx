@@ -294,7 +294,7 @@ const ProductData = (props: ProductDataProp) => {
   
   //Operação de dispacho para o redux
   const addItem = (item: CustomizedProductType) => {
-    dispatch(addCustomizedProduct(item))
+    //dispatch(addCustomizedProduct(item)) FIXME: Make Slice
   }
   
   //Envia dados para o Redux
@@ -380,16 +380,16 @@ const ProductData = (props: ProductDataProp) => {
   };
 
   //Controle do valor de tamanho
-  const handleChangeSize = (event: React.ChangeEvent<{ value: unknown }>) => {
+  const handleChangeSize = (event: string) => {
     setFormState({
       ...formState,
       values: {
         ...formState.values,
-        size: (event.target.value as string)
+        size: (event as string)
       },
       touched: {
         ...formState.touched,
-        size: (event.target.value == '') ? false : true
+        size: (event == '') ? false : true
       }
     })
   };
@@ -502,7 +502,7 @@ const ProductData = (props: ProductDataProp) => {
             open={openSelect}
             onClose={() => {setOpenSelect(false)}}
             onOpen={() => {setOpenSelect(true)}}
-            onChange={handleChangeSize}
+            onChange={event =>handleChangeSize(event.target.value)}
             displayEmpty
           >
             <MenuItem value="">
