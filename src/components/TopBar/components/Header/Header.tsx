@@ -4,7 +4,7 @@ import { makeStyles } from '@mui/styles'
 import { Button, IconButton, Typography, Badge } from '@mui/material'
 
 import Link from 'next/link'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import SearchIcon from '@mui/icons-material/Search'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import LocalMallIcon from '@mui/icons-material/LocalMall'

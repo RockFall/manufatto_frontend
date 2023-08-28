@@ -2,7 +2,7 @@ import React from 'react'
 import { makeStyles } from '@mui/styles'
 import clsx from 'clsx'
 import { Container, Typography, Link, Hidden } from '@mui/material'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import { Shop } from '../../generated/graphql'
 import Breadcrumbs from '../Breadcrumbs'

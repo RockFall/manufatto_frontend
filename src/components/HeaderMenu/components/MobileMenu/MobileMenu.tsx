@@ -2,7 +2,7 @@ import React from 'react'
 import { makeStyles } from '@mui/styles'
 import clsx from 'clsx'
 import { Container, Typography, Button } from '@mui/material'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import ArrowRightIcon from '@mui/icons-material/ArrowRight'
 const useStyles = makeStyles(theme => ({
   root: {

@@ -2,7 +2,7 @@ import React from 'react'
 import { makeStyles } from '@mui/styles'
 import { LockOutlined, Facebook, Instagram, Twitter } from '@mui/icons-material/'
 import { Grid, IconButton, Link } from '@mui/material'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 
 const useStyles = makeStyles(theme => ({
   root: {

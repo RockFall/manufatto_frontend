@@ -4,7 +4,7 @@ import { makeStyles } from '@mui/styles'
 import { styled } from '@mui/material/styles'
 import { Link, Hidden } from '@mui/material'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 
 //import { HighlightBanner } from '../../../../generated/graphql'
 import { HighlightBanner } from '../../../../util/custom_types'

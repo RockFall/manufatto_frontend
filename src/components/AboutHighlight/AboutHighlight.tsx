@@ -10,7 +10,7 @@ import {
   Hidden,
   Container,
 } from '@mui/material'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',

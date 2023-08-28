@@ -8,7 +8,7 @@ import {
   Link,
 } from '@mui/material'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import {Breadcrumbs} from '../'
 const useStyles = makeStyles(theme => ({
   root: {

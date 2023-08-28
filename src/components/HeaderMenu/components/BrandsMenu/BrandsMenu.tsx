@@ -3,7 +3,7 @@ import { makeStyles } from '@mui/styles'
 import clsx from 'clsx'
 import { Container, Typography, Hidden, Button } from '@mui/material'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 

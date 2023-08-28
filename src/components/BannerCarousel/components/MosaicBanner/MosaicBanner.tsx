@@ -2,7 +2,7 @@
 import React from 'react'
 import { makeStyles } from '@mui/styles'
 import { Button, Hidden, Typography } from '@mui/material'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 //import { HighlightBanner } from '../../../../generated/graphql'
 import { HighlightBanner } from '../../../../util/custom_types'
 import { useRouter } from 'next/router'

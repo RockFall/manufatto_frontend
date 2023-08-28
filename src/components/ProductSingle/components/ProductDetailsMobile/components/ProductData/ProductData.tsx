@@ -28,7 +28,7 @@ import { addCustomizedProduct, CustomizedProductType, CartItemType } from '../..
 import { CepMask } from '../../../../../../components'
 //import { ProductDetail, ProductSize } from '../../../../../../generated/graphql'
 import { ProductDetail } from '../../../../../../util/custom_types'
-import Image from 'next/image';
+import Image from "next/legacy/image";
 import validate from 'validate.js'
 //import { convertCompilerOptionsFromJson } from 'typescript';
 

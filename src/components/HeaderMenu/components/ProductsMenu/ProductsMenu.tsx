@@ -3,7 +3,7 @@ import { makeStyles } from '@mui/styles'
 import clsx from 'clsx'
 import { Container, Typography, List, Hidden, Button } from '@mui/material'
 import { NavigationListItem } from './components'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import { BackToMenuMobile } from '../../..'
 const useStyles = makeStyles(theme => ({
   root: {

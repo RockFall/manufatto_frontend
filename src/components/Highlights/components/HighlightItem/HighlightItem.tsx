@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { useRouter } from 'next/router'
 import { makeStyles } from '@mui/styles'
 import { Box, Typography, Button, Hidden } from '@mui/material'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import Util from '../../../../util/custom_formatter'
 const useStyles = makeStyles(theme => ({
   

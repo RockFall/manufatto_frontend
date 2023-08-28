@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@mui/styles'
 import { Button, Grid } from '@mui/material'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 
 const useStyles = makeStyles(theme => ({
   root: {
