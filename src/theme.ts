@@ -20,6 +20,13 @@ const theme = createTheme({ // TODO: May be changed manually in the future
     },
   },
   components: {
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          textDecoration: 'none',
+        },
+      }
+    },
     MuiButton: {
       styleOverrides: {
         outlined: {

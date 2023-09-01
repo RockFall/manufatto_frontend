@@ -29,7 +29,7 @@ const theme = createTheme({ // TODO: May be changed manually in the future
           color: '#6F6C6B',
           border: '1px solid #6F6C6B',
           textTransform: 'uppercase',
-          fontFamily: "Suisse Int\\'l",
+          fontFamily: "Akshar",
           fontStyle: 'normal',
           borderRadius: '0px',
       
@@ -49,7 +49,7 @@ const theme = createTheme({ // TODO: May be changed manually in the future
           height: '58px',
           backgroundColor: '#1D1D1F',
           textTransform: 'uppercase',
-          fontFamily: "Suisse Int\\'l",
+          fontFamily: "Akshar",
           fontStyle: 'normal',
           color: '#FFFFFF',
           borderRadius: '0px',

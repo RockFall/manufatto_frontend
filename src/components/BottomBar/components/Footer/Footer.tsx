@@ -29,6 +29,7 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'space-around',
     alignItems: 'flex-start',
     marginBottom: '6%',
+    textDecoration: 'none',
   },
   sign: {
     background: '#EBE9DF',

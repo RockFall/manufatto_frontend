@@ -1,6 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@mui/styles'
 import { Button, Box, Typography, Hidden } from '@mui/material'
+import { styled } from '@mui/material/styles'
 
 import { ProductGrid, Highlights, BannerCarousel, CustomizationBanner, ProductsButtonGrid } from '../components'
 //import { HighlightBanner } from '../generated/graphql'
@@ -12,61 +13,68 @@ import { GetServerSideProps } from 'next'
 import { ssrHomeDetails, PageHomeDetailsComp } from '../generated/page'
 import { Product } from '../generated/graphql'
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    position: 'relative',
-    overflow: 'hidden',
-  },
-  mainBackground: {
-    background: '#EBE9DF',
-  },
-  highlights: {
-    background: '#FFF',
-  },
-  productSession: {
-    marginTop: theme.spacing(13),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  button: {
-    color: '#6F6C6B',
-    fontSize: theme.spacing(1.3),
-    margin: '0 5px',
-    padding: '1.5% 4%',
-    letterSpacing: '0.16em',
-    border: '1px solid #6F6C6B',
-    whiteSpace: 'nowrap',
-    overflowWrap: 'inherit',
-  },
-  shopNowTitle: {
-    fontWeight: 500,
-    fontSize: theme.spacing(1.6),
-    textAlign: 'center',
-    letterSpacing: '0.08em',
-    textTransform: 'uppercase',
-    color: '#6F6C6B',
-    marginTop: theme.spacing(10),
-    fontFamily: "Akshar",
+const DivRoot = styled("div")(({ theme }) => ({
+  position: "relative",
+  overflow: "hidden",
+}));
 
-  },
-  shopNowSubtitle: {
-    color: '#1D1D1F',
-    fontWeight: 600,
-    fontSize: theme.spacing(2.6),
-    textAlign: 'center',
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(7.5),
+const DivMainBackground = styled("div")(({ theme }) => ({
+  background: "#EBE9DF",
+}));
+
+const BoxHighlights = styled(Box)(({ theme }) => ({
+  background: "#FFF",
+}));
+
+const DivProductSession = styled("div")(({ theme }) => ({
+  marginTop: theme.spacing(13),
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+}));
+
+const StyledButton = styled(Button)(({ theme }) => ({
+  color: "#6F6C6B",
+  fontSize: theme.spacing(1.3),
+  margin: "0 5px",
+  padding: "1.5% 4%",
+  letterSpacing: "0.16em",
+  border: "1px solid #6F6C6B",
+  whiteSpace: "nowrap",
+  overflowWrap: "inherit",
+  fontFamily: "Akshar",
+}));
+
+const TypographyShopNowTitle = styled(Typography)(({ theme }) => ({
+  fontWeight: 500,
+  fontSize: theme.spacing(1.6),
+  textAlign: "center",
+  letterSpacing: "0.08em",
+  textTransform: "uppercase",
+  color: "#6F6C6B",
+  marginTop: theme.spacing(10),
+  fontFamily: "Akshar",
+}));
+
+const TypographyShopNowSubtitle = styled(Typography)(({ theme }) => ({
+  color: "#1D1D1F",
+  fontWeight: 600,
+  fontSize: theme.spacing(2.6),
+  textAlign: "center",
+  marginTop: theme.spacing(1),
+  marginBottom: theme.spacing(7.5),
+  fontFamily: "Akshar",
+}));
+
+const ProductsButtonGridButtonsRoot = styled(ProductsButtonGrid)(
+  ({ theme }) => ({
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
     fontFamily: "Akshar",
-  },
-  buttonsRoot: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    fontFamily: "Akshar",
-  }
-}))
+  })
+);
 
 const defaultBannerList = [
   {
@@ -78,25 +86,25 @@ const defaultBannerList = [
     description: 'aaaaaa',
     isActive: true,
     images: [
-        {
-          image: {
-            original: '/mosaicImages1.png',
-            originalWbp: '/mosaicImages1.png',
-          }
-        },
-        {
-          image: {
-            original: '/mosaicImages2.png',
-            originalWbp: '/mosaicImages2.png',
-          }
-        },
-        {
-          image: {
-            original: '/mosaicImages3.png',
-            originalWbp: '/mosaicImages3.png',
-          }
-        },
-      ],
+      {
+        image: {
+          original: '/mosaicImages1.png',
+          originalWbp: '/mosaicImages1.png',
+        }
+      },
+      {
+        image: {
+          original: '/mosaicImages2.png',
+          originalWbp: '/mosaicImages2.png',
+        }
+      },
+      {
+        image: {
+          original: '/mosaicImages3.png',
+          originalWbp: '/mosaicImages3.png',
+        }
+      },
+    ],
     links: [
       {
         id: 10,
@@ -114,13 +122,13 @@ const defaultBannerList = [
     description: 'aaaaaa',
     isActive: true,
     images: [
-        {
-          image: {
-            original: '/croqui1.png',
-            originalWbp: '/croqui1.png',
-          }
-        },
-      ],
+      {
+        image: {
+          original: '/croqui1.png',
+          originalWbp: '/croqui1.png',
+        }
+      },
+    ],
     links: [
       {
         id: 2,
@@ -138,25 +146,25 @@ const defaultBannerList = [
     description: 'aaaaaa',
     isActive: true,
     images: [
-        {
-          image: {
-            original: '/mosaicImages1.png',
-            originalWbp: '/mosaicImages1.png',
-          }
-        },
-        {
-          image: {
-            original: '/mosaicImages2.png',
-            originalWbp: '/mosaicImages2.png',
-          }
-        },
-        {
-          image: {
-            original: '/mosaicImages3.png',
-            originalWbp: '/mosaicImages3.png',
-          }
-        },
-      ],
+      {
+        image: {
+          original: '/mosaicImages1.png',
+          originalWbp: '/mosaicImages1.png',
+        }
+      },
+      {
+        image: {
+          original: '/mosaicImages2.png',
+          originalWbp: '/mosaicImages2.png',
+        }
+      },
+      {
+        image: {
+          original: '/mosaicImages3.png',
+          originalWbp: '/mosaicImages3.png',
+        }
+      },
+    ],
     links: [
       {
         id: 10,
@@ -174,13 +182,13 @@ const defaultBannerList = [
     description: 'aaaaaa',
     isActive: true,
     images: [
-        {
-          image: {
-            original: '/croqui2.png',
-            originalWbp: '/croqui2.png',
-          }
-        },
-      ],
+      {
+        image: {
+          original: '/croqui2.png',
+          originalWbp: '/croqui2.png',
+        }
+      },
+    ],
     links: [
       {
         id: 2,
@@ -192,7 +200,6 @@ const defaultBannerList = [
 ]
 
 const Index: PageHomeDetailsComp = (props) => {
-  const classes = useStyles()
   const router = useRouter()
   const { data } = props
 
@@ -202,10 +209,10 @@ const Index: PageHomeDetailsComp = (props) => {
   //console.log("shops: ", data?.shopsList?.shops)
 
   // Getting vendor list
-  const vendors = data?.shopsList.shops.map(({name}) => name.text) as String[]
+  const vendors = data?.shopsList.shops.map(({ name }) => name.text) as String[]
 
   console.log("Vendors: ", vendors)
-  
+
 
   // Getting random products from each vendor
   const randomVendors = vendors.length <= 8 ? Array.from(vendors) : Array.from(vendors).sort(() => 0.5 - Math.random())
@@ -219,7 +226,7 @@ const Index: PageHomeDetailsComp = (props) => {
     if (randomVendors.some(v => v.toLowerCase() === vendorName.toLowerCase())) {
       console.log("Vendor selected: ", vendorName)
       const vendorProducts = node.products.edges.map(({ node }) => node);
-      const randomProductsFromVendor = vendorProducts.slice(0,5).sort(() => 0.5 - Math.random());
+      const randomProductsFromVendor = vendorProducts.slice(0, 5).sort(() => 0.5 - Math.random());
       randomProducts.push(randomProductsFromVendor[0]);
       if (randomVendors.length <= 4) {
         randomProducts.push(randomProductsFromVendor[1]);
@@ -232,43 +239,49 @@ const Index: PageHomeDetailsComp = (props) => {
   // Shuffle randomPorducts array
   randomProducts.sort(() => 0.5 - Math.random());
 
-  const carouselBanners = data.metaobjects.edges[0] 
+  const carouselBanners = data.metaobjects.edges[0]
     ? data.metaobjects.edges
-        .map(({node}) => JSON.parse(node.fields[0].value))
-        .filter(banner => banner.isActive === true)
-        .sort((a, b) => a.order - b.order) as HighlightBanner[] 
+      .map(({ node }) => JSON.parse(node.fields[0].value))
+      .filter(banner => banner.isActive === true)
+      .sort((a, b) => a.order - b.order) as HighlightBanner[]
     : (defaultBannerList as unknown as HighlightBanner[])
   console.log('carouselBanners', carouselBanners)
 
 
 
   return (
-    <div className={classes.root}>
-      <div className={classes.mainBackground}>
+    <DivRoot>
+      <DivMainBackground>
       <BannerCarousel
           items={data.metaobjects.edges[0] ? carouselBanners : (defaultBannerList as unknown as HighlightBanner[])}
         />
-        <div className={classes.productSession}>
+        <DivProductSession>
           <Hidden smDown>
-            <ProductsButtonGrid className={classes.buttonsRoot} />
+            <ProductsButtonGridButtonsRoot />
           </Hidden>
-          <Typography className={classes.shopNowTitle}> Shop Now </Typography>
-          <Typography className={classes.shopNowSubtitle}> O que vira tendência, está aqui. </Typography>
-          {
-            data && 
-            data.collections.edges.length != 0 &&
+          <TypographyShopNowTitle> Shop Now </TypographyShopNowTitle>
+          <TypographyShopNowSubtitle>
+            {" "}
+            O que vira tendência, está aqui.{" "}
+          </TypographyShopNowSubtitle>
+          {data && data.collections.edges.length != 0 && (
             <ProductGrid productList={randomProducts} />
-          }
-          <Button style={{ margin: '3.4% 0 5%' }} className={classes.button} color='inherit' onClick={()=> router.push(`/produtos`)}>
+          )}
+          <StyledButton
+            style={{ margin: "3.4% 0 5%" }}
+            color="inherit"
+            onClick={() => router.push(`/produtos`)}
+          >
             VEJA MAIS PRODUTOS
-          </Button>
-        </div>
-      </div>
-      <Box my={4} className={classes.highlights}>
+          </StyledButton>
+        </DivProductSession>
+      </DivMainBackground>
+      <BoxHighlights my={4}>
         <Highlights shopsList={data.shopsList.shops} />
-      </Box>
-      <CustomizationBanner />
-    </div>
+      </BoxHighlights>
+      { /*<CustomizationBanner />*/ }
+    </DivRoot>
+
   )
 }
 
