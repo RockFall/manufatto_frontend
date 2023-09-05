@@ -33,8 +33,8 @@ const ProductDetailsMobile = (props: ProductDetailsMobileProp) => {
   return (
     <div className={classes.root}>
       {/*<ImageGrid product={product}/>*/}
-      <img src='/product/moncler1.svg' className={classes.mainImage} width={'100%'} height={'100%'} />
-      <ProductData product={product} image="/product/moncler1.svg'" addToCart={addToCart} setVariant={setVariant} setCount={setCount}/>
+      <img src={(product.product.images.edges[0].node as any).originalWbp} className={classes.mainImage} width={'100%'} height={'100%'} />
+      <ProductData product={product} image={(product.product.images.edges[0].node as any).originalWbp} addToCart={addToCart} setVariant={setVariant} setCount={setCount}/>
       <DetailsTabs product={product.product} />
     </div>
   )

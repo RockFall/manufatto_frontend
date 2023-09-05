@@ -53,6 +53,7 @@ const useStyles = makeStyles(theme => ({
     letterSpacing: '0.08em',
     textTransform: 'uppercase',
     color: '#6F6C6B',
+    fontFamily: 'Akshar',
   },
   textGrid2: {
     marginTop: theme.spacing(1),
@@ -61,6 +62,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 600,
     fontSize: '18px',
     color: '#1D1D1F',
+    fontFamily: 'Akshar',
   },
   productGrid: {
     display: 'flex',

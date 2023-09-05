@@ -448,6 +448,7 @@ const ProductBuy = (props: ProductBuyProp) => {
     
     return (
       product.product.variants.nodes.map((variant) => {
+        console.log(variant)
         let variant_color, variant_size;
         variant.selectedOptions.forEach(option => {
           if (option.name === "Color") variant_color = option.value;

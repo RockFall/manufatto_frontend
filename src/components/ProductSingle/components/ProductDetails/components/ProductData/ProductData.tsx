@@ -7,7 +7,7 @@ import {
 } from '@mui/material'
 import { ProductBuy } from './components'
 import { CartItemType } from '../../../../../../slices/cartSlice'
-import { ProductDetail } from '../../../../../../util/custom_types'
+import { ProductDetail, ImageType } from '../../../../../../util/custom_types'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -78,26 +78,8 @@ interface ProductDataProp {
 
 const ProductData = (props: ProductDataProp) => {
   const { addToCart, setVariant, setCount, product, ...rest } = props;
-  const [currentImage, setCurrentImage] = useState<string>('/product/moncler1.svg');
+  const [currentImage, setCurrentImage] = useState<string>((product.product.images.edges[0].node as any).originalWbp);
   const classes = useStyles();
-  const staticImages = [
-    {
-      id: 0,
-      path: '/product/moncler1.svg',
-    },
-    {
-      id: 1,
-      path: '/product/moncler2.svg',
-    },
-    {
-      id: 2,
-      path: '/product/moncler3.svg',
-    },
-    {
-      id: 3,
-      path: '/product/moncler4.svg',
-    }
-  ];
 
   const handleCurrentImageChange = (event, imgSrc: string) => {
     event.persist && event.persist()
@@ -108,7 +90,9 @@ const ProductData = (props: ProductDataProp) => {
     <div className={classes.root}>
       {/* Seletor de imagem */}
       {/* Versão estática */}
-      <ImageList rowHeight={210} className={classes.imageGrid} cols={1}> {/* TODO: changed cellHeight to rowHeight*/}
+      {/*<ImageList rowHeight={210} className={classes.imageGrid} cols={1}> {
+        // TODO: changed cellHeight to rowHeight
+      }
         {staticImages.map((image) => {
           return(
             <ImageListItem key={image.id} style={{width: '187px'}} className={classes.imageButton} component="button" onClick={event => handleCurrentImageChange(event, image.path)}> 
@@ -116,20 +100,20 @@ const ProductData = (props: ProductDataProp) => {
             </ImageListItem>
           )
         })}
-      </ImageList>
+      </ImageList>*/}
 
       {/* Versão dinâmica */}
-      {/*<Hidden smDown>
-        <ImageList cellHeight={210} className={classes.imageGrid} cols={1}>
-          {product.product.images && product.product.images.map((image) => {
+      <Hidden smDown>
+        <ImageList rowHeight={210} className={classes.imageGrid} cols={1}>
+          {product.product.images && product.product.images.edges.map((node) => {
             return(
-              <ImageListItem key={image.id} style={{width: '187px'}} className={classes.imageButton} component="button" onClick={event => handleCurrentImageChange(event, image.path.originalWbp)}> 
-                <img src={image.path.thumbnailWbp}/>
+              <ImageListItem key={node.node.id} style={{width: '187px'}} className={classes.imageButton} component="button" onClick={event => handleCurrentImageChange(event, (node.node as any).originalWbp)}> 
+                <img src={(node.node as any).originalWbp}/>
               </ImageListItem>
             )
           })}
         </ImageList>
-      </Hidden>*/}
+      </Hidden>
 
       {/* Imagem selecionada */}
       <div className={classes.mainImageContainer}>

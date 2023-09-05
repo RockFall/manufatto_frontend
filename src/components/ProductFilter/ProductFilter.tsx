@@ -64,8 +64,8 @@ const PriceSlider = withStyles({
     height: 30,
     width: 30,
     backgroundColor: '#6F6C6B',
-    marginTop: -12,
-    marginLeft: -13,
+    //marginTop: -12,
+    //marginLeft: -13,
   },
   active: {},
   track: {
