@@ -64,7 +64,7 @@ const ProductFilterMobile = (props: ProductFilterMobileProps) => {
   return (
     <div className={clsx(classes.root, className)}>
       <div className={classes.filterTitle}>
-        <Typography variant='h5'>
+        <Typography variant='h5' style={{ fontFamily: 'Akshar' }}>
           <FilterListIcon /> Filtro{' '}
         </Typography>
         <IconButton aria-label='delete' onClick={() => clearFilter()} size="large">

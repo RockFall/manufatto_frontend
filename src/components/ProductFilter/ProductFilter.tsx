@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
   },
   filterItem: {
-    fontFamily: "Suisse Int\\'l",
+    fontFamily: "Akshar",
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: '16px',
@@ -120,7 +120,7 @@ const ProductFilter = (props: ProductFilterProps) => {
           <FormGroup>
             {shop.map((shop, i) => {
               return (
-                <div className={classes.checkbox} key={i}>
+                <div className={classes.checkbox} key={i} style={{ fontFamily: 'Akshar' }}>
                   <FormControlLabel
                     className={classes.filterItem}
                     control={
@@ -130,7 +130,7 @@ const ProductFilter = (props: ProductFilterProps) => {
                         name={shop}
                       />
                     }
-                    label={shop}
+                    label={<Typography style={{ fontFamily: 'Akshar' }}>{shop}</Typography>}
                   />
                 </div>
               )
@@ -165,7 +165,7 @@ const ProductFilter = (props: ProductFilterProps) => {
                         name={category}
                       />
                     }
-                    label={category}
+                    label={<Typography style={{ fontFamily: 'Akshar' }}>{category}</Typography>}
                   />
                 </div>
               )
@@ -216,7 +216,7 @@ const ProductFilter = (props: ProductFilterProps) => {
                         name={size}
                       />
                     }
-                    label={size}
+                    label={<Typography style={{ fontFamily: 'Akshar' }}>{size}</Typography>}
                   />
                 </div>
               )
@@ -237,7 +237,7 @@ const ProductFilter = (props: ProductFilterProps) => {
                     control={
                       <Checkbox checked={filterItems['colors'].includes(color)} onChange={e => handleFilterChange(e, 'colors')} name={color} />
                     }
-                    label={color}
+                    label={<Typography style={{ fontFamily: 'Akshar' }}>{color}</Typography>}
                   />
                 </div>
               )
@@ -262,7 +262,7 @@ const ProductFilter = (props: ProductFilterProps) => {
                         name={material}
                       />
                     }
-                    label={material}
+                    label={<Typography style={{ fontFamily: 'Akshar' }}>{material}</Typography>}
                   />
                 </div>
               )

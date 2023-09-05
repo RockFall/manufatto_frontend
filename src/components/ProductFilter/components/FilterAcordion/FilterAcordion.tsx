@@ -51,7 +51,7 @@ const FilterAcordion = (props: FilterAcordionProps) => {
     <div className={clsx(classes.root, className)}>
       <Button onClick={() => setIsExpanded(!isExpanded)} className={classes.button}>
         {isExpanded ? <ArrowDropDownIcon className={classes.iconColor} /> : <ArrowRightIcon className={classes.iconColor} />}
-        <Typography className={classes.title}>{title}</Typography>
+        <Typography className={classes.title} style={{ fontFamily: 'Akshar' }}>{title}</Typography>
       </Button>
       {isExpanded ? children : <React.Fragment />}
     </div>

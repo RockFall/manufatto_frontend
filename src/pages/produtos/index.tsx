@@ -68,7 +68,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   resultText: {
-    fontFamily: "Suisse Int\\'l",
+    fontFamily: "Lora",
     fontStyle: 'normal',
     fontWeight: 'normal',
     fontSize: '16px',
@@ -77,7 +77,7 @@ const useStyles = makeStyles(theme => ({
     color: '#000000',
   },
   searchText: {
-    fontFamily: "Suisse Int\\'l",
+    fontFamily: "Lora",
     fontStyle: 'normal',
     fontWeight: 600,
     fontSize: '24px',

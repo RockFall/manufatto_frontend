@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, createRef, useEffect, useRef } from 'react'
 import { makeStyles } from '@mui/styles'
 import { Hidden, Typography, Button, FormControl, InputLabel, Select, MenuItem } from '@mui/material'
 import FilterListIcon from '@mui/icons-material/FilterList'
@@ -56,16 +56,16 @@ const ProductsHeader = (props: ProductsHeaderProp) => {
         </Typography>
       </Hidden>
       <Hidden lgUp>
-        <Button className={classes.filterButton} onClick={() => setOpenFilter(true)} endIcon={<FilterListIcon />}>
+        <Button style={{ fontFamily: 'Akshar' }} className={classes.filterButton} onClick={() => setOpenFilter(true)} endIcon={<FilterListIcon />}>
           Filtro
         </Button>
       </Hidden>
       <FormControl className={classes.formControl}>
-        <InputLabel>Ordenar Por:</InputLabel>
-        <Select value={order} onChange={handleChange}>
-          <MenuItem value={'Crescente'}>Crescente</MenuItem>
-          <MenuItem value={'Decrescente'}>Decerescente</MenuItem>
-          <MenuItem value={'Popular'}>Popular</MenuItem>
+        <InputLabel style={{ fontFamily: 'Akshar' }}>Ordenar Por:</InputLabel>
+        <Select value={order} onChange={handleChange} label="Ordenar Por" style={{ fontFamily: 'Akshar' }}>
+          <MenuItem style={{ fontFamily: 'Akshar' }} value={'Crescente'}>Crescente</MenuItem>
+          <MenuItem style={{ fontFamily: 'Akshar' }} value={'Decrescente'}>Decrescente</MenuItem>
+          <MenuItem style={{ fontFamily: 'Akshar' }} value={'Popular'}>Popular</MenuItem>
         </Select>
       </FormControl>
     </div>
