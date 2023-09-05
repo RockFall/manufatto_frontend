@@ -1,21 +1,19 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import MaskedInput from 'react-text-mask'
 
 const mask = [/\d/, /\d/,  /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '-', /\d/, /\d/]
 
-const CpfMask = (props: any) => {
+const CpfMask = forwardRef((props: any, ref) => {
   const { inputRef, ...other } = props;
 
   return (
     <MaskedInput
       {...other}
       mask={mask}
-      ref={(ref: any)=> {
-        inputRef(ref ? ref.inputElement : null);
-      }}
+      ref={ref}
       placeholderChar={'\u2000'}
     />
   )
-}
+})
 
 export default CpfMask
